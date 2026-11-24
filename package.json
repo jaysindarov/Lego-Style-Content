@@ -1,0 +1,28 @@
+{
+  "name": "lego-style-content",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blocky 3D story reels: story.json + shots -> voiced, captioned 1080x1920 video",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.1.2",
+    "@remotion/cli": "4.0.540",
+    "@remotion/fonts": "4.0.540",
+    "@remotion/three": "4.0.540",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.540",
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.0",
+    "@types/three": "0.170.0",
+    "typescript": "5.7.3"
+  },
+  "remotion": {
+    "entry": "src/index.ts"
+  }
+}

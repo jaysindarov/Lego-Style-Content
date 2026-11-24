@@ -1,0 +1,22 @@
+{
+  "slug": "_template",
+  "title": { "en": "Story title", "uz": "Hikoya nomi" },
+  "voices": {
+    "en": { "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7", "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7", "speed": 1.05, "kidSpeed": 1.1, "kidPitch": 1.35 },
+    "uz": { "narrator": "voice_be56058a-8f15-48bb-904b-4fe92531d5b1", "kid": "voice_M-p5iz9z_kPWNm_C0cFqbC6X", "speed": 1.08, "kidSpeed": 1.15, "kidPitch": 1.38 }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "text": {
+        "en": "In our town, there is one rule nobody ever breaks. Because something is watching.",
+        "uz": "Bizning shaharda hech kim buzmaydigan bitta qoida bor. Chunki nimadir kuzatib turibdi."
+      },
+      "shots": [
+        { "name": "intro", "at": { "en": "", "uz": "" } },
+        { "name": "threat", "at": { "en": "Because", "uz": "Chunki" }, "sfx": [{ "at": 0.1, "sound": "boom", "vol": 0.9 }] }
+      ]
+    }
+  ],
+  "pulses": []
+}

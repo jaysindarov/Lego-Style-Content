@@ -1,0 +1,815 @@
+{
+  "slug": "green-fog",
+  "title": {
+    "en": "When the Green Fog Comes, Get on a Roof!",
+    "uz": "Yashil tuman tushsa, tomga chiq!"
+  },
+  "voices": {
+    "en": {
+      "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
+      "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
+      "speed": 1.05,
+      "kidSpeed": 1.1,
+      "kidPitch": 1.35
+    },
+    "uz": {
+      "narrator": "voice_be56058a-8f15-48bb-904b-4fe92531d5b1",
+      "kid": "voice_M-p5iz9z_kPWNm_C0cFqbC6X",
+      "speed": 1.08,
+      "kidSpeed": 1.15,
+      "kidPitch": 1.38
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "text": {
+        "en": "In our town, whenever the green fog rolls in, everyone has to get up on a roof. Because something lives under the ground.",
+        "uz": "Bizning shaharda yashil tuman tushsa, hamma darhol tomga chiqishi shart. Chunki yer ostida nimadir yashaydi."
+      },
+      "shots": [
+        {
+          "name": "cityFly",
+          "at": {
+            "en": "",
+            "uz": ""
+          }
+        },
+        {
+          "name": "fogStreet",
+          "at": {
+            "en": "whenever",
+            "uz": "yashil tuman"
+          },
+          "sfx": [
+            {
+              "at": 0.08,
+              "sound": "boom",
+              "vol": 0.9
+            },
+            {
+              "at": 0.25,
+              "sound": "siren",
+              "vol": 0.35,
+              "until": "mound:1"
+            }
+          ]
+        },
+        {
+          "name": "mound",
+          "at": {
+            "en": "Because",
+            "uz": "Chunki yer"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "rumble",
+              "vol": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "text": {
+        "en": "It began five years ago. One evening, a thick green fog suddenly swallowed the whole town. No one understood what was going on. Then the ground in the middle of the square split open! A giant creature burst out and swallowed three people.",
+        "uz": "Bu besh yil oldin boshlangan. Bir kuni kechqurun shaharni to'satdan yashil tuman qopladi. Hech kim nima bo'layotganini tushunmadi. Shunda maydonning o'rtasida yer yorildi! Ulkan maxluq chiqib, uch kishini yutib yubordi."
+      },
+      "shots": [
+        {
+          "name": "plazaDay",
+          "at": {
+            "en": "",
+            "uz": ""
+          }
+        },
+        {
+          "name": "plazaFog",
+          "at": {
+            "en": "One evening",
+            "uz": "Bir kuni"
+          },
+          "sfx": [
+            {
+              "at": 0.05,
+              "sound": "boom",
+              "vol": 0.8
+            },
+            {
+              "at": 0.1,
+              "sound": "whoosh",
+              "vol": 0.5
+            }
+          ]
+        },
+        {
+          "name": "plazaLook",
+          "at": {
+            "en": "No one",
+            "uz": "Hech kim"
+          }
+        },
+        {
+          "name": "plazaCrack",
+          "at": {
+            "en": "Then the",
+            "uz": "Shunda maydonning"
+          },
+          "sfx": [
+            {
+              "at": 0.15,
+              "sound": "boom",
+              "vol": 1.0
+            },
+            {
+              "at": 0.15,
+              "sound": "rumble",
+              "vol": 1.0
+            }
+          ]
+        },
+        {
+          "name": "plazaWorm",
+          "at": {
+            "en": "A giant",
+            "uz": "Ulkan maxluq"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "roar",
+              "vol": 1.0
+            },
+            {
+              "at": 0.05,
+              "sound": "rumble",
+              "vol": 0.8
+            },
+            {
+              "at": 0.68,
+              "sound": "chomp",
+              "vol": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "text": {
+        "en": "Ever since, the fog comes back almost every day. And anyone caught on the ground just vanishes.",
+        "uz": "O'sha kundan beri tuman deyarli har kuni tushadi. Kim yerda qolsa, g'oyib bo'ladi."
+      },
+      "shots": [
+        {
+          "name": "emptyStreet",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "siren",
+              "vol": 0.22,
+              "until": "end"
+            }
+          ]
+        },
+        {
+          "name": "shopVictim",
+          "at": {
+            "en": "And anyone",
+            "uz": "Kim yerda"
+          },
+          "sfx": [
+            {
+              "at": 0.3,
+              "sound": "rumble",
+              "vol": 0.8
+            },
+            {
+              "at": 0.42,
+              "sound": "roar",
+              "vol": 0.8
+            },
+            {
+              "at": 0.62,
+              "sound": "chomp",
+              "vol": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "text": {
+        "en": "Last year, a girl was riding her bike when the sirens went off. She pedaled toward her house as fast as she could, but she was too slow. The creature shot up from under the road. All that was left was her bike.",
+        "uz": "O'tgan yili bir qiz velosipedda ketayotganda sirena chalindi. U uyiga qarab shoshildi, lekin ulgurmadi. Yer ostidan maxluq otilib chiqdi. Uning velosipedi yo'lda yolg'iz qoldi."
+      },
+      "shots": [
+        {
+          "name": "bikeRide",
+          "at": {
+            "en": "",
+            "uz": ""
+          }
+        },
+        {
+          "name": "siren",
+          "at": {
+            "en": "when the",
+            "uz": "sirena chalindi."
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "siren",
+              "vol": 0.45,
+              "until": "bikeGrab:0.1"
+            }
+          ]
+        },
+        {
+          "name": "bikeRush",
+          "at": {
+            "en": "She pedaled",
+            "uz": "U uyiga"
+          }
+        },
+        {
+          "name": "bikeGrab",
+          "at": {
+            "en": "The creature",
+            "uz": "Yer ostidan"
+          },
+          "sfx": [
+            {
+              "at": 0.12,
+              "sound": "rumble",
+              "vol": 0.9
+            },
+            {
+              "at": 0.22,
+              "sound": "roar",
+              "vol": 0.9
+            },
+            {
+              "at": 0.64,
+              "sound": "chomp",
+              "vol": 1.0
+            }
+          ]
+        },
+        {
+          "name": "bikeAlone",
+          "at": {
+            "en": "All that",
+            "uz": "Uning velosipedi"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "text": {
+        "en": "Only one man ever made it out alive. He was driving home when the fog came down. Out of nowhere, the road cracked open and the creature lunged at his car! He leaped out and scrambled onto a bus stop roof. The creature dragged his car underground. Since then, everyone knows the rule: you have ten seconds to get off the ground.",
+        "uz": "Lekin bir kishi tirik qoldi. U mashinada ketayotganida tuman tushdi. To'satdan yo'l yorilib, maxluq mashinaga tashlandi! U sakrab chiqib, bekat tomiga chiqib oldi. Mashinasini esa maxluq yer ostiga sudrab ketdi. Shuning uchun hammada tomga chiqish uchun atigi o'n soniya bor."
+      },
+      "shots": [
+        {
+          "name": "carDrive",
+          "at": {
+            "en": "",
+            "uz": ""
+          }
+        },
+        {
+          "name": "carFog",
+          "at": {
+            "en": "He was",
+            "uz": "U mashinada"
+          },
+          "sfx": [
+            {
+              "at": 0.1,
+              "sound": "boom",
+              "vol": 0.7
+            },
+            {
+              "at": 0.2,
+              "sound": "siren",
+              "vol": 0.25,
+              "until": "end"
+            }
+          ]
+        },
+        {
+          "name": "carCrack",
+          "at": {
+            "en": "Out of",
+            "uz": "To'satdan yo'l"
+          },
+          "sfx": [
+            {
+              "at": 0.12,
+              "sound": "rumble",
+              "vol": 1.0
+            },
+            {
+              "at": 0.12,
+              "sound": "boom",
+              "vol": 0.8
+            },
+            {
+              "at": 0.28,
+              "sound": "roar",
+              "vol": 1.0
+            }
+          ]
+        },
+        {
+          "name": "carJump",
+          "at": {
+            "en": "He leaped",
+            "uz": "U sakrab"
+          },
+          "sfx": [
+            {
+              "at": 0.02,
+              "sound": "whoosh",
+              "vol": 0.7
+            }
+          ]
+        },
+        {
+          "name": "carEaten",
+          "at": {
+            "en": "The creature dragged",
+            "uz": "Mashinasini esa"
+          },
+          "sfx": [
+            {
+              "at": 0.2,
+              "sound": "crush",
+              "vol": 1.0
+            },
+            {
+              "at": 0.3,
+              "sound": "rumble",
+              "vol": 0.9
+            }
+          ]
+        },
+        {
+          "name": "crowdClimb",
+          "at": {
+            "en": "Since then",
+            "uz": "Shuning uchun"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "siren",
+              "vol": 0.35,
+              "until": "end"
+            },
+            {
+              "at": 0,
+              "sound": "tick",
+              "vol": 0.5,
+              "repeat": 10,
+              "step": 0.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "text": {
+        "en": "Usually, the fog lifts in thirty seconds. But yesterday was different. My little brother and I were walking home from school, when suddenly... the sirens! We climbed onto a shop roof. Thirty seconds went by, then five minutes, and the fog still didn't lift!",
+        "uz": "Odatda tuman o'ttiz soniyada tarqaydi. Lekin kecha hammasi boshqacha bo'ldi. Ukam bilan maktabdan qaytayotgan edik, to'satdan... sirena! Biz do'konning tomiga chiqib oldik. O'ttiz soniya o'tdi, keyin besh daqiqa, lekin tuman tarqamadi!"
+      },
+      "shots": [
+        {
+          "name": "timelapse",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "whoosh",
+              "vol": 0.3,
+              "repeat": 6,
+              "step": 0.0917
+            }
+          ]
+        },
+        {
+          "name": "brothersWalk",
+          "at": {
+            "en": "My little",
+            "uz": "Ukam bilan"
+          }
+        },
+        {
+          "name": "sirenB",
+          "at": {
+            "en": "when suddenly",
+            "uz": "to'satdan... sirena!"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "boom",
+              "vol": 0.6
+            },
+            {
+              "at": 0,
+              "sound": "siren",
+              "vol": 0.4,
+              "until": "roofWait:0.2"
+            }
+          ]
+        },
+        {
+          "name": "brothersRun",
+          "at": {
+            "en": "We climbed",
+            "uz": "Biz do'konning"
+          }
+        },
+        {
+          "name": "roofWait",
+          "at": {
+            "en": "Thirty seconds went",
+            "uz": "O'ttiz soniya"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "tick",
+              "vol": 0.45,
+              "repeat": 8,
+              "step": 0.125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "text": {
+        "en": "Down on the street, a car blasted its horn, and the creature dove right back underground. So it's afraid of loud noise! That's when I remembered the old clock tower. Dad always said its bell could be heard across the entire town!",
+        "uz": "Pastda bir mashina qattiq signal chalganda, maxluq yerga sho'ng'ib qochib ketdi. Demak, u baland ovozdan qo'rqadi! Shunda eski soat minorasini esladim. Dadam aytgan edi, uning qo'ng'irog'i butun shaharga eshitiladi!"
+      },
+      "shots": [
+        {
+          "name": "hornScare",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0.3,
+              "sound": "horn",
+              "vol": 0.9
+            },
+            {
+              "at": 0.36,
+              "sound": "scream",
+              "vol": 0.7
+            },
+            {
+              "at": 0.48,
+              "sound": "rumble",
+              "vol": 0.8
+            }
+          ]
+        },
+        {
+          "name": "heroIdea",
+          "at": {
+            "en": "So it's",
+            "uz": "Demak, u"
+          }
+        },
+        {
+          "name": "clockTower",
+          "at": {
+            "en": "That's when",
+            "uz": "Shunda eski"
+          }
+        },
+        {
+          "name": "bellVision",
+          "at": {
+            "en": "Dad always",
+            "uz": "Dadam aytgan"
+          },
+          "sfx": [
+            {
+              "at": 0.05,
+              "sound": "bell",
+              "vol": 0.35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "text": {
+        "en": "We jumped from roof to roof until we reached the tower. But the bell mechanism was broken! While I was fixing it, the ground started shaking beneath us. My brother grabbed a metal bucket and started banging on it.",
+        "uz": "Biz tomlardan sakrab, minoraga yetib keldik. Lekin qo'ng'iroq mexanizmi buzuq edi! Uni tuzatayotganimda, oyog'imiz ostida yer titray boshladi. Ukam temir chelakni olib, taqillatdi."
+      },
+      "shots": [
+        {
+          "name": "roofJump",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0.4,
+              "sound": "whoosh",
+              "vol": 0.6
+            }
+          ]
+        },
+        {
+          "name": "towerTop",
+          "at": {
+            "en": "But the",
+            "uz": "Lekin qo'ng'iroq"
+          }
+        },
+        {
+          "name": "repair",
+          "at": {
+            "en": "While I",
+            "uz": "Uni tuzatayotganimda,"
+          }
+        },
+        {
+          "name": "groundShake",
+          "at": {
+            "en": "the ground started",
+            "uz": "oyog'imiz ostida"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "rumble",
+              "vol": 1.0
+            },
+            {
+              "at": 0.3,
+              "sound": "rumble",
+              "vol": 0.8
+            }
+          ]
+        },
+        {
+          "name": "bucketBang",
+          "at": {
+            "en": "My brother",
+            "uz": "Ukam temir"
+          },
+          "sfx": [
+            {
+              "at": 0.3,
+              "sound": "clank",
+              "vol": 0.8,
+              "repeat": 6,
+              "step": 0.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s08k",
+      "kid": true,
+      "text": {
+        "en": "Hey! I'm right here!",
+        "uz": "Hoy! Men bu yerdaman!"
+      },
+      "shots": [
+        {
+          "name": "kidShout",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0.05,
+              "sound": "clank",
+              "vol": 0.5,
+              "repeat": 4,
+              "step": 0.22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s08b",
+      "text": {
+        "en": "The creature turned toward him!",
+        "uz": "Maxluq unga qarab burildi!"
+      },
+      "shots": [
+        {
+          "name": "wormTurn",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0.15,
+              "sound": "roar",
+              "vol": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "text": {
+        "en": "I snapped the last gear into place and pulled the lever! The bell rang out across the whole town! The creature shrieked and dove underground. And at last, the fog cleared.",
+        "uz": "Men oxirgi tishli g'ildirakni joyiga qo'ydim va dastakni tortdim! Qo'ng'iroq butun shaharga yangradi! Maxluq qichqirib, yer ostiga sho'ng'idi. Tuman nihoyat tarqadi."
+      },
+      "shots": [
+        {
+          "name": "gearInsert",
+          "at": {
+            "en": "",
+            "uz": ""
+          },
+          "sfx": [
+            {
+              "at": 0.75,
+              "sound": "clunk",
+              "vol": 0.8
+            }
+          ]
+        },
+        {
+          "name": "lever",
+          "at": {
+            "en": "and pulled",
+            "uz": "va dastakni"
+          },
+          "sfx": [
+            {
+              "at": 0.6,
+              "sound": "clunk",
+              "vol": 1.0
+            }
+          ]
+        },
+        {
+          "name": "bellRing",
+          "at": {
+            "en": "The bell rang",
+            "uz": "Qo'ng'iroq butun"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "bell",
+              "vol": 1.0
+            },
+            {
+              "at": 0,
+              "sound": "boom",
+              "vol": 0.6
+            },
+            {
+              "at": 0.5,
+              "sound": "bell",
+              "vol": 0.8
+            }
+          ]
+        },
+        {
+          "name": "wormFlee",
+          "at": {
+            "en": "The creature shrieked",
+            "uz": "Maxluq qichqirib,"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "scream",
+              "vol": 1.0
+            },
+            {
+              "at": 0,
+              "sound": "bell",
+              "vol": 0.6
+            },
+            {
+              "at": 0.4,
+              "sound": "rumble",
+              "vol": 1.0
+            }
+          ]
+        },
+        {
+          "name": "fogClear",
+          "at": {
+            "en": "And at",
+            "uz": "Tuman nihoyat"
+          },
+          "sfx": [
+            {
+              "at": 0,
+              "sound": "whoosh",
+              "vol": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "text": {
+        "en": "We were cheering when I glanced at the horizon. Far beyond the town, the ground was splitting open in three places... and coming straight for us.",
+        "uz": "Lekin biz quvonayotganimizda, men ufqqa qaradim. Shahardan ancha narida, yer uch joyda yorilib, bizga qarab kelardi..."
+      },
+      "shots": [
+        {
+          "name": "celebrate",
+          "at": {
+            "en": "",
+            "uz": ""
+          }
+        },
+        {
+          "name": "horizon",
+          "at": {
+            "en": "Far beyond",
+            "uz": "Shahardan ancha"
+          },
+          "sfx": [
+            {
+              "at": 0.12,
+              "sound": "boom",
+              "vol": 0.9
+            },
+            {
+              "at": 0.2,
+              "sound": "rumble_long",
+              "vol": 0.9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pulses": [
+    {
+      "shot": "plazaCrack",
+      "at": 0,
+      "dur": 6
+    },
+    {
+      "shot": "bikeRush",
+      "at": 0,
+      "dur": 5
+    },
+    {
+      "shot": "carCrack",
+      "at": 0,
+      "dur": 9
+    },
+    {
+      "shot": "roofWait",
+      "at": 0,
+      "dur": 4
+    },
+    {
+      "shot": "groundShake",
+      "at": 0,
+      "dur": 8
+    },
+    {
+      "shot": "horizon",
+      "at": 0.3,
+      "dur": 5
+    }
+  ]
+}

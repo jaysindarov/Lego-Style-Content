@@ -1,0 +1,9 @@
+node_modules/
+.env
+cache/
+stories/*/build/
+stories/*/out/
+src/generated/
+out/
+.DS_Store
+public/Rounded.ttf
