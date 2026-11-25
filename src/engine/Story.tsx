@@ -5,7 +5,7 @@ import { useThree } from "@react-three/fiber";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import * as THREE from "three";
 
-import { SHOTS, timeline } from "../generated/current";
+import { FORMAT, SHOTS, timeline } from "../generated/current";
 import { clamp01, type Frame } from "./kit";
 import { Avatar } from "../world/Avatar";
 import { City } from "../world/City";
@@ -14,11 +14,13 @@ import { BusStop, Bike, Benches, Car, ClockTower, Fountain, ShopRoof, ShopSign, 
 import { Dust, GroundFog, Lights, Mound, PALETTES, Sky, Wave } from "../world/Atmosphere";
 import { Giant } from "../world/Giant";
 import { Lighthouse } from "../world/Lighthouse";
+import { MysteryHouse } from "../world/MysteryHouse";
 import { SIRENS, TOWER, TOWER_H } from "../world/layout";
 
 export const FPS = 30;
-export const W = 1080;
-export const H = 1920;
+export const LAND = FORMAT === "landscape";
+export const W = LAND ? 1920 : 1080;
+export const H = LAND ? 1080 : 1920;
 
 type Word = { w: string; start: number; end: number; scene: string; kid: boolean };
 type Cut = { shot: string; start: number; end: number };
@@ -150,6 +152,9 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
         <Dust key={`d${i}`} x={d.x} z={d.z} amount={d.amount} t={lt + i} spread={d.spread} color={d.color} />
       ))}
       {f.worm ? <Worm s={f.worm} /> : null}
+      {(f.houses ?? []).map((h, i) => (
+        <MysteryHouse key={`h${i}`} s={{ t: lt, ...h }} />
+      ))}
       {(f.giants ?? []).map((g, i) => (
         <Giant key={`g${i}`} s={g} />
       ))}
@@ -177,7 +182,7 @@ const Caption: React.FC<{ t: number }> = ({ t }) => {
         position: "absolute",
         left: 0,
         right: 0,
-        top: H * 0.705,
+        top: H * (LAND ? 0.79 : 0.705),
         display: "flex",
         justifyContent: "center",
       }}
@@ -185,9 +190,9 @@ const Caption: React.FC<{ t: number }> = ({ t }) => {
       <span
         style={{
           fontFamily: "Rounded",
-          fontSize: 104,
+          fontSize: LAND ? 86 : 104,
           color: "#fff35c",
-          WebkitTextStroke: "16px #000000",
+          WebkitTextStroke: LAND ? "14px #000000" : "16px #000000",
           paintOrder: "stroke fill",
           transform: `scale(${pop})`,
           letterSpacing: 1,
@@ -201,13 +206,118 @@ const Caption: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
+/** A handwritten note held up to the camera, in the upper third (never the caption band). */
+const NoteOverlay: React.FC<{ note?: { text: string; k: number } }> = ({ note }) => {
+  if (!note) return null;
+  const k = clamp01(note.k);
+  const y = (LAND ? 70 : 260) + (1 - k) * 120;
+  return (
+    <div style={{ position: "absolute", top: y, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: k }}>
+      <div
+        style={{
+          width: LAND ? 820 : 760,
+          padding: LAND ? "36px 50px" : "54px 60px",
+          background: "linear-gradient(180deg, #fbf6e6 0%, #efe6cc 100%)",
+          borderRadius: 10,
+          boxShadow: "0 18px 50px rgba(0,0,0,0.6)",
+          transform: `rotate(${-3 + (1 - k) * 4}deg)`,
+          fontFamily: "Rounded",
+          fontSize: LAND ? 60 : 76,
+          lineHeight: 1.15,
+          color: "#2a2340",
+          textAlign: "center",
+          backgroundImage: "repeating-linear-gradient(180deg, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 86px, rgba(80,110,200,0.25) 87px, rgba(0,0,0,0) 89px)",
+        }}
+      >
+        {note.text}
+      </div>
+    </div>
+  );
+};
+
+/** Tape-rewind look: blue-white wash, rolling scanlines, a jitter band and a ◀◀ mark. */
+const RewindOverlay: React.FC<{ k?: number; t: number }> = ({ k, t }) => {
+  if (!k) return null;
+  const band = ((t * 0.9) % 1) * H;
+  const tri = (x: number) => (
+    <div style={{ position: "absolute", left: x, top: 0, width: 0, height: 0, borderTop: "34px solid transparent", borderBottom: "34px solid transparent", borderRight: "52px solid #ffffff" }} />
+  );
+  return (
+    <AbsoluteFill style={{ opacity: Math.min(1, k) }}>
+      <AbsoluteFill style={{ background: "rgba(120,170,255,0.22)", mixBlendMode: "screen" }} />
+      <AbsoluteFill style={{ backgroundImage: "repeating-linear-gradient(180deg, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 2px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 7px)" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: band, height: H * 0.06, background: "rgba(255,255,255,0.22)", filter: "blur(6px)" }} />
+      <div style={{ position: "absolute", left: LAND ? 70 : 60, top: LAND ? 60 : 120, width: 120, height: 68, filter: "drop-shadow(0 4px 0 rgba(0,0,0,0.8))" }}>
+        {tri(0)}
+        {tri(52)}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** The scratched belfry wall: tally marks, two stick figures holding hands, and a word. */
+const WallOverlay: React.FC<{ wall?: { k: number; tallies: number; drawing?: number; word?: number } }> = ({ wall }) => {
+  if (!wall) return null;
+  const k = clamp01(wall.k);
+  const Wd = LAND ? 1100 : 900;
+  const Hd = LAND ? 760 : 900;
+  const groups = Math.ceil(wall.tallies / 5);
+  const perRow = LAND ? 15 : 12;
+  const marks: React.ReactNode[] = [];
+  for (let g = 0; g < groups; g++) {
+    const cx = 36 + (g % perRow) * 70;
+    const cy = 26 + Math.floor(g / perRow) * 62;
+    const n = Math.min(5, wall.tallies - g * 5);
+    for (let i = 0; i < Math.min(4, n); i++) marks.push(<line key={`${g}-${i}`} x1={cx + i * 12} y1={cy} x2={cx + i * 12 + 2} y2={cy + 44} />);
+    if (n === 5) marks.push(<line key={`${g}-x`} x1={cx - 6} y1={cy + 38} x2={cx + 44} y2={cy + 6} />);
+  }
+  const d = clamp01(wall.drawing ?? 0);
+  const w = clamp01(wall.word ?? 0);
+  const fig = (x: number, s: number) => (
+    <g transform={`translate(${x} ${Hd - 250}) scale(${s})`}>
+      <circle cx={0} cy={0} r={18} />
+      <line x1={0} y1={18} x2={0} y2={80} />
+      <line x1={0} y1={40} x2={-26} y2={62} />
+      <line x1={0} y1={40} x2={26} y2={62} />
+      <line x1={0} y1={80} x2={-20} y2={120} />
+      <line x1={0} y1={80} x2={20} y2={120} />
+    </g>
+  );
+  return (
+    <div style={{ position: "absolute", top: LAND ? 60 : 220, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: k }}>
+      <svg width={Wd} height={Hd} viewBox={`0 0 ${Wd} ${Hd}`} style={{ borderRadius: 16, boxShadow: "0 20px 60px rgba(0,0,0,0.7)" }}>
+        <defs>
+          <pattern id="stone" width="120" height="60" patternUnits="userSpaceOnUse">
+            <rect width="120" height="60" fill="#8d8478" />
+            <rect x="2" y="2" width="116" height="26" fill="#9a9184" />
+            <rect x="-58" y="32" width="116" height="26" fill="#958c7f" />
+            <rect x="62" y="32" width="116" height="26" fill="#958c7f" />
+          </pattern>
+        </defs>
+        <rect width={Wd} height={Hd} fill="url(#stone)" />
+        <g stroke="#f4efe4" strokeWidth={5} strokeLinecap="round" opacity={0.9}>
+          {marks}
+        </g>
+        <g stroke="#f4efe4" strokeWidth={5} strokeLinecap="round" fill="none" opacity={d}>
+          {fig(Wd / 2 - 60, 1.1)}
+          {fig(Wd / 2 + 50, 0.8)}
+          <line x1={Wd / 2 - 31} y1={Hd - 188} x2={Wd / 2 + 29} y2={Hd - 198} />
+        </g>
+        <text x={Wd / 2} y={Hd - 30} textAnchor="middle" fontFamily="Rounded" fontSize={LAND ? 92 : 110} fill="#fff6dc" stroke="#3a3128" strokeWidth={3} opacity={w} letterSpacing={14}>
+          STAY
+        </text>
+      </svg>
+    </div>
+  );
+};
+
 const ClockOverlay: React.FC<{ text?: string; accent?: string }> = ({ text, accent = "#9dff4a" }) =>
   text ? (
-    <div style={{ position: "absolute", top: 210, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", top: LAND ? 50 : 210, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
       <div
         style={{
           fontFamily: "Rounded",
-          fontSize: 120,
+          fontSize: LAND ? 84 : 120,
           color: "#ffffff",
           background: "rgba(10,20,10,0.72)",
           border: `6px solid ${accent}`,
@@ -239,13 +349,16 @@ export const Story: React.FC = () => {
         shadows
         gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, preserveDrawingBuffer: true }}
         camera={{ fov: 55, near: 0.1, far: 4000, position: [0, 50, 100] }}
-        style={{ position: "absolute", inset: 0 }}
+        style={{ position: "absolute", inset: 0, filter: f.sepia ? `sepia(${f.sepia}) saturate(${1 - f.sepia * 0.3}) contrast(1.05)` : undefined }}
       >
         <World f={f} t={t} lt={lt} />
       </ThreeCanvas>
       {f.tint ? <AbsoluteFill style={{ background: f.tint, mixBlendMode: "screen" }} /> : null}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.38) 100%)" }} />
       {f.flash ? <AbsoluteFill style={{ background: `rgba(255,255,255,${f.flash})` }} /> : null}
+      <RewindOverlay k={f.rewind} t={t} />
+      <WallOverlay wall={f.wall} />
+      <NoteOverlay note={f.note} />
       <ClockOverlay text={f.clock} accent={PALETTES[f.palette ?? "green"].accent} />
       <Caption t={t} />
       <AbsoluteFill style={{ background: `rgba(0,0,0,${Math.max(fadeOut, fadeIn)})` }} />

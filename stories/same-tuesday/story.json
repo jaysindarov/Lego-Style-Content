@@ -1,0 +1,1635 @@
+{
+ "slug": "same-tuesday",
+ "title": {
+  "en": "I've Lived the Same Tuesday 412 Times"
+ },
+ "format": "landscape",
+ "voices": {
+  "en": {
+   "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
+   "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
+   "speed": 0.92,
+   "kidSpeed": 0.98,
+   "kidPitch": 1.35
+  }
+ },
+ "music": [
+  {
+   "track": "mystery",
+   "from": "s01",
+   "vol": 0.3
+  },
+  {
+   "track": "tension",
+   "from": "s06",
+   "vol": 0.3
+  },
+  {
+   "track": "mystery",
+   "from": "s07",
+   "vol": 0.3
+  },
+  {
+   "track": "tension",
+   "from": "s13",
+   "vol": 0.32
+  },
+  {
+   "track": "tender",
+   "from": "s15",
+   "vol": 0.34
+  },
+  {
+   "track": "wonder",
+   "from": "s19",
+   "vol": 0.36
+  },
+  {
+   "track": "mystery",
+   "from": "s21",
+   "vol": 0.3
+  }
+ ],
+ "scenes": [
+  {
+   "id": "s01",
+   "text": {
+    "en": "Today is Tuesday. It's always Tuesday. I have lived this exact same day four hundred and twelve times. And yesterday, I finally found out who is doing it. If you're watching this, listen carefully. Because tomorrow, you won't remember any of it. Nobody ever does."
+   },
+   "shots": [
+    {
+     "name": "hookTown",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "hookFace",
+     "at": {
+      "en": "It's always"
+     }
+    },
+    {
+     "name": "hookDay",
+     "at": {
+      "en": "I have"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.5,
+       "repeat": 6,
+       "step": 0.15
+      }
+     ]
+    },
+    {
+     "name": "hookTower",
+     "at": {
+      "en": "And yesterday,"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "rumble",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "hookKid",
+     "at": {
+      "en": "who is"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "chime",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "hookWarn",
+     "at": {
+      "en": "If you're"
+     }
+    },
+    {
+     "name": "hookNobody",
+     "at": {
+      "en": "Nobody ever"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "text": {
+    "en": "Let me show you. At eight o'clock, the yellow car honks twice at the corner. At eight fifteen, Mrs. Rosa opens her shop and drops her keys. At noon, a girl on a red bike rides through the square, ringing her bell. And at three o'clock, the old clock tower rings. Thirteen times."
+   },
+   "shots": [
+    {
+     "name": "showPorch",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "carHonk",
+     "at": {
+      "en": "At eight o'clock,"
+     },
+     "sfx": [
+      {
+       "at": 0.45,
+       "sound": "horn",
+       "vol": 0.7
+      },
+      {
+       "at": 0.62,
+       "sound": "horn",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "rosaShop",
+     "at": {
+      "en": "At eight fifteen,"
+     },
+     "sfx": [
+      {
+       "at": 0.7,
+       "sound": "clank",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "girlBike",
+     "at": {
+      "en": "At noon,"
+     },
+     "sfx": [
+      {
+       "at": 0.55,
+       "sound": "ding",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "towerThree",
+     "at": {
+      "en": "And at"
+     }
+    },
+    {
+     "name": "bellThirteen",
+     "at": {
+      "en": "Thirteen times."
+     },
+     "sfx": [
+      {
+       "at": 0.02,
+       "sound": "bell",
+       "vol": 0.9
+      },
+      {
+       "at": 0.5,
+       "sound": "bell",
+       "vol": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "text": {
+    "en": "Then everything rewinds. The sun slides back down the sky, the cars drive backwards, and people walk backwards too. And I wake up on my porch. And it's Tuesday morning again."
+   },
+   "shots": [
+    {
+     "name": "rewindSky",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "rewind",
+       "vol": 0.9
+      }
+     ]
+    },
+    {
+     "name": "rewindCars",
+     "at": {
+      "en": "the cars"
+     }
+    },
+    {
+     "name": "rewindPeople",
+     "at": {
+      "en": "and people"
+     }
+    },
+    {
+     "name": "wakePorch",
+     "at": {
+      "en": "And I"
+     },
+     "sfx": [
+      {
+       "at": 0.05,
+       "sound": "boom",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "tuesdayAgain",
+     "at": {
+      "en": "And it's"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "text": {
+    "en": "The first time it happened, I thought I was dreaming. I told my little brother, Leo. He just looked at me, smiled, and said I was being weird. The second time, I told my mom. By the tenth time, I stopped telling anyone. And honestly, at first, it was kind of fun. No homework mattered. No test counted. I could do whatever I wanted. But by loop fifty, it wasn't fun anymore."
+   },
+   "shots": [
+    {
+     "name": "firstTime",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "toldLeo",
+     "at": {
+      "en": "I told"
+     }
+    },
+    {
+     "name": "leoSmile",
+     "at": {
+      "en": "He just"
+     }
+    },
+    {
+     "name": "secondTime",
+     "at": {
+      "en": "The second"
+     }
+    },
+    {
+     "name": "tenthTime",
+     "at": {
+      "en": "By the"
+     }
+    },
+    {
+     "name": "funDays",
+     "at": {
+      "en": "And honestly,"
+     }
+    },
+    {
+     "name": "noHomework",
+     "at": {
+      "en": "No homework"
+     }
+    },
+    {
+     "name": "notFun",
+     "at": {
+      "en": "But by"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "text": {
+    "en": "So I started testing it. I let the air out of the yellow car's tires. The next morning, it honked twice at the corner, like always. I climbed onto the roof of the bus stop and yelled at the whole street. Nobody remembered a thing."
+   },
+   "shots": [
+    {
+     "name": "testing",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "tires",
+     "at": {
+      "en": "I let"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "whoosh",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "honkAgain",
+     "at": {
+      "en": "The next"
+     },
+     "sfx": [
+      {
+       "at": 0.5,
+       "sound": "horn",
+       "vol": 0.7
+      },
+      {
+       "at": 0.66,
+       "sound": "horn",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "busRoof",
+     "at": {
+      "en": "I climbed"
+     }
+    },
+    {
+     "name": "nobody",
+     "at": {
+      "en": "Nobody remembered"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s05b",
+   "text": {
+    "en": "I started keeping a notebook. Every day, I wrote down everything that happened. And every morning, the notebook was empty again. So I started remembering instead. Every face. Every word. Every car."
+   },
+   "shots": [
+    {
+     "name": "notebook",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "emptyBook",
+     "at": {
+      "en": "And every"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "paper",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "remember",
+     "at": {
+      "en": "So I"
+     }
+    },
+    {
+     "name": "everyFace",
+     "at": {
+      "en": "Every face."
+     }
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "text": {
+    "en": "One loop, I tried to stop the bell myself. At two fifty-nine, I climbed the tower and grabbed the lever with all my strength. At three o'clock, the bell rang anyway. All by itself. And for just a second, I saw someone small, running down the stairs."
+   },
+   "shots": [
+    {
+     "name": "stopBell",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "whoosh",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "leverHold",
+     "at": {
+      "en": "At two"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.5,
+       "repeat": 6,
+       "step": 0.15
+      }
+     ]
+    },
+    {
+     "name": "ringAnyway",
+     "at": {
+      "en": "At three"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "bell",
+       "vol": 1.0
+      },
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "smallShadow",
+     "at": {
+      "en": "And for"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "whoosh",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s06b",
+   "text": {
+    "en": "That was the first time I wondered. What if I'm not the only one who remembers?"
+   },
+   "shots": [
+    {
+     "name": "wonderTower",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "notOnly",
+     "at": {
+      "en": "What if"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "chime",
+       "vol": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "text": {
+    "en": "I tried to follow. Flash. Porch. Tuesday. On loop number two hundred, I noticed something else. Every day at exactly noon, someone was standing by the fountain, staring up at the clock tower. Someone in a yellow hoodie."
+   },
+   "shots": [
+    {
+     "name": "followFlash",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.25,
+       "sound": "rewind",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "loop200",
+     "at": {
+      "en": "On loop"
+     }
+    },
+    {
+     "name": "fountainFigure",
+     "at": {
+      "en": "Every day"
+     }
+    },
+    {
+     "name": "staring",
+     "at": {
+      "en": "staring up"
+     }
+    },
+    {
+     "name": "yellowHoodie",
+     "at": {
+      "en": "Someone in"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "chime",
+       "vol": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "text": {
+    "en": "It was Leo. But on the very first Tuesday, at noon, Leo was at home with me. I'm sure of it. So why was he at the fountain now? Every single day. In every single loop. And there was something else. Every loop, he looked a little more tired. Like he was carrying something heavy."
+   },
+   "shots": [
+    {
+     "name": "itWasLeo",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.05,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "firstTuesday",
+     "at": {
+      "en": "But on"
+     }
+    },
+    {
+     "name": "whyFountain",
+     "at": {
+      "en": "So why"
+     }
+    },
+    {
+     "name": "everyLoop",
+     "at": {
+      "en": "Every single"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "whoosh",
+       "vol": 0.3,
+       "repeat": 5,
+       "step": 0.18
+      }
+     ]
+    },
+    {
+     "name": "tiredLeo",
+     "at": {
+      "en": "And there"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "text": {
+    "en": "When I asked him, he just shrugged, said he liked the clock, and ran off. So the next day, the same day, I followed him. He walked to the tower, looked around, and slipped through a little door at the bottom."
+   },
+   "shots": [
+    {
+     "name": "askLeo",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ranOff",
+     "at": {
+      "en": "and ran"
+     }
+    },
+    {
+     "name": "followHim",
+     "at": {
+      "en": "So the"
+     }
+    },
+    {
+     "name": "towerDoor",
+     "at": {
+      "en": "He walked"
+     }
+    },
+    {
+     "name": "slipped",
+     "at": {
+      "en": "and slipped"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "creak",
+       "vol": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": {
+    "en": "I waited outside. Three o'clock. Bell. Flash. Porch. Tuesday. And Leo was sitting right next to me, swinging his legs, like nothing had happened."
+   },
+   "shots": [
+    {
+     "name": "waitOutside",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45,
+       "repeat": 5,
+       "step": 0.18
+      }
+     ]
+    },
+    {
+     "name": "bellFlash",
+     "at": {
+      "en": "Three o'clock."
+     },
+     "sfx": [
+      {
+       "at": 0.05,
+       "sound": "bell",
+       "vol": 0.9
+      },
+      {
+       "at": 0.6,
+       "sound": "rewind",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "porchAgain",
+     "at": {
+      "en": "Porch. Tuesday."
+     }
+    },
+    {
+     "name": "leoNext",
+     "at": {
+      "en": "And Leo"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s10b",
+   "text": {
+    "en": "That night... well, there was no night. There hasn't been a night in more than a year. I just sat on the porch, watching the same clouds, thinking. What if Leo is the one doing this? But he's eight years old. How could an eight-year-old stop time?"
+   },
+   "shots": [
+    {
+     "name": "noNight",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "sameClouds",
+     "at": {
+      "en": "I just"
+     }
+    },
+    {
+     "name": "isItLeo",
+     "at": {
+      "en": "What if"
+     }
+    },
+    {
+     "name": "eightYears",
+     "at": {
+      "en": "But he's"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": {
+    "en": "So I went to the one person in town who knows every old story. Mister Gray. He told me the clock tower is older than the town itself. And there's a legend. If someone rings the bell at three o'clock and makes a wish with all their heart, the day they wish on never has to end."
+   },
+   "shots": [
+    {
+     "name": "toGray",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "grayIntro",
+     "at": {
+      "en": "Mister Gray."
+     }
+    },
+    {
+     "name": "olderTown",
+     "at": {
+      "en": "He told"
+     }
+    },
+    {
+     "name": "legend",
+     "at": {
+      "en": "And there's"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "chime",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "wishBell",
+     "at": {
+      "en": "If someone"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "bell",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "neverEnd",
+     "at": {
+      "en": "the day"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": {
+    "en": "It happened once before, he said. A hundred years ago, a little girl wished for one more day with her grandfather. And the whole town lived that same day, over and over, for an entire year."
+   },
+   "shots": [
+    {
+     "name": "before",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "girlGrandpa",
+     "at": {
+      "en": "A hundred"
+     }
+    },
+    {
+     "name": "overYear",
+     "at": {
+      "en": "And the"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "whoosh",
+       "vol": 0.3,
+       "repeat": 5,
+       "step": 0.18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s12b",
+   "text": {
+    "en": "And how did it stop, I asked. Mister Gray leaned closer and whispered. The same way it started. With the bell, at three o'clock, and a brand new wish. But only the one who made the first wish can make the next one."
+   },
+   "shots": [
+    {
+     "name": "howStop",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "grayLean",
+     "at": {
+      "en": "Mister Gray"
+     }
+    },
+    {
+     "name": "sameWay",
+     "at": {
+      "en": "The same"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "bell",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "onlyOne",
+     "at": {
+      "en": "But only"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "chime",
+       "vol": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": {
+    "en": "So at two fifty, I climbed the clock tower again. This time, I looked carefully. There were tiny footprints in the dust. Kid-sized footprints. And at the top, next to the big gear, someone had scratched lines into the wall. Hundreds of them. One for every day. I counted them. Four hundred and twelve."
+   },
+   "shots": [
+    {
+     "name": "climbAgain",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "creak",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "carefully",
+     "at": {
+      "en": "This time,"
+     }
+    },
+    {
+     "name": "footprints",
+     "at": {
+      "en": "There were"
+     }
+    },
+    {
+     "name": "topGear",
+     "at": {
+      "en": "And at"
+     }
+    },
+    {
+     "name": "scratches",
+     "at": {
+      "en": "someone had"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "paper",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "hundreds",
+     "at": {
+      "en": "Hundreds of"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "chime",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "counted",
+     "at": {
+      "en": "I counted"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": {
+    "en": "And under the lines, a drawing. Two stick figures holding hands. Two brothers. And one word. Stay."
+   },
+   "shots": [
+    {
+     "name": "drawing",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "stickFigures",
+     "at": {
+      "en": "Two stick"
+     }
+    },
+    {
+     "name": "oneWord",
+     "at": {
+      "en": "And one"
+     }
+    },
+    {
+     "name": "stayFace",
+     "at": {
+      "en": "Stay."
+     },
+     "sfx": [
+      {
+       "at": 0.05,
+       "sound": "boom",
+       "vol": 0.6
+      },
+      {
+       "at": 0.1,
+       "sound": "chime",
+       "vol": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": {
+    "en": "Then I heard footsteps behind me. It was Leo. He didn't look surprised. He just said, you found it. And then he told me everything."
+   },
+   "shots": [
+    {
+     "name": "footsteps",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "knock",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "leoArrives",
+     "at": {
+      "en": "It was"
+     }
+    },
+    {
+     "name": "notSurprised",
+     "at": {
+      "en": "He didn't"
+     }
+    },
+    {
+     "name": "toldEverything",
+     "at": {
+      "en": "And then"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s15k",
+   "text": {
+    "en": "Tomorrow we're moving away. To a big city where I don't know anybody. I didn't want this to be our last day here. So I made a wish."
+   },
+   "shots": [
+    {
+     "name": "kidConfess",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "kidCity",
+     "at": {
+      "en": "To a"
+     }
+    },
+    {
+     "name": "kidWish",
+     "at": {
+      "en": "So I"
+     }
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s16",
+   "text": {
+    "en": "My little brother had stopped time. Not to trick anyone. Just because he was scared. And honestly? A part of me didn't want tomorrow to come either."
+   },
+   "shots": [
+    {
+     "name": "stoppedTime",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "scared",
+     "at": {
+      "en": "Just because"
+     }
+    },
+    {
+     "name": "honestly",
+     "at": {
+      "en": "And honestly?"
+     }
+    },
+    {
+     "name": "partOfMe",
+     "at": {
+      "en": "A part"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s16k",
+   "text": {
+    "en": "You always play with me on Tuesdays. Tomorrow, you'll have new friends. And you'll forget about me."
+   },
+   "shots": [
+    {
+     "name": "kidTuesdays",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "kidForget",
+     "at": {
+      "en": "And you'll"
+     }
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s16c",
+   "text": {
+    "en": "That one hurt. Because he was right. I had been too busy lately. Too busy for him."
+   },
+   "shots": [
+    {
+     "name": "hurt",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "tooBusy",
+     "at": {
+      "en": "I had"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "text": {
+    "en": "But then I looked down at the town. Mrs. Rosa, dropping her keys for the four hundredth time. The girl on the red bike, who never gets to finish her ride. Mister Gray, who never gets to see tomorrow. The mailman, who never finishes his route. Everyone was stuck. Because of us."
+   },
+   "shots": [
+    {
+     "name": "lookDown",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "rosaAgain",
+     "at": {
+      "en": "Mrs. Rosa,"
+     },
+     "sfx": [
+      {
+       "at": 0.6,
+       "sound": "clank",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "bikeAgain",
+     "at": {
+      "en": "The girl"
+     },
+     "sfx": [
+      {
+       "at": 0.5,
+       "sound": "ding",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "grayAgain",
+     "at": {
+      "en": "Mister Gray,"
+     }
+    },
+    {
+     "name": "mailAgain",
+     "at": {
+      "en": "The mailman,"
+     }
+    },
+    {
+     "name": "stuck",
+     "at": {
+      "en": "Everyone was"
+     }
+    },
+    {
+     "name": "becauseUs",
+     "at": {
+      "en": "Because of"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "text": {
+    "en": "I told Leo: new places are scary. But I'll be there. In every single one of them. He was quiet for a long time. Then he reached into his pocket, and pulled out a small brass gear. A piece of the clock. He had taken it on the very first Tuesday, so the hands could never pass three."
+   },
+   "shots": [
+    {
+     "name": "toldLeo2",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "beThere",
+     "at": {
+      "en": "But I'll"
+     }
+    },
+    {
+     "name": "quiet",
+     "at": {
+      "en": "He was"
+     }
+    },
+    {
+     "name": "pocket",
+     "at": {
+      "en": "Then he"
+     }
+    },
+    {
+     "name": "brassGear",
+     "at": {
+      "en": "A piece"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "chime",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "neverPass",
+     "at": {
+      "en": "He had"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "text": {
+    "en": "Together, we put the gear back. The hands started moving again. Two fifty-eight. Two fifty-nine. We grabbed the lever. But it was stuck! I pulled with all my strength. Then Leo grabbed it too. And at exactly three o'clock, Leo made a new wish."
+   },
+   "shots": [
+    {
+     "name": "gearBack",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.7,
+       "sound": "clunk",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "handsMove",
+     "at": {
+      "en": "The hands"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.5,
+       "repeat": 4,
+       "step": 0.22
+      }
+     ]
+    },
+    {
+     "name": "twoFiftyEight",
+     "at": {
+      "en": "Two fifty-eight."
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "tick",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "twoFiftyNine",
+     "at": {
+      "en": "Two fifty-nine."
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "tick",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "grabLever",
+     "at": {
+      "en": "We grabbed"
+     },
+     "sfx": [
+      {
+       "at": 0.5,
+       "sound": "clunk",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "leverStuck",
+     "at": {
+      "en": "But it"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "clank",
+       "vol": 0.6,
+       "repeat": 3,
+       "step": 0.25
+      }
+     ]
+    },
+    {
+     "name": "pullBoth",
+     "at": {
+      "en": "Then Leo"
+     }
+    },
+    {
+     "name": "newWish",
+     "at": {
+      "en": "And at"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s19k",
+   "text": {
+    "en": "I wish for tomorrow."
+   },
+   "shots": [
+    {
+     "name": "wishTomorrow",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "clunk",
+       "vol": 1.0
+      }
+     ]
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s20",
+   "text": {
+    "en": "The bell rang thirteen times. A golden wave rolled out over the whole town. And for the first time in four hundred and twelve days, the sun went down. Mrs. Rosa caught her keys. The girl on the bike rode all the way home. And Mister Gray stood up, looked at the sky, and laughed. That night, for the first time in more than a year, I fell asleep."
+   },
+   "shots": [
+    {
+     "name": "bellGold",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "bell",
+       "vol": 1.0
+      },
+      {
+       "at": 0,
+       "sound": "boom",
+       "vol": 0.6
+      },
+      {
+       "at": 0.5,
+       "sound": "bell",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "waveTown",
+     "at": {
+      "en": "A golden"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "bell",
+       "vol": 0.6
+      },
+      {
+       "at": 0,
+       "sound": "whoosh",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "sunDown",
+     "at": {
+      "en": "And for"
+     }
+    },
+    {
+     "name": "rosaCatch",
+     "at": {
+      "en": "Mrs. Rosa caught"
+     }
+    },
+    {
+     "name": "bikeHome",
+     "at": {
+      "en": "The girl"
+     }
+    },
+    {
+     "name": "grayLaugh",
+     "at": {
+      "en": "And Mister"
+     }
+    },
+    {
+     "name": "sleepNight",
+     "at": {
+      "en": "That night,"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s21",
+   "text": {
+    "en": "The next morning was Wednesday. We packed the car and drove out of town. Leo was smiling. I was smiling. At the edge of town, I looked back at the clock tower. It said seven minutes past eight. Wednesday. Everything was normal. Then Dad turned on the radio. And a cheerful voice said: Good morning, everyone! It's Tuesday."
+   },
+   "shots": [
+    {
+     "name": "wednesday",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "packCar",
+     "at": {
+      "en": "We packed"
+     }
+    },
+    {
+     "name": "driveOut",
+     "at": {
+      "en": "and drove"
+     }
+    },
+    {
+     "name": "smiling",
+     "at": {
+      "en": "Leo was"
+     }
+    },
+    {
+     "name": "lookBack",
+     "at": {
+      "en": "At the"
+     }
+    },
+    {
+     "name": "normal",
+     "at": {
+      "en": "Wednesday. Everything"
+     }
+    },
+    {
+     "name": "radio",
+     "at": {
+      "en": "Then Dad"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "radio",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "tuesdayRadio",
+     "at": {
+      "en": "And a"
+     },
+     "sfx": [
+      {
+       "at": 0.6,
+       "sound": "rewind",
+       "vol": 0.5
+      },
+      {
+       "at": 0.75,
+       "sound": "boom",
+       "vol": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": {
+    "en": "I looked at Leo. He went pale. And he whispered..."
+   },
+   "shots": [
+    {
+     "name": "lookLeo",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "kidPale",
+     "at": {
+      "en": "He went"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s22k",
+   "text": {
+    "en": "It wasn't me this time."
+   },
+   "shots": [
+    {
+     "name": "notMe",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "towerFar",
+     "at": {
+      "en": "this time."
+     },
+     "sfx": [
+      {
+       "at": 0.05,
+       "sound": "bell",
+       "vol": 0.9
+      },
+      {
+       "at": 0.1,
+       "sound": "rumble_long",
+       "vol": 0.8
+      }
+     ]
+    }
+   ],
+   "kid": true
+  }
+ ],
+ "pulses": [
+  {
+   "shot": "leverHold",
+   "at": 0,
+   "dur": 7
+  },
+  {
+   "shot": "towerDoor",
+   "at": 0,
+   "dur": 6
+  },
+  {
+   "shot": "scratches",
+   "at": 0,
+   "dur": 8
+  },
+  {
+   "shot": "tuesdayRadio",
+   "at": 0.5,
+   "dur": 4
+  }
+ ],
+ "gap": 0.55,
+ "tail": 4.0
+}

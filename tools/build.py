@@ -33,6 +33,8 @@ def select(slug: str, lang: str) -> dict:
     tl_path = ROOT / "stories" / slug / "build" / lang / "timeline.json"
     if not tl_path.exists():
         raise SystemExit(f"no timeline for {slug}/{lang}: run `python3 tools/build.py voice {slug} {lang}` first")
+    story = json.loads((ROOT / "stories" / slug / "story.json").read_text())
+    fmt = story.get("format", "portrait")
     GEN.mkdir(parents=True, exist_ok=True)
     shutil.copy(tl_path, GEN / "timeline.json")
     (GEN / "current.ts").write_text(
@@ -41,6 +43,7 @@ def select(slug: str, lang: str) -> dict:
         f'export {{ SHOTS }} from "../../stories/{slug}/src/shots";\n'
         f'export {{ COVER }} from "../../stories/{slug}/src/cover";\n'
         f'export const LANG = "{lang}";\n'
+        f'export const FORMAT: "portrait" | "landscape" = "{fmt}";\n'
         "export { timeline };\n"
     )
     # the caption font is the system's Arial Rounded Bold (licensed, so not in git)
@@ -81,21 +84,22 @@ def stills(slug: str, lang: str, frac: float = 0.62, only: list[str] | None = No
     out.mkdir(parents=True, exist_ok=True)
     shots = [c for c in cuts(tl) if not only or c[0] in only]
     print(f"stills {slug}/{lang}: {len(shots)} shots")
-    for name, a, b in shots:
-        frame = int((a + (b - a) * frac) * 30)
-        remotion("still", "Story", str(out / f"{name}.jpg"), f"--frame={frame}", "--scale=0.33", "--image-format=jpeg")
+    jobs = [f"{name}:{int((a + (b - a) * frac) * 30)}" for name, a, b in shots]
+    run("node", str(TOOLS / "stills.mjs"), str(out), "0.33", *jobs)
     # contact sheets, 8 shots each, in cut order
     names = [s[0] for s in shots]
+    land = json.loads((ROOT / "stories" / slug / "story.json").read_text()).get("format") == "landscape"
+    tw, th = (634, 356) if land else (356, 634)
     for i in range(0, len(names), 8):
         grp = names[i : i + 8]
         args = []
         for n in grp:
             args += ["-i", str(out / f"{n}.jpg")]
         if len(grp) == 1:
-            filt = "[0:v]scale=356:634"
+            filt = f"[0:v]scale={tw}:{th}"
         else:
-            filt = "".join(f"[{k}:v]scale=356:634[v{k}];" for k in range(len(grp)))
-            filt += "".join(f"[v{k}]" for k in range(len(grp))) + f"xstack=inputs={len(grp)}:layout=" + "|".join(f"{(k % 4) * 356}_{(k // 4) * 634}" for k in range(len(grp))) + ":fill=black"
+            filt = "".join(f"[{k}:v]scale={tw}:{th}[v{k}];" for k in range(len(grp)))
+            filt += "".join(f"[v{k}]" for k in range(len(grp))) + f"xstack=inputs={len(grp)}:layout=" + "|".join(f"{(k % 4) * tw}_{(k // 4) * th}" for k in range(len(grp))) + ":fill=black"
         sheet = out / f"sheet{i // 8}.jpg"
         run("ffmpeg", "-y", "-loglevel", "error", *args, "-filter_complex", filt, str(sheet))
         print(f"  {sheet.relative_to(ROOT)}: {', '.join(grp)}")
@@ -129,7 +133,9 @@ def cover(slug: str, lang: str) -> None:
     png = out / f"{slug}-{lang}-cover.png"
     print(f"cover {slug}/{lang}")
     remotion("still", "Cover", str(png), f'--props={{"lang":"{lang}"}}')
-    run("ffmpeg", "-y", "-loglevel", "error", "-i", str(png), "-q:v", "2", str(png.with_suffix(".jpg")))
+    fmt = json.loads((ROOT / "stories" / slug / "story.json").read_text()).get("format", "portrait")
+    scale = ["-vf", "scale=1280:720"] if fmt == "landscape" else []  # YouTube thumbnail size
+    run("ffmpeg", "-y", "-loglevel", "error", "-i", str(png), *scale, "-q:v", "2", str(png.with_suffix(".jpg")))
     print(f"  {png.with_suffix('.jpg').relative_to(ROOT)}")
 
 

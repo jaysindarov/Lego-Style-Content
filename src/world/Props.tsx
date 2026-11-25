@@ -297,6 +297,13 @@ export const ClockTower: React.FC<{ bellSwing: number; gearIn: number; lever: nu
       <mesh material={m.brick} position={[0, baseH / 2, 0]} castShadow receiveShadow>
         <boxGeometry args={[9, baseH, 9]} />
       </mesh>
+      {/* little wooden door at the foot of the tower, on the plaza side (+z) */}
+      <mesh material={m.wood} position={[0, 1.9, 4.52]} castShadow>
+        <boxGeometry args={[2.2, 3.8, 0.12]} />
+      </mesh>
+      <mesh material={m.stone} position={[0, 3.95, 4.55]}>
+        <boxGeometry args={[2.8, 0.4, 0.15]} />
+      </mesh>
       <mesh material={m.stone} position={[0, baseH + 0.3, 0]} castShadow>
         <boxGeometry args={[10.4, 0.8, 10.4]} />
       </mesh>

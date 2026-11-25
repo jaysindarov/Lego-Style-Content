@@ -123,6 +123,8 @@ def main() -> None:
     slug, lang = sys.argv[1], sys.argv[2]
     story = json.loads((ROOT / "stories" / slug / "story.json").read_text(encoding="utf-8"))
     voice = story["voices"][lang]
+    gap = story.get("gap", GAP)  # silence between scenes (longer for long-form pacing)
+    tail = story.get("tail", TAIL)
     out = ROOT / "stories" / slug / "build" / lang
     (out / "scenes").mkdir(parents=True, exist_ok=True)
 
@@ -156,15 +158,15 @@ def main() -> None:
         timeline["scenes"].append({"id": scene["id"], "start": round(cursor, 3), "end": round(cursor + dur, 3), "kid": kid})
         print(f"  {scene['id']}: {dur:.2f}s")
         clips.append(clip)
-        cursor += dur + GAP
-    timeline["duration"] = round(cursor - GAP + TAIL, 3)
+        cursor += dur + gap
+    timeline["duration"] = round(cursor - gap + tail, 3)
 
-    gap, lead = out / "gap.wav", out / "lead.wav"
-    ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(GAP), str(gap))
+    gap_wav, lead = out / "gap.wav", out / "lead.wav"
+    ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(gap), str(gap_wav))
     ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(LEAD), str(lead))
     seq = [lead]
     for i, c in enumerate(clips):
-        seq += [c] + ([gap] if i < len(clips) - 1 else [])
+        seq += [c] + ([gap_wav] if i < len(clips) - 1 else [])
     listing = out / "concat.txt"
     listing.write_text("".join(f"file '{p}'\n" for p in seq))
     ff("-f", "concat", "-safe", "0", "-i", str(listing), "-ar", "48000", "-ac", "1", str(out / "narration.wav"))

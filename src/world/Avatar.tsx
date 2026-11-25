@@ -241,7 +241,7 @@ export const Avatar: React.FC<{
   yaw?: number;
   scale?: number;
   roll?: number;
-  holding?: "bucket" | "phone" | null;
+  holding?: "bucket" | "phone" | "letter" | "gear" | null;
 }> = ({ look, anim, t, mood = "smile", position = [0, 0, 0], yaw = 0, scale = 0.62, roll = 0, holding = null }) => {
   const m = useMemo(() => {
     const skin = mat(look.skin);
@@ -255,6 +255,8 @@ export const Avatar: React.FC<{
       shoes: mat(look.shoes),
       hair: mat(look.hair),
       metal: new THREE.MeshStandardMaterial({ color: "#a9b0b8", metalness: 0.8, roughness: 0.35 }),
+      brass: new THREE.MeshStandardMaterial({ color: "#e0b04a", metalness: 0.6, roughness: 0.3, emissive: "#ffcc55", emissiveIntensity: 0.25 }),
+      paper: new THREE.MeshStandardMaterial({ color: "#f6f1e4", emissive: "#fff6d8", emissiveIntensity: 0.2 }),
     };
   }, [look, mood]);
   const head = useMemo(() => [m.skin, m.skin, m.skin, m.skin, m.face, m.skin], [m]);
@@ -274,6 +276,23 @@ export const Avatar: React.FC<{
             <circleGeometry args={[0.55, 14]} />
           </mesh>
         </group>
+      ) : null}
+      {holding === "gear" && side === 1 ? (
+        <group position={[0, -2.3, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <mesh material={m.brass} castShadow>
+            <cylinderGeometry args={[0.5, 0.5, 0.2, 14]} />
+          </mesh>
+          {Array.from({ length: 8 }, (_, k) => (
+            <mesh key={k} material={m.brass} rotation={[0, (k / 8) * Math.PI * 2, 0]} position={[0, 0, 0]}>
+              <boxGeometry args={[1.3, 0.2, 0.18]} />
+            </mesh>
+          ))}
+        </group>
+      ) : null}
+      {holding === "letter" && side === 1 ? (
+        <mesh material={m.paper} position={[-0.2, -2.15, 0.75]} rotation={[0.35, 0, 0.1]} castShadow>
+          <boxGeometry args={[1.3, 0.9, 0.05]} />
+        </mesh>
       ) : null}
     </group>
   );

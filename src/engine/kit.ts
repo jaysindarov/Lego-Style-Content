@@ -9,6 +9,7 @@ import type { WormState } from "../world/Worm";
 import type { GiantState } from "../world/Giant";
 import type { LampState } from "../world/Lighthouse";
 import type { Palette } from "../world/Atmosphere";
+import type { MysteryHouseState } from "../world/MysteryHouse";
 
 export type { V3 };
 
@@ -21,7 +22,7 @@ export type ActorSpec = {
   t?: number;
   scale?: number;
   roll?: number;
-  holding?: "bucket" | null;
+  holding?: "bucket" | "letter" | "gear" | null;
   hidden?: boolean;
 };
 
@@ -50,6 +51,11 @@ export type Frame = {
   palette?: Palette; // storm colours (default green)
   giants?: GiantState[];
   lamp?: LampState; // the lighthouse lamp
+  houses?: MysteryHouseState[]; // the extra house(s) that appear at night
+  note?: { text: string; k: number };
+  rewind?: number; // 0..1 tape-rewind look (scanlines, tint, ◀◀)
+  sepia?: number; // 0..1 old-photo grade for flashbacks
+  wall?: { k: number; tallies: number; drawing?: number; word?: number }; // scratched belfry wall: k fades it in, drawing/word 0..1 // a handwritten note card in the upper third (k 0..1 = how far it has slid in)
 };
 
 /** t: seconds since the cut, d: shot length, k: t/d in 0..1 */
