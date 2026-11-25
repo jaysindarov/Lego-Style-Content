@@ -11,7 +11,7 @@ Cue format, on a shot in story.json:
 Top-level "pulses": [{"shot": "carCrack", "at": 0, "dur": 9}] add a heartbeat bed.
 
 Sounds: siren rumble rumble_long boom roar scream chomp whoosh horn bell clank
-tick crush clunk (add new ones in build_library()).
+tick crush clunk ring stomp shriek shatter buzz spark (add new ones in build_library()).
 """
 
 import json
@@ -103,6 +103,39 @@ def build_library(DUR):
         "[a][b]amix=inputs=2:normalize=0,aecho=0.8:0.8:700:0.3".format(d=DUR + 1),
         DUR + 1,
     )
+    # red-sky sounds
+    gen("ring", "aevalsrc='0.22*(sin(2*PI*1320*t)+0.6*sin(2*PI*1760*t))*(0.5+0.5*sgn(sin(2*PI*20*t)))*lt(mod(t,1.4),0.8)',highpass=f=500", 4)
+    gen_complex(
+        "stomp",
+        "aevalsrc='1.0*exp(-5*t)*sin(2*PI*(30+34*exp(-9*t))*t)':d=1.6[a];"
+        "anoisesrc=color=brown:amplitude=1:d=1.6,lowpass=f=160,volume='2.5*exp(-7*t)':eval=frame[b];"
+        "[a][b]amix=inputs=2:normalize=0,aecho=0.8:0.4:160:0.25",
+        1.6,
+    )
+    gen_complex(
+        "shriek",
+        "aevalsrc='0.35*sin(2*PI*(820+380*t+60*sin(2*PI*7*t))*t)*min(1,t*10)':d=2.6[a];"
+        "anoisesrc=color=white:amplitude=1:d=2.6,bandpass=f=2400:w=1600,tremolo=f=29:d=0.8,volume=1.4[b];"
+        "aevalsrc='0.4*sin(2*PI*70*t+6*sin(2*PI*35*t))':d=2.6[c];"
+        "[a][b][c]amix=inputs=3:normalize=0,afade=t=out:st=1.6:d=1.0,aecho=0.8:0.6:110|230:0.4|0.25",
+        2.6,
+    )
+    gen_complex(
+        "shatter",
+        "aevalsrc='0.45*exp(-1.6*t)*exp(-45*mod(t*1.37,0.071))*sin(2*PI*(1500+700*sin(t*97))*t)':d=2.6[a];"
+        "anoisesrc=color=white:amplitude=0.9:d=2.6,bandpass=f=2600:w=3000,volume='exp(-2.2*t)':eval=frame[b];"
+        "aevalsrc='0.8*exp(-3*t)*sin(2*PI*42*t)':d=2.6[c];"
+        "[a][b][c]amix=inputs=3:normalize=0",
+        2.6,
+    )
+    gen_complex(
+        "buzz",
+        "aevalsrc='0.18*sgn(sin(2*PI*100*t))*min(1,t*12)*(0.4+0.6*exp(-1.2*t))':d=2.2,lowpass=f=1800[a];"
+        "anoisesrc=color=white:amplitude=0.8:d=2.2,highpass=f=3000,volume='exp(-9*t)':eval=frame[b];"
+        "[a][b]amix=inputs=2:normalize=0,afade=t=out:st=1.6:d=0.6",
+        2.2,
+    )
+    gen("spark", "anoisesrc=color=white:amplitude=1,highpass=f=2500,tremolo=f=41:d=1,volume='1.2*exp(-2.5*t)*gt(sin(2*PI*13*t+3*sin(2*PI*5*t)),0)':eval=frame", 1.2)
     gen("pulse", "aevalsrc='0.5*exp(-7*mod(t,0.85))*sin(2*PI*48*t)+0.3*exp(-9*mod(t+0.22,0.85))*sin(2*PI*44*t)',lowpass=f=160", 12)
 
 

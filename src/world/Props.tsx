@@ -11,12 +11,13 @@ const EN = LANG === "en";
 const std = (color: string, extra: THREE.MeshStandardMaterialParameters = {}) =>
   new THREE.MeshStandardMaterial({ color, roughness: 0.6, ...extra });
 
-export const Car: React.FC<{ color: string; position: [number, number, number]; yaw: number; crush?: number; wheelT?: number }> = ({
+export const Car: React.FC<{ color: string; position: [number, number, number]; yaw: number; crush?: number; wheelT?: number; lights?: number }> = ({
   color,
   position,
   yaw,
   crush = 0,
   wheelT = 0,
+  lights = 0,
 }) => {
   const m = useMemo(
     () => ({
@@ -25,6 +26,7 @@ export const Car: React.FC<{ color: string; position: [number, number, number]; 
       tire: std("#1b1b1b"),
       rim: std("#d0d0d0", { metalness: 0.7 }),
       light: new THREE.MeshStandardMaterial({ color: "#fffbe0", emissive: "#fff3b0", emissiveIntensity: 1 }),
+      beam: new THREE.MeshBasicMaterial({ color: "#fff4c8", transparent: true, opacity: 0.2, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, fog: false }),
       tail: new THREE.MeshStandardMaterial({ color: "#ff3030", emissive: "#ff2020", emissiveIntensity: 0.8 }),
     }),
     [color],
@@ -32,6 +34,15 @@ export const Car: React.FC<{ color: string; position: [number, number, number]; 
   const bodyGeo = useMemo(() => new RoundedBoxGeometry(2.6, 1.1, 5.4, 3, 0.3), []);
   const cabGeo = useMemo(() => new RoundedBoxGeometry(2.3, 1.0, 2.8, 3, 0.25), []);
   const sq = 1 - crush * 0.7;
+  // lights >= 2: full beams (two cones and a spot light) for night-drive shots
+  const beams = lights >= 2 ? Math.min(1, lights - 1) : 0;
+  m.light.emissiveIntensity = 1 + beams * 4;
+  m.beam.opacity = 0.16 * beams;
+  const target = useMemo(() => {
+    const o = new THREE.Object3D();
+    o.position.set(0, 1, 40);
+    return o;
+  }, []);
   return (
     <group position={position} rotation={[crush * 0.25, yaw, crush * 0.15]} scale={[1 + crush * 0.25, sq, 1]}>
       <mesh geometry={bodyGeo} material={m.body} position={[0, 1.05, 0]} castShadow receiveShadow />
@@ -62,8 +73,19 @@ export const Car: React.FC<{ color: string; position: [number, number, number]; 
           <mesh material={m.tail} position={[x, 1.25, -2.71]}>
             <boxGeometry args={[0.5, 0.25, 0.05]} />
           </mesh>
+          {beams > 0 ? (
+            <mesh material={m.beam} position={[x, 1.25, 2.75 + 30]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={20}>
+              <coneGeometry args={[7, 60, 20, 1, true]} />
+            </mesh>
+          ) : null}
         </React.Fragment>
       ))}
+      {beams > 0 ? (
+        <>
+          <primitive object={target} />
+          <spotLight position={[0, 1.3, 2.8]} target={target} color="#fff2c8" intensity={2500 * beams} distance={120} angle={0.4} penumbra={0.4} decay={1} />
+        </>
+      ) : null}
     </group>
   );
 };

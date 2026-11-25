@@ -6,6 +6,9 @@ import type { Anim, Look, Mood } from "../world/Avatar";
 import { townLook } from "../world/Avatar";
 import type { V3 } from "../world/layout";
 import type { WormState } from "../world/Worm";
+import type { GiantState } from "../world/Giant";
+import type { LampState } from "../world/Lighthouse";
+import type { Palette } from "../world/Atmosphere";
 
 export type { V3 };
 
@@ -44,6 +47,9 @@ export type Frame = {
   tint?: string;
   focus?: V3;
   horn?: number;
+  palette?: Palette; // storm colours (default green)
+  giants?: GiantState[];
+  lamp?: LampState; // the lighthouse lamp
 };
 
 /** t: seconds since the cut, d: shot length, k: t/d in 0..1 */

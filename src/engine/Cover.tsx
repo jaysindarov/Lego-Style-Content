@@ -45,7 +45,7 @@ export const Cover: React.FC<{ lang: string }> = ({ lang }) => {
         <div
           style={{
             ...outline(104),
-            color: "#9dff4a",
+            color: (COVER as { accent?: string }).accent ?? "#9dff4a",
             transform: "rotate(-3deg)",
           }}
         >

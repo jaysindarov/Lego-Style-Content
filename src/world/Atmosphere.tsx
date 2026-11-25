@@ -8,6 +8,13 @@ import { useThree } from "@react-three/fiber";
 
 import { puffTex } from "./textures";
 
+/** Storm colours per story: green fog (default) or the red sky. */
+export type Palette = "green" | "red";
+export const PALETTES = {
+  green: { lo: [0.02, 0.06, 0.02], hi: [0.14, 0.42, 0.1], glow: [0.55, 1.0, 0.25], hor: [0.45, 0.85, 0.25], fog: "#7dff4a", far: "#3d7a2e", hemiSky: "#5aa04a", hemiGround: "#35552a", sun: "#b8ff9a", amb: "#b5ffa0", accent: "#9dff4a" },
+  red: { lo: [0.08, 0.01, 0.02], hi: [0.52, 0.06, 0.07], glow: [1.0, 0.45, 0.25], hor: [0.9, 0.25, 0.16], fog: "#ff5a48", far: "#7a2420", hemiSky: "#c05050", hemiGround: "#552525", sun: "#ffb09a", amb: "#ffb3a8", accent: "#ff4a3a" },
+} as const;
+
 const NOISE = /* glsl */ `
 float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
 float noise(vec2 p){
@@ -32,6 +39,7 @@ void main(){
 
 const skyFrag = /* glsl */ `
 uniform float uTime; uniform float uEvil; uniform float uDusk;
+uniform vec3 uLo; uniform vec3 uHi; uniform vec3 uGlow; uniform vec3 uHor;
 varying vec3 vDir;
 ${NOISE}
 void main(){
@@ -51,20 +59,20 @@ void main(){
   vec2 e = d.xz / (h + 0.18) * 1.1;
   float sw = fbm(e + vec2(uTime*0.05, -uTime*0.03));
   float storm = fbm(e*1.7 + sw*2.2 + vec2(-uTime*0.04, uTime*0.02));
-  vec3 ev = mix(vec3(0.02,0.06,0.02), vec3(0.14,0.42,0.10), storm);
-  ev += vec3(0.55,1.0,0.25) * pow(storm, 5.0) * 1.6;
-  ev = mix(ev, vec3(0.45,0.85,0.25), (1.0 - smoothstep(-0.05, 0.25, h)) * 0.7);
+  vec3 ev = mix(uLo, uHi, storm);
+  ev += uGlow * pow(storm, 5.0) * 1.6;
+  ev = mix(ev, uHor, (1.0 - smoothstep(-0.05, 0.25, h)) * 0.7);
   gl_FragColor = vec4(mix(day, ev, uEvil), 1.0);
 }`;
 
-export const Sky: React.FC<{ evil: number; t: number; dusk?: number }> = ({ evil, t, dusk = 0 }) => {
+export const Sky: React.FC<{ evil: number; t: number; dusk?: number; palette?: Palette }> = ({ evil, t, dusk = 0, palette = "green" }) => {
   const { camera } = useThree();
   const mat = useMemo(
     () =>
       new THREE.ShaderMaterial({
         vertexShader: skyVert,
         fragmentShader: skyFrag,
-        uniforms: { uTime: { value: 0 }, uEvil: { value: 0 }, uDusk: { value: 0 } },
+        uniforms: { uTime: { value: 0 }, uEvil: { value: 0 }, uDusk: { value: 0 }, uLo: { value: new THREE.Vector3() }, uHi: { value: new THREE.Vector3() }, uGlow: { value: new THREE.Vector3() }, uHor: { value: new THREE.Vector3() } },
         side: THREE.BackSide,
         depthWrite: false,
         fog: false,
@@ -74,6 +82,11 @@ export const Sky: React.FC<{ evil: number; t: number; dusk?: number }> = ({ evil
   mat.uniforms.uTime.value = t;
   mat.uniforms.uEvil.value = evil;
   mat.uniforms.uDusk.value = dusk;
+  const P = PALETTES[palette];
+  (mat.uniforms.uLo.value as THREE.Vector3).fromArray(P.lo);
+  (mat.uniforms.uHi.value as THREE.Vector3).fromArray(P.hi);
+  (mat.uniforms.uGlow.value as THREE.Vector3).fromArray(P.glow);
+  (mat.uniforms.uHor.value as THREE.Vector3).fromArray(P.hor);
   return (
     <mesh material={mat} position={camera.position} renderOrder={-10} frustumCulled={false}>
       <sphereGeometry args={[3000, 48, 24]} />
@@ -103,7 +116,7 @@ void main(){
 }`;
 
 /** Stacked noise sheets hugging the ground: the green fog. */
-export const GroundFog: React.FC<{ density: number; t: number }> = ({ density, t }) => {
+export const GroundFog: React.FC<{ density: number; t: number; palette?: Palette }> = ({ density, t, palette = "green" }) => {
   const { camera } = useThree();
   const layers = useMemo(
     () =>
@@ -132,6 +145,7 @@ export const GroundFog: React.FC<{ density: number; t: number }> = ({ density, t
       {layers.map((m, k) => {
         m.uniforms.uTime.value = t;
         m.uniforms.uDensity.value = density;
+        (m.uniforms.uColor.value as THREE.Color).set(PALETTES[palette].fog);
         (m.uniforms.uCam.value as THREE.Vector3).copy(camera.position);
         return (
           <mesh key={k} material={m} position={[camera.position.x, 0.6 + k * 1.7, camera.position.z]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={5 + k} frustumCulled={false}>
@@ -144,10 +158,11 @@ export const GroundFog: React.FC<{ density: number; t: number }> = ({ density, t
 };
 
 /** Sun, sky light and fog colour, all following `evil`. */
-export const Lights: React.FC<{ evil: number; focus: [number, number, number]; dusk?: number }> = ({ evil, focus, dusk = 0 }) => {
+export const Lights: React.FC<{ evil: number; focus: [number, number, number]; dusk?: number; palette?: Palette }> = ({ evil, focus, dusk = 0, palette = "green" }) => {
   const { scene } = useThree();
+  const P = PALETTES[palette];
   const day = new THREE.Color("#cfe8ff").lerp(new THREE.Color("#f2b48a"), dusk);
-  const fogCol = day.clone().lerp(new THREE.Color("#3d7a2e"), evil);
+  const fogCol = day.clone().lerp(new THREE.Color(P.far), evil);
   if (!scene.fog) scene.fog = new THREE.Fog(fogCol, 300, 1400);
   const fog = scene.fog as THREE.Fog;
   fog.color.copy(fogCol);
@@ -156,11 +171,11 @@ export const Lights: React.FC<{ evil: number; focus: [number, number, number]; d
   const target = useMemo(() => new THREE.Object3D(), []);
   target.position.set(...focus);
   target.updateMatrixWorld();
-  const sun = new THREE.Color("#fff4e0").lerp(new THREE.Color("#ffb070"), dusk).lerp(new THREE.Color("#b8ff9a"), evil);
+  const sun = new THREE.Color("#fff4e0").lerp(new THREE.Color("#ffb070"), dusk).lerp(new THREE.Color(P.sun), evil);
   return (
     <>
-      <hemisphereLight args={[new THREE.Color("#bfe3ff").lerp(new THREE.Color("#5aa04a"), evil), new THREE.Color("#8fbf6a").lerp(new THREE.Color("#35552a"), evil), THREE.MathUtils.lerp(1.6, 1.25, evil)]} />
-      <ambientLight intensity={THREE.MathUtils.lerp(0.35, 0.6, evil)} color={evil > 0.5 ? "#b5ffa0" : "#ffffff"} />
+      <hemisphereLight args={[new THREE.Color("#bfe3ff").lerp(new THREE.Color(P.hemiSky), evil), new THREE.Color("#8fbf6a").lerp(new THREE.Color(P.hemiGround), evil), THREE.MathUtils.lerp(1.6, 1.25, evil)]} />
+      <ambientLight intensity={THREE.MathUtils.lerp(0.35, 0.6, evil)} color={evil > 0.5 ? P.amb : "#ffffff"} />
       <primitive object={target} />
       <directionalLight
         color={sun}

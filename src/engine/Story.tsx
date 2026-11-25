@@ -11,7 +11,9 @@ import { Avatar } from "../world/Avatar";
 import { City } from "../world/City";
 import { Crack, Worm } from "../world/Worm";
 import { BusStop, Bike, Benches, Car, ClockTower, Fountain, ShopRoof, ShopSign, SirenPole } from "../world/Props";
-import { Dust, GroundFog, Lights, Mound, Sky, Wave } from "../world/Atmosphere";
+import { Dust, GroundFog, Lights, Mound, PALETTES, Sky, Wave } from "../world/Atmosphere";
+import { Giant } from "../world/Giant";
+import { Lighthouse } from "../world/Lighthouse";
 import { SIRENS, TOWER, TOWER_H } from "../world/layout";
 
 export const FPS = 30;
@@ -109,12 +111,13 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
     <>
       <CamRig f={f} t={t} />
       <Env evil={f.evil} />
-      <Lights evil={f.evil} focus={focus} dusk={f.dusk} />
-      <Sky evil={f.evil} t={t} dusk={f.dusk} />
+      <Lights evil={f.evil} focus={focus} dusk={f.dusk} palette={f.palette} />
+      <Sky evil={f.evil} t={t} dusk={f.dusk} palette={f.palette} />
       <City />
       <Fountain t={t} />
       <Benches />
       <ClockTower bellSwing={tower.bellSwing} gearIn={tower.gearIn} lever={tower.lever} glow={tower.glow} t={t} />
+      <Lighthouse s={f.lamp} t={t} />
       <BusStop />
       <ShopSign />
       <ShopRoof />
@@ -125,7 +128,7 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
         <Car key={`p${i}`} color={c.color} position={c.at} yaw={c.yaw} />
       ))}
       {(f.cars ?? []).map((c, i) => (
-        <Car key={`c${i}`} color={c.color} position={c.at} yaw={c.yaw} crush={c.crush} wheelT={c.wheelT} />
+        <Car key={`c${i}`} color={c.color} position={c.at} yaw={c.yaw} crush={c.crush} wheelT={c.wheelT} lights={c.lights} />
       ))}
       {(f.bikes ?? []).map((b, i) => (
         <Bike key={`b${i}`} position={b.at} yaw={b.yaw} tilt={b.tilt} t={b.t} />
@@ -147,9 +150,12 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
         <Dust key={`d${i}`} x={d.x} z={d.z} amount={d.amount} t={lt + i} spread={d.spread} color={d.color} />
       ))}
       {f.worm ? <Worm s={f.worm} /> : null}
+      {(f.giants ?? []).map((g, i) => (
+        <Giant key={`g${i}`} s={g} />
+      ))}
       {f.roofSet ? <RoofSet /> : null}
       <Wave center={[TOWER[0], TOWER_H - 6, TOWER[2]]} k={f.wave ?? 0} />
-      <GroundFog density={f.fog} t={t} />
+      <GroundFog density={f.fog} t={t} palette={f.palette} />
     </>
   );
 };
@@ -195,7 +201,7 @@ const Caption: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
-const ClockOverlay: React.FC<{ text?: string }> = ({ text }) =>
+const ClockOverlay: React.FC<{ text?: string; accent?: string }> = ({ text, accent = "#9dff4a" }) =>
   text ? (
     <div style={{ position: "absolute", top: 210, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
       <div
@@ -204,10 +210,10 @@ const ClockOverlay: React.FC<{ text?: string }> = ({ text }) =>
           fontSize: 120,
           color: "#ffffff",
           background: "rgba(10,20,10,0.72)",
-          border: "6px solid #9dff4a",
+          border: `6px solid ${accent}`,
           borderRadius: 28,
           padding: "6px 40px",
-          boxShadow: "0 0 40px rgba(157,255,74,0.5)",
+          boxShadow: `0 0 40px ${accent}88`,
         }}
       >
         {text}
@@ -240,7 +246,7 @@ export const Story: React.FC = () => {
       {f.tint ? <AbsoluteFill style={{ background: f.tint, mixBlendMode: "screen" }} /> : null}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.38) 100%)" }} />
       {f.flash ? <AbsoluteFill style={{ background: `rgba(255,255,255,${f.flash})` }} /> : null}
-      <ClockOverlay text={f.clock} />
+      <ClockOverlay text={f.clock} accent={PALETTES[f.palette ?? "green"].accent} />
       <Caption t={t} />
       <AbsoluteFill style={{ background: `rgba(0,0,0,${Math.max(fadeOut, fadeIn)})` }} />
     </AbsoluteFill>
