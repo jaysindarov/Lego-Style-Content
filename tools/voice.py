@@ -55,11 +55,13 @@ def display(w: str) -> str:
     return re.sub(r"^[^\w'ʻʼ]+|[^\w'ʻʼ!?]+$", "", w.lower())
 
 
-def trim(src: Path, dst: Path, rate: int, pitch: float | None) -> None:
+def trim(src: Path, dst: Path, rate: int, pitch: float | None, tempo: float = 1.0) -> None:
     chain = (
         "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,"
         "areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse"
     )
+    if tempo != 1.0:
+        chain += f",atempo={tempo:.4f}"
     if pitch:
         chain += f",asetrate={rate}*{pitch},aresample={rate},atempo={1 / pitch:.4f}"
     ff("-i", str(src), "-af", chain, "-ar", "48000", "-ac", "1", str(dst))
@@ -173,7 +175,8 @@ def main() -> None:
             wj = vdir / f"{scene['id']}.words.json"
             if wj.exists():
                 cut = lead_silence(src)
-                heard = [{**h, "start": max(0.0, h["start"] - cut), "end": max(0.0, h["end"] - cut)} for h in json.loads(wj.read_text())]
+                tp = voice.get("tempo", 1.0)  # trim() speeds the clip up after the cut, so word times shrink with it
+                heard = [{**h, "start": max(0.0, h["start"] - cut) / tp, "end": max(0.0, h["end"] - cut) / tp} for h in json.loads(wj.read_text())]
         else:
             wav = voicelab.synthesize(
                 text,
@@ -182,7 +185,7 @@ def main() -> None:
                 voice.get("kidSpeed", 1.1) if kid else voice.get("speed", 1.0),
             )
         clip = out / "scenes" / f"{scene['id']}.wav"
-        trim(wav, clip, sample_rate(wav), voice.get("kidPitch", 1.35) if kid else None)
+        trim(wav, clip, sample_rate(wav), voice.get("kidPitch", 1.35) if kid else None, voice.get("tempo", 1.0))
         dur = duration(clip)
         if heard is None and voice.get("engine") == "files":
             print(f"  {scene['id']}: no word timings, estimating them")

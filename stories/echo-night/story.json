@@ -6,11 +6,11 @@
  "format": "landscape",
  "voices": {
   "en": {
-   "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
-   "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
-   "speed": 0.98,
-   "kidSpeed": 1.05,
-   "kidPitch": 1.35
+   "engine": "files",
+   "narrator": "elevenlabs:FLpz0UhC9a7CIfUSBo6S",
+   "kid": "elevenlabs:FLpz0UhC9a7CIfUSBo6S",
+   "kidPitch": 1.3,
+   "tempo": 1.05
   }
  },
  "music": [
@@ -82,8 +82,8 @@
    "dur": 12
   }
  ],
- "gap": 0.5,
- "tail": 3.5,
+ "gap": 0.35,
+ "tail": 3.0,
  "scenes": [
   {
    "id": "s01",

@@ -6,7 +6,7 @@ holds back the answer. The long episode answers it and ends on a hook for Part 2
 | | Long episode | Short |
 |---|---|---|
 | File | `stories/echo-night/out/echo-night-en.mp4` (1920×1080) | `stories/echo-night-short/out/echo-night-short-en.mp4` (1080×1920) |
-| Length | ~9 min (final number after the voice is built) | 1:48 (rendered) |
+| Length | 9:38 | 1:48 |
 | Thumbnail | `echo-night-en-cover.jpg`, 1280×720, text "ONE IS FAKE" | `echo-night-short-en-cover.jpg` |
 | Title | **Never Open the Door After the 13th Bell** | **Which One Is My Real Brother? 10 Seconds** |
 
@@ -22,8 +22,11 @@ lost him forever."
 
 ## Voice
 
-ElevenLabs, voice "Clancy - Viral Long-Form Storyteller" (eleven_v4), one take per video,
-word timings from ElevenLabs Scribe, cut into scenes with `tools/split_voice.py`.
+ElevenLabs, voice "Clancy - Viral Long-Form Storyteller" (eleven_v4). The Short is one
+take; the long episode is three takes (split at scene breaks) played at tempo 1.05 to
+land under 10 minutes. Word timings come from ElevenLabs Scribe; `tools/split_voice.py`
+cuts the takes into scenes. Chapters were drafted with yt-chapters and anchored on
+scene starts (all at least 10 s, first at 0:00).
 The little brother's lines are the same take pitched up (kidPitch 1.3).
 
 ## How the Short pulls viewers into the long video
@@ -53,11 +56,24 @@ Two of my little brother came home after the thirteenth bell, and only one of th
 Can you spot the fake in the first 10 seconds? Watch closely — the clue is on screen the whole time.
 
 CHAPTERS
-(written once the voice timings are final)
+0:00 Can you spot the fake? (10 seconds)
+0:25 The rule of the 13th bell
+1:04 The baker who came home twice
+2:12 What happened to Nina's dad
+2:42 The only man who chose right
+3:01 The night it happened to us
+4:15 Two Milos
+4:32 Testing them
+5:24 Mister Gray's warning
+6:17 Running through the echoes
+6:59 Up the lighthouse
+7:45 The light tells the truth
+8:49 Did you spot it?
+9:15 The walk to school
 
 Part 2 is coming. Subscribe so you don't miss it.
 
-#horrorstory #scarystory #animation #mystery #roblox story
+#horrorstory #scarystory #animation #mystery #blockystory
 ```
 
 **Short**
