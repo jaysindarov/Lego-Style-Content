@@ -96,6 +96,72 @@ const RoofSet: React.FC = () => {
   );
 };
 
+/** A drawn blocky silhouette lying on the ground from an actor's feet (crisper than a real shadow at night). */
+let silTex: THREE.CanvasTexture | null = null;
+const silhouette = () => {
+  if (silTex) return silTex;
+  const c = document.createElement("canvas");
+  c.width = 64;
+  c.height = 128;
+  const g = c.getContext("2d")!;
+  g.fillStyle = "#000";
+  g.fillRect(22, 0, 20, 22); // head (far end)
+  g.fillRect(14, 24, 36, 40); // torso
+  g.fillRect(4, 26, 9, 36); // arms
+  g.fillRect(51, 26, 9, 36);
+  g.fillRect(16, 64, 14, 64); // legs (at the feet)
+  g.fillRect(34, 64, 14, 64);
+  silTex = new THREE.CanvasTexture(c);
+  return silTex;
+};
+const shadowMat = new Map<number, THREE.MeshBasicMaterial>();
+const FakeShadow: React.FC<{ at: [number, number, number]; dir: number; scale: number; len: number; opacity: number }> = ({ at, dir, scale, len, opacity }) => {
+  const key = Math.round(opacity * 100);
+  let m = shadowMat.get(key);
+  if (!m) {
+    m = new THREE.MeshBasicMaterial({ map: silhouette(), color: "#000", transparent: true, opacity, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 });
+    shadowMat.set(key, m);
+  }
+  const h = 5.3 * scale * len;
+  const w = 2.3 * scale;
+  return (
+    <group position={[at[0], at[1] + 0.13, at[2]]} rotation={[0, dir, 0]}>
+      <mesh material={m} position={[0, 0, h / 2 - 0.1]} rotation={[-Math.PI / 2, 0, Math.PI]} renderOrder={2}>
+        <planeGeometry args={[w, h]} />
+      </mesh>
+    </group>
+  );
+};
+
+/** A shadow-casting spot light (porch lamp, lighthouse beam). */
+const Spot: React.FC<{ pos: [number, number, number]; aim: [number, number, number]; intensity?: number; color?: string; angle?: number }> = ({ pos, aim, intensity = 1, color = "#fff3d0", angle = 0.5 }) => {
+  const target = useMemo(() => new THREE.Object3D(), []);
+  target.position.set(aim[0], aim[1], aim[2]);
+  target.updateMatrixWorld();
+  const d = Math.hypot(aim[0] - pos[0], aim[1] - pos[1], aim[2] - pos[2]);
+  return (
+    <>
+      <primitive object={target} />
+      <spotLight
+        position={pos}
+        target={target}
+        color={color}
+        intensity={intensity * 45}
+        distance={d * 3}
+        decay={1.6}
+        angle={angle}
+        penumbra={0.5}
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+        shadow-bias={-0.0005}
+        shadow-camera-near={0.5}
+        shadow-camera-far={d * 3}
+      />
+    </>
+  );
+};
+
 const Env: React.FC<{ evil: number }> = ({ evil }) => {
   const { gl, scene } = useThree();
   useMemo(() => {
@@ -113,8 +179,17 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
     <>
       <CamRig f={f} t={t} />
       <Env evil={f.evil} />
-      <Lights evil={f.evil} focus={focus} dusk={f.dusk} palette={f.palette} />
+      <Lights evil={f.evil} focus={focus} dusk={f.dusk} palette={f.palette} dark={f.dark} />
       <Sky evil={f.evil} t={t} dusk={f.dusk} palette={f.palette} />
+      {(f.balls ?? []).map((b, i) => (
+        <mesh key={`ball${i}`} position={b} castShadow>
+          <icosahedronGeometry args={[0.42, 1]} />
+          <meshStandardMaterial color="#f4f4f4" roughness={0.5} flatShading />
+        </mesh>
+      ))}
+      {(f.spots ?? []).map((s, i) => (
+        <Spot key={`sp${i}`} {...s} />
+      ))}
       <City />
       <Fountain t={t} />
       <Benches />
@@ -137,9 +212,17 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
       ))}
       {(f.actors ?? []).map((a, i) =>
         a.hidden ? null : (
-          <Avatar key={i} look={a.look} anim={a.anim} t={a.t ?? lt} mood={a.mood} position={a.at} yaw={a.yaw} scale={a.scale} roll={a.roll} holding={a.holding} />
+          <Avatar key={i} look={a.look} anim={a.anim} t={a.t ?? lt} mood={a.mood} position={a.at} yaw={a.yaw} scale={a.scale} roll={a.roll} holding={a.holding} noShadow={a.noShadow} />
         ),
       )}
+      {f.cast
+        ? (f.actors ?? []).map((a, i) => {
+            if (a.hidden || a.noShadow || a.anim === "climb") return null;
+            const c = f.cast!;
+            const dir = c.from ? Math.atan2(a.at[0] - c.from[0], a.at[2] - c.from[2]) : (c.dir ?? 0);
+            return <FakeShadow key={`fs${i}`} at={a.at} dir={dir} scale={a.scale ?? 0.62} len={c.len ?? 1} opacity={c.opacity ?? 0.6} />;
+          })
+        : null}
       {(f.cracks ?? []).map((c, i) => (
         <Crack key={`k${i}`} x={c.x} z={c.z} size={c.size} amount={c.amount} t={lt} />
       ))}
@@ -149,7 +232,7 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
         </group>
       ))}
       {(f.dust ?? []).map((d, i) => (
-        <Dust key={`d${i}`} x={d.x} z={d.z} amount={d.amount} t={lt + i} spread={d.spread} color={d.color} />
+        <Dust key={`d${i}`} x={d.x} z={d.z} amount={d.amount} t={lt + i} spread={d.spread} color={d.color} y={d.y} />
       ))}
       {f.worm ? <Worm s={f.worm} /> : null}
       {(f.houses ?? []).map((h, i) => (

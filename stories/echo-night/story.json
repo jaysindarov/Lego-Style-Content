@@ -1,0 +1,2657 @@
+{
+ "slug": "echo-night",
+ "title": {
+  "en": "Never Open the Door After the 13th Bell"
+ },
+ "format": "landscape",
+ "voices": {
+  "en": {
+   "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
+   "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7",
+   "speed": 0.98,
+   "kidSpeed": 1.05,
+   "kidPitch": 1.35
+  }
+ },
+ "music": [
+  {
+   "track": "mystery",
+   "from": "s01",
+   "vol": 0.28
+  },
+  {
+   "track": "tension",
+   "from": "s14",
+   "vol": 0.3
+  },
+  {
+   "track": "mystery",
+   "from": "s19",
+   "vol": 0.28
+  },
+  {
+   "track": "tension",
+   "from": "s25",
+   "vol": 0.32
+  },
+  {
+   "track": "tender",
+   "from": "s38",
+   "vol": 0.34
+  },
+  {
+   "track": "mystery",
+   "from": "s41",
+   "vol": 0.3
+  }
+ ],
+ "pulses": [
+  {
+   "shot": "hkWide",
+   "at": 0,
+   "dur": 10
+  },
+  {
+   "shot": "kidDoor",
+   "at": 0,
+   "dur": 7
+  },
+  {
+   "shot": "brkReveal",
+   "at": 0,
+   "dur": 8
+  },
+  {
+   "shot": "rnSaw",
+   "at": 0,
+   "dur": 12
+  },
+  {
+   "shot": "spClimb",
+   "at": 0,
+   "dur": 8
+  },
+  {
+   "shot": "rvDown",
+   "at": 0,
+   "dur": 10
+  },
+  {
+   "shot": "enStop",
+   "at": 0,
+   "dur": 12
+  }
+ ],
+ "gap": 0.5,
+ "tail": 3.5,
+ "scenes": [
+  {
+   "id": "s01",
+   "text": {
+    "en": "You have ten seconds to spot which one is my real brother. Look closely. Same hoodie. Same face. Same voice. But one of them is not human. I didn't see it. And I almost lost him forever."
+   },
+   "shots": [
+    {
+     "name": "hkWide",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45,
+       "repeat": 4,
+       "step": 0.25
+      }
+     ]
+    },
+    {
+     "name": "hkLeft",
+     "at": {
+      "en": "Look closely"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45,
+       "repeat": 3,
+       "step": 0.33
+      }
+     ]
+    },
+    {
+     "name": "hkRight",
+     "at": {
+      "en": "Same face"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45
+      }
+     ]
+    },
+    {
+     "name": "hkTwin",
+     "at": {
+      "en": "Same voice"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45
+      }
+     ]
+    },
+    {
+     "name": "hkGrin",
+     "at": {
+      "en": "But one"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.5
+      },
+      {
+       "at": 0.3,
+       "sound": "whoosh",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "hkStreet",
+     "at": {
+      "en": "I didn't"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "hkHouse",
+     "at": {
+      "en": "And I"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.55
+      },
+      {
+       "at": 0.5,
+       "sound": "tick",
+       "vol": 0.55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "text": {
+    "en": "Time's up. Did you see it? Most people don't. The answer was right there the whole time. And by the end of this story, you'll know exactly where to look. But first, you need to know about the thirteenth bell."
+   },
+   "shots": [
+    {
+     "name": "tuStare",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "boom",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "tuPush",
+     "at": {
+      "en": "Did you"
+     }
+    },
+    {
+     "name": "tuTwins",
+     "at": {
+      "en": "The answer"
+     }
+    },
+    {
+     "name": "tuFog",
+     "at": {
+      "en": "And by"
+     }
+    },
+    {
+     "name": "tuTower",
+     "at": {
+      "en": "But first"
+     },
+     "sfx": [
+      {
+       "at": 0.6,
+       "sound": "bell",
+       "vol": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "text": {
+    "en": "In our town, the old clock tower rings twelve times at midnight. Every single night. Except some nights, it rings thirteen times. And when you hear that thirteenth bell, there is only one rule. Go home. Lock the door. And do not open it for anyone. Not your neighbor. Not your best friend. Not even your own mother. Because whoever is knocking might not be who they look like."
+   },
+   "shots": [
+    {
+     "name": "ruTownDay",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ruBell",
+     "at": {
+      "en": "rings twelve"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "bell",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "ruSkyTurn",
+     "at": {
+      "en": "Except some"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "rumble",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "ruBell13",
+     "at": {
+      "en": "And when"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "bell",
+       "vol": 1.0
+      },
+      {
+       "at": 0.12,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "ruStreets",
+     "at": {
+      "en": "there is"
+     }
+    },
+    {
+     "name": "ruRun",
+     "at": {
+      "en": "Go home"
+     }
+    },
+    {
+     "name": "ruDoors",
+     "at": {
+      "en": "Lock the"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "slam",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "ruNeighbor",
+     "at": {
+      "en": "Not your neighbor"
+     }
+    },
+    {
+     "name": "ruFriend",
+     "at": {
+      "en": "Not your best"
+     }
+    },
+    {
+     "name": "ruMom",
+     "at": {
+      "en": "Not even"
+     }
+    },
+    {
+     "name": "ruKnock",
+     "at": {
+      "en": "Because whoever"
+     },
+     "sfx": [
+      {
+       "at": 0.15,
+       "sound": "knock",
+       "vol": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "text": {
+    "en": "We call them echoes. They come out of the fog after the thirteenth bell, and they copy people. Perfectly. The face, the clothes, the voice. Even the memories. An echo knows your birthday. It knows your secrets. It knows the name of your first pet."
+   },
+   "shots": [
+    {
+     "name": "ecFog",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ecEmerge",
+     "at": {
+      "en": "They come"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "whoosh",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "ecCopy",
+     "at": {
+      "en": "and they"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "shriek",
+       "vol": 0.25
+      }
+     ]
+    },
+    {
+     "name": "ecFace",
+     "at": {
+      "en": "The face"
+     }
+    },
+    {
+     "name": "ecGrin",
+     "at": {
+      "en": "Even the"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "ecSecret",
+     "at": {
+      "en": "It knows your"
+     }
+    },
+    {
+     "name": "ecPet",
+     "at": {
+      "en": "It knows the"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "text": {
+    "en": "It started eighty years ago. A baker named Tomas was walking home late, when the bell rang thirteen times. His wife heard a knock and opened the door. It was Tomas. Ten minutes later, there was another knock. She opened the door again. And it was Tomas. Again."
+   },
+   "shots": [
+    {
+     "name": "tmTown",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "tmWalk",
+     "at": {
+      "en": "A baker"
+     }
+    },
+    {
+     "name": "tmBell",
+     "at": {
+      "en": "when the"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "bell",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "tmKnock",
+     "at": {
+      "en": "His wife"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "knock",
+       "vol": 0.8
+      },
+      {
+       "at": 0.6,
+       "sound": "creak",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "tmOpen",
+     "at": {
+      "en": "It was"
+     }
+    },
+    {
+     "name": "tmKnock2",
+     "at": {
+      "en": "Ten minutes"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "knock",
+       "vol": 0.9
+      }
+     ]
+    },
+    {
+     "name": "tmOpen2",
+     "at": {
+      "en": "She opened"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "creak",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "tmTwo",
+     "at": {
+      "en": "And it"
+     },
+     "sfx": [
+      {
+       "at": 0.5,
+       "sound": "boom",
+       "vol": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "text": {
+    "en": "Two husbands. Same flour on their sleeves, same tired smile. Both of them swore the other one was a monster. She had until sunrise to choose. Because that's how echoes work. When the sun comes up, the echo becomes real. And the person it copied fades away, like breath on a cold window."
+   },
+   "shots": [
+    {
+     "name": "tmPair",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "tmPoint",
+     "at": {
+      "en": "Both of"
+     }
+    },
+    {
+     "name": "tmWife",
+     "at": {
+      "en": "She had"
+     }
+    },
+    {
+     "name": "tmSun",
+     "at": {
+      "en": "Because that's"
+     }
+    },
+    {
+     "name": "tmFade",
+     "at": {
+      "en": "And the"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "whoosh",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "text": {
+    "en": "She chose. And the next morning, the other Tomas was gone. For the rest of her life, people said Tomas was different. He never slept. He never got sick. And every night at midnight, he stood at the window, smiling at the street. She had picked the wrong one."
+   },
+   "shots": [
+    {
+     "name": "tmChose",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "tmMorning",
+     "at": {
+      "en": "And the"
+     }
+    },
+    {
+     "name": "tmDiff",
+     "at": {
+      "en": "For the"
+     }
+    },
+    {
+     "name": "tmNight",
+     "at": {
+      "en": "And every"
+     }
+    },
+    {
+     "name": "tmWindow",
+     "at": {
+      "en": "smiling at"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "shriek",
+       "vol": 0.2
+      }
+     ]
+    },
+    {
+     "name": "tmWrong",
+     "at": {
+      "en": "She had"
+     },
+     "sfx": [
+      {
+       "at": 0.55,
+       "sound": "boom",
+       "vol": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "text": {
+    "en": "Back then, it happened once in a lifetime. Now the thirteenth bell rings almost every month. Everybody in town knows the drill. The second the bell rings, the streets empty. Doors slam. Shutters close. And then, in the fog, you can hear them. Walking slowly. Knocking politely. Calling out names."
+   },
+   "shots": [
+    {
+     "name": "nwTown",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "nwBell",
+     "at": {
+      "en": "Now the"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "bell",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "nwDrill",
+     "at": {
+      "en": "Everybody in"
+     }
+    },
+    {
+     "name": "nwEmpty",
+     "at": {
+      "en": "The second"
+     }
+    },
+    {
+     "name": "nwSlam",
+     "at": {
+      "en": "Doors slam"
+     },
+     "sfx": [
+      {
+       "at": 0.05,
+       "sound": "slam",
+       "vol": 0.9
+      },
+      {
+       "at": 0.5,
+       "sound": "slam",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "nwFog",
+     "at": {
+      "en": "And then"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "rumble",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "nwWalk",
+     "at": {
+      "en": "Walking slowly"
+     }
+    },
+    {
+     "name": "nwKnock",
+     "at": {
+      "en": "Knocking politely"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "knock",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "nwCall",
+     "at": {
+      "en": "Calling out"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "text": {
+    "en": "Last spring, it happened to my friend Nina. Her dad got stuck at work, and came home after the bell. Twice. One dad at the front door, and one at the garden gate. Both of them were crying. Nina's mom couldn't choose, so she didn't. She just waited for the sun. And in the morning, there was only one dad left."
+   },
+   "shots": [
+    {
+     "name": "ninaDay",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ninaDad",
+     "at": {
+      "en": "Her dad"
+     }
+    },
+    {
+     "name": "ninaTwice",
+     "at": {
+      "en": "Twice."
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "boom",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "ninaFront",
+     "at": {
+      "en": "One dad"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "knock",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "ninaGate",
+     "at": {
+      "en": "and one"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "creak",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "ninaCry",
+     "at": {
+      "en": "Both of"
+     }
+    },
+    {
+     "name": "ninaMom",
+     "at": {
+      "en": "Nina's mom"
+     }
+    },
+    {
+     "name": "ninaWait",
+     "at": {
+      "en": "She just"
+     }
+    },
+    {
+     "name": "ninaOne",
+     "at": {
+      "en": "And in"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "text": {
+    "en": "He seems fine. He laughs at the right jokes. He makes pancakes on Sundays. But Nina told me something. He never blinks. And sometimes, when he thinks no one is looking, he practices smiling in the mirror."
+   },
+   "shots": [
+    {
+     "name": "ninaFine",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ninaWave",
+     "at": {
+      "en": "He makes"
+     }
+    },
+    {
+     "name": "ninaTell",
+     "at": {
+      "en": "But Nina"
+     }
+    },
+    {
+     "name": "ninaStare",
+     "at": {
+      "en": "He never"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "drone",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "ninaGrin",
+     "at": {
+      "en": "he practices"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "shriek",
+       "vol": 0.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": {
+    "en": "Only one person in our town ever told the difference. Old Mister Gray, across the street. Forty years ago, two of his wife came home on the same night. He picked the right one. Just like that. When people ask him how, he only says one thing. The light tells the truth. Nobody knows what that means. He never explains."
+   },
+   "shots": [
+    {
+     "name": "grayHouse",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "grayPorch",
+     "at": {
+      "en": "Old Mister"
+     }
+    },
+    {
+     "name": "grayPast",
+     "at": {
+      "en": "Forty years"
+     }
+    },
+    {
+     "name": "grayPick",
+     "at": {
+      "en": "He picked"
+     }
+    },
+    {
+     "name": "grayAsk",
+     "at": {
+      "en": "When people"
+     }
+    },
+    {
+     "name": "grayLine",
+     "at": {
+      "en": "The light"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "chime",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "grayDoor",
+     "at": {
+      "en": "Nobody knows"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": {
+    "en": "And then came yesterday. Mom had a night shift at the hospital, so it was just me and my little brother, Milo. He's seven. He has a yellow hoodie he never takes off. And when he gets scared, he smiles. A big, goofy smile. Mom says it's his superpower."
+   },
+   "shots": [
+    {
+     "name": "ydSunset",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ydMom",
+     "at": {
+      "en": "Mom had"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "horn",
+       "vol": 0.3
+      }
+     ]
+    },
+    {
+     "name": "ydBros",
+     "at": {
+      "en": "so it"
+     }
+    },
+    {
+     "name": "ydMilo",
+     "at": {
+      "en": "He's seven"
+     }
+    },
+    {
+     "name": "ydHoodie",
+     "at": {
+      "en": "He has"
+     }
+    },
+    {
+     "name": "ydSmile",
+     "at": {
+      "en": "And when"
+     }
+    },
+    {
+     "name": "ydGoofy",
+     "at": {
+      "en": "A big"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "text": {
+    "en": "Around eleven, we were playing soccer in front of our house. Milo kicked the ball way too hard, and it rolled down the street. He ran after it. I yelled at him to come back. And then, from the middle of town, the clock tower started ringing."
+   },
+   "shots": [
+    {
+     "name": "ydPlay",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ydKick",
+     "at": {
+      "en": "Milo kicked"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "clunk",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "ydRoll",
+     "at": {
+      "en": "and it"
+     }
+    },
+    {
+     "name": "ydChase",
+     "at": {
+      "en": "He ran"
+     }
+    },
+    {
+     "name": "ydYell",
+     "at": {
+      "en": "I yelled"
+     }
+    },
+    {
+     "name": "ydTower",
+     "at": {
+      "en": "And then"
+     },
+     "sfx": [
+      {
+       "at": 0.6,
+       "sound": "bell",
+       "vol": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "text": {
+    "en": "One. Two. Three. I counted with my heart in my throat. Ten. Eleven. Twelve. Silence. I let out my breath. And then... thirteen."
+   },
+   "shots": [
+    {
+     "name": "cnt1",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "bell",
+       "vol": 0.7,
+       "repeat": 3,
+       "step": 0.3
+      }
+     ]
+    },
+    {
+     "name": "cnt2",
+     "at": {
+      "en": "I counted"
+     }
+    },
+    {
+     "name": "cnt3",
+     "at": {
+      "en": "Ten."
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "bell",
+       "vol": 0.8,
+       "repeat": 3,
+       "step": 0.3
+      }
+     ]
+    },
+    {
+     "name": "cnt4",
+     "at": {
+      "en": "Silence."
+     }
+    },
+    {
+     "name": "cnt5",
+     "at": {
+      "en": "And then"
+     },
+     "sfx": [
+      {
+       "at": 0.5,
+       "sound": "bell",
+       "vol": 1.0
+      },
+      {
+       "at": 0.52,
+       "sound": "boom",
+       "vol": 1.0
+      },
+      {
+       "at": 0.55,
+       "sound": "rumble_long",
+       "vol": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "text": {
+    "en": "The fog came rolling down the street like a wave. I screamed Milo's name. I couldn't see him anywhere. Doors were slamming up and down the block. I ran back to the house, locked the door behind me, and pressed my back against it. And I waited."
+   },
+   "shots": [
+    {
+     "name": "fgWave",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "whoosh",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "fgScream",
+     "at": {
+      "en": "I screamed"
+     }
+    },
+    {
+     "name": "fgLost",
+     "at": {
+      "en": "I couldn't"
+     }
+    },
+    {
+     "name": "fgSlam",
+     "at": {
+      "en": "Doors were"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "slam",
+       "vol": 0.8
+      },
+      {
+       "at": 0.45,
+       "sound": "slam",
+       "vol": 0.6
+      },
+      {
+       "at": 0.75,
+       "sound": "slam",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "fgRun",
+     "at": {
+      "en": "I ran"
+     },
+     "sfx": [
+      {
+       "at": 0.8,
+       "sound": "slam",
+       "vol": 1.0
+      }
+     ]
+    },
+    {
+     "name": "fgWait",
+     "at": {
+      "en": "And I"
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "tick",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "text": {
+    "en": "Then, someone knocked."
+   },
+   "shots": [
+    {
+     "name": "knock1",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.35,
+       "sound": "knock",
+       "vol": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s16k",
+   "text": {
+    "en": "It's me! It's Milo! Please let me in! It's so cold out here!"
+   },
+   "shots": [
+    {
+     "name": "kidDoor",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "kidDoorClose",
+     "at": {
+      "en": "Please let"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "knock",
+       "vol": 0.8
+      }
+     ]
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s17",
+   "text": {
+    "en": "It was his voice. His exact voice. I looked out the window. Yellow hoodie. Soccer ball under his arm. My hand was already on the lock... when somebody knocked on the back door."
+   },
+   "shots": [
+    {
+     "name": "winVoice",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "winLook",
+     "at": {
+      "en": "I looked"
+     }
+    },
+    {
+     "name": "winSee",
+     "at": {
+      "en": "Yellow hoodie"
+     }
+    },
+    {
+     "name": "winLock",
+     "at": {
+      "en": "My hand"
+     },
+     "sfx": [
+      {
+       "at": 0.4,
+       "sound": "clank",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "knockBack",
+     "at": {
+      "en": "when somebody"
+     },
+     "sfx": [
+      {
+       "at": 0.5,
+       "sound": "knock",
+       "vol": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s17k",
+   "text": {
+    "en": "Don't open it! There's something out here that looks like me!"
+   },
+   "shots": [
+    {
+     "name": "backKid",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "boom",
+       "vol": 0.6
+      }
+     ]
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s18",
+   "text": {
+    "en": "I broke the rule. I couldn't leave my little brother out there in the fog. So I stepped out onto the porch, and I called them both into the light. And there they were. Standing side by side. Two Milos. Same hoodie. Same ball. Same voice. Both of them pointing at each other."
+   },
+   "shots": [
+    {
+     "name": "brkPorch",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "creak",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "brkCall",
+     "at": {
+      "en": "So I"
+     }
+    },
+    {
+     "name": "brkReveal",
+     "at": {
+      "en": "And there"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "brkSide",
+     "at": {
+      "en": "Standing side"
+     }
+    },
+    {
+     "name": "brkClose",
+     "at": {
+      "en": "Same hoodie"
+     }
+    },
+    {
+     "name": "brkPoint",
+     "at": {
+      "en": "Both of"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s18k",
+   "text": {
+    "en": "He's the fake!"
+   },
+   "shots": [
+    {
+     "name": "fakeYell",
+     "at": {
+      "en": ""
+     }
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s19",
+   "text": {
+    "en": "I had until sunrise. Six hours. So I started testing them. First, our secret handshake. Fist bump, thumbs up, two claps, and a wiggle. Only Milo and I know it. They both did it perfectly. At exactly the same time."
+   },
+   "shots": [
+    {
+     "name": "tsClock",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "tick",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "tsTest",
+     "at": {
+      "en": "So I"
+     }
+    },
+    {
+     "name": "tsShake",
+     "at": {
+      "en": "First, our"
+     }
+    },
+    {
+     "name": "tsMoves",
+     "at": {
+      "en": "Fist bump"
+     },
+     "sfx": [
+      {
+       "at": 0.55,
+       "sound": "clunk",
+       "vol": 0.3
+      },
+      {
+       "at": 0.65,
+       "sound": "clunk",
+       "vol": 0.3
+      }
+     ]
+    },
+    {
+     "name": "tsOnly",
+     "at": {
+      "en": "Only Milo"
+     }
+    },
+    {
+     "name": "tsBoth",
+     "at": {
+      "en": "They both"
+     }
+    },
+    {
+     "name": "tsSame",
+     "at": {
+      "en": "At exactly"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "drone",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s20",
+   "text": {
+    "en": "Next, a question. What did I get you for your last birthday? They answered together."
+   },
+   "shots": [
+    {
+     "name": "qAsk",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "qTogether",
+     "at": {
+      "en": "They answered"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s20k",
+   "text": {
+    "en": "A red kite! And it got stuck in a tree on the very first day!"
+   },
+   "shots": [
+    {
+     "name": "qKite",
+     "at": {
+      "en": ""
+     }
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s21",
+   "text": {
+    "en": "Right answer. Twice. I tried everything. His favorite food. The name of our goldfish. The song Mom sings when we're sick. Every answer was perfect. Every time, at the exact same moment. Like an echo."
+   },
+   "shots": [
+    {
+     "name": "trRight",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "trEvery",
+     "at": {
+      "en": "I tried"
+     }
+    },
+    {
+     "name": "trFood",
+     "at": {
+      "en": "His favorite"
+     }
+    },
+    {
+     "name": "trFish",
+     "at": {
+      "en": "The name"
+     }
+    },
+    {
+     "name": "trSong",
+     "at": {
+      "en": "The song"
+     }
+    },
+    {
+     "name": "trPerfect",
+     "at": {
+      "en": "Every answer"
+     }
+    },
+    {
+     "name": "trEcho",
+     "at": {
+      "en": "Like an"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "whoosh",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s22",
+   "text": {
+    "en": "Then I noticed something. When the one on the right got scared, he grabbed my sleeve, just like Milo always does. But the one on the left... smiled. A big, weird smile. And I thought, gotcha. Echoes smile. Just like Nina's dad in the mirror."
+   },
+   "shots": [
+    {
+     "name": "ntNotice",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "ntGrab",
+     "at": {
+      "en": "When the"
+     }
+    },
+    {
+     "name": "ntLeft",
+     "at": {
+      "en": "But the"
+     }
+    },
+    {
+     "name": "ntSmile",
+     "at": {
+      "en": "A big"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "drone",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "ntGotcha",
+     "at": {
+      "en": "And I"
+     }
+    },
+    {
+     "name": "ntNina",
+     "at": {
+      "en": "Just like"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "shriek",
+       "vol": 0.25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s23",
+   "text": {
+    "en": "I almost chose right there. But something stopped me. Mister Gray. If anyone could tell them apart, it was him. So I took both of their hands, one in each of mine, and we ran across the street through the fog."
+   },
+   "shots": [
+    {
+     "name": "alChose",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "alStop",
+     "at": {
+      "en": "But something"
+     }
+    },
+    {
+     "name": "alGray",
+     "at": {
+      "en": "Mister Gray"
+     }
+    },
+    {
+     "name": "alHands",
+     "at": {
+      "en": "So I"
+     }
+    },
+    {
+     "name": "alRun",
+     "at": {
+      "en": "and we"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s24",
+   "text": {
+    "en": "Mister Gray opened his door just a crack. He looked at the two Milos for a long time. Then he looked at me and said, the light tells the truth. Echoes are made of fog and darkness. They can copy your face, your voice, your memories. But there is one thing they can never copy."
+   },
+   "shots": [
+    {
+     "name": "gdCrack",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "creak",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "gdLook",
+     "at": {
+      "en": "He looked"
+     }
+    },
+    {
+     "name": "gdMe",
+     "at": {
+      "en": "Then he"
+     }
+    },
+    {
+     "name": "gdFog",
+     "at": {
+      "en": "Echoes are"
+     }
+    },
+    {
+     "name": "gdCopy",
+     "at": {
+      "en": "They can"
+     }
+    },
+    {
+     "name": "gdOne",
+     "at": {
+      "en": "But there"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s25",
+   "text": {
+    "en": "What, I asked. But before he could answer, we heard footsteps in the fog. Lots of footsteps. Mister Gray turned pale. He slammed his door, and through it, he shouted. The lighthouse! Get to the lighthouse!"
+   },
+   "shots": [
+    {
+     "name": "gdWhat",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "gdSteps",
+     "at": {
+      "en": "But before"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "stomp",
+       "vol": 0.25,
+       "repeat": 4,
+       "step": 0.15
+      }
+     ]
+    },
+    {
+     "name": "gdLots",
+     "at": {
+      "en": "Lots of"
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "stomp",
+       "vol": 0.3,
+       "repeat": 6,
+       "step": 0.12
+      }
+     ]
+    },
+    {
+     "name": "gdPale",
+     "at": {
+      "en": "Mister Gray"
+     }
+    },
+    {
+     "name": "gdSlam",
+     "at": {
+      "en": "He slammed"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "slam",
+       "vol": 1.0
+      }
+     ]
+    },
+    {
+     "name": "gdShout",
+     "at": {
+      "en": "The lighthouse"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s26",
+   "text": {
+    "en": "The old lighthouse stands at the corner of the town square. Its lamp is so bright, sailors used to see it from the other side of the lake. If the light tells the truth, that was the brightest light we had."
+   },
+   "shots": [
+    {
+     "name": "lhFar",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "lhLamp",
+     "at": {
+      "en": "Its lamp"
+     }
+    },
+    {
+     "name": "lhTruth",
+     "at": {
+      "en": "If the"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s27",
+   "text": {
+    "en": "So we ran. Down our street, past the dark houses, through the fog. And that's when I saw them. People. Standing in the fog on both sides of the road. Our neighbors. The mailman. Mrs. Rosa from the shop. Just standing there. Not moving. Smiling at us."
+   },
+   "shots": [
+    {
+     "name": "rnRun",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "rnStreet",
+     "at": {
+      "en": "Down our"
+     }
+    },
+    {
+     "name": "rnSaw",
+     "at": {
+      "en": "And that's"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "drone",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "rnPeople",
+     "at": {
+      "en": "People."
+     }
+    },
+    {
+     "name": "rnNeighbors",
+     "at": {
+      "en": "Our neighbors"
+     }
+    },
+    {
+     "name": "rnMail",
+     "at": {
+      "en": "The mailman"
+     }
+    },
+    {
+     "name": "rnRosa",
+     "at": {
+      "en": "Mrs. Rosa"
+     }
+    },
+    {
+     "name": "rnStand",
+     "at": {
+      "en": "Just standing"
+     }
+    },
+    {
+     "name": "rnSmile",
+     "at": {
+      "en": "Smiling at"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "shriek",
+       "vol": 0.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s28",
+   "text": {
+    "en": "But they weren't our neighbors. Our neighbors were locked inside. These were echoes. Dozens of them. And as we ran past, one by one, they turned their heads. And they started to follow."
+   },
+   "shots": [
+    {
+     "name": "rnNot",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "rnInside",
+     "at": {
+      "en": "Our neighbors"
+     }
+    },
+    {
+     "name": "rnEchoes",
+     "at": {
+      "en": "These were"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "rnTurn",
+     "at": {
+      "en": "And as"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "creak",
+       "vol": 0.3
+      }
+     ]
+    },
+    {
+     "name": "rnFollow",
+     "at": {
+      "en": "And they"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "stomp",
+       "vol": 0.3,
+       "repeat": 5,
+       "step": 0.16
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s29",
+   "text": {
+    "en": "The Milo on my left was crying. The Milo on my right was squeezing my hand so hard it hurt. We reached the square. Behind us, slow footsteps. Closer and closer. The lighthouse door was hanging open, creaking in the wind."
+   },
+   "shots": [
+    {
+     "name": "sqLeft",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "sqRight",
+     "at": {
+      "en": "was squeezing"
+     }
+    },
+    {
+     "name": "sqReach",
+     "at": {
+      "en": "We reached"
+     }
+    },
+    {
+     "name": "sqBehind",
+     "at": {
+      "en": "Behind us"
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "stomp",
+       "vol": 0.35,
+       "repeat": 6,
+       "step": 0.15
+      }
+     ]
+    },
+    {
+     "name": "sqDoor",
+     "at": {
+      "en": "The lighthouse"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "creak",
+       "vol": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s30",
+   "text": {
+    "en": "We ran inside and up the stairs. Around and around. Two hundred steps. My legs were burning. When we burst out onto the balcony at the top, I looked down. And my blood went cold."
+   },
+   "shots": [
+    {
+     "name": "stRun",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "stAround",
+     "at": {
+      "en": "Around and"
+     }
+    },
+    {
+     "name": "stLegs",
+     "at": {
+      "en": "My legs"
+     }
+    },
+    {
+     "name": "stTop",
+     "at": {
+      "en": "When we"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "slam",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "stDown",
+     "at": {
+      "en": "I looked"
+     },
+     "sfx": [
+      {
+       "at": 0.6,
+       "sound": "boom",
+       "vol": 0.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s31",
+   "text": {
+    "en": "The echoes were climbing the lighthouse. On the outside. Like spiders. Dozens of smiling faces, crawling up the walls toward us."
+   },
+   "shots": [
+    {
+     "name": "spClimb",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "rumble",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "spSpider",
+     "at": {
+      "en": "Like spiders"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "shriek",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "spFaces",
+     "at": {
+      "en": "Dozens of"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s32",
+   "text": {
+    "en": "Next to the lamp, there was a big iron lever. I pulled it with all my strength. It didn't move. It was rusted solid. Then the Milo on my left let go, ran to the railing, and yelled down at them at the top of his lungs."
+   },
+   "shots": [
+    {
+     "name": "lvLever",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "lvPull",
+     "at": {
+      "en": "I pulled"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "clank",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "lvStuck",
+     "at": {
+      "en": "It didn't"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "clank",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "lvRun",
+     "at": {
+      "en": "Then the"
+     }
+    },
+    {
+     "name": "lvRail",
+     "at": {
+      "en": "ran to"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s32k",
+   "text": {
+    "en": "Leave my brother alone!"
+   },
+   "shots": [
+    {
+     "name": "kidShout",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s33",
+   "text": {
+    "en": "The Milo on my right didn't move. He just stood next to me, holding my hand. Very still. I threw all my weight onto the lever. It screamed. It cracked. And then, the lamp came on."
+   },
+   "shots": [
+    {
+     "name": "lvStill",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "lvWeight",
+     "at": {
+      "en": "I threw"
+     }
+    },
+    {
+     "name": "lvCrack",
+     "at": {
+      "en": "It screamed"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "creak",
+       "vol": 0.9
+      },
+      {
+       "at": 0.6,
+       "sound": "clank",
+       "vol": 1.0
+      }
+     ]
+    },
+    {
+     "name": "lvOn",
+     "at": {
+      "en": "And then"
+     },
+     "sfx": [
+      {
+       "at": 0.45,
+       "sound": "buzz",
+       "vol": 0.8
+      },
+      {
+       "at": 0.5,
+       "sound": "boom",
+       "vol": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s34",
+   "text": {
+    "en": "A beam of white light shot out across the whole town. It swept over the square, the streets, the rooftops. And everywhere it touched, the echoes froze. Because in that light, every real person had a shadow. And the echoes had none."
+   },
+   "shots": [
+    {
+     "name": "bmShoot",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "whoosh",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "bmSweep",
+     "at": {
+      "en": "It swept"
+     }
+    },
+    {
+     "name": "bmFreeze",
+     "at": {
+      "en": "And everywhere"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "shriek",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "bmShadow",
+     "at": {
+      "en": "Because in"
+     }
+    },
+    {
+     "name": "bmNone",
+     "at": {
+      "en": "And the"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "drone",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s35",
+   "text": {
+    "en": "I looked down at my brothers. The one at the railing, with the big goofy smile, had a long dark shadow stretching across the floor. And the one holding my hand... had nothing. No shadow at all."
+   },
+   "shots": [
+    {
+     "name": "rvDown",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "rvRail",
+     "at": {
+      "en": "The one"
+     }
+    },
+    {
+     "name": "rvShadow",
+     "at": {
+      "en": "had a"
+     }
+    },
+    {
+     "name": "rvHand",
+     "at": {
+      "en": "And the"
+     }
+    },
+    {
+     "name": "rvNone",
+     "at": {
+      "en": "No shadow"
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "boom",
+       "vol": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s36",
+   "text": {
+    "en": "It looked up at me. And it smiled. A real echo smile. Way too wide. All the way up to its ears. Then the light hit it full on. It cracked like glass, and burst into a cloud of black dust."
+   },
+   "shots": [
+    {
+     "name": "rvLook",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "rvGrin",
+     "at": {
+      "en": "And it"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "shriek",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "rvWide",
+     "at": {
+      "en": "Way too"
+     }
+    },
+    {
+     "name": "rvLight",
+     "at": {
+      "en": "Then the"
+     }
+    },
+    {
+     "name": "rvBurst",
+     "at": {
+      "en": "It cracked"
+     },
+     "sfx": [
+      {
+       "at": 0.15,
+       "sound": "shatter",
+       "vol": 1.0
+      },
+      {
+       "at": 0.2,
+       "sound": "boom",
+       "vol": 0.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s37",
+   "text": {
+    "en": "All over town, the echoes were bursting, one after another, like fireworks made of shadow. And the fog rolled back out of the streets."
+   },
+   "shots": [
+    {
+     "name": "boTown",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "shatter",
+       "vol": 0.5,
+       "repeat": 5,
+       "step": 0.18
+      }
+     ]
+    },
+    {
+     "name": "boFire",
+     "at": {
+      "en": "like fireworks"
+     },
+     "sfx": [
+      {
+       "at": 0.0,
+       "sound": "shatter",
+       "vol": 0.4,
+       "repeat": 3,
+       "step": 0.3
+      }
+     ]
+    },
+    {
+     "name": "boFog",
+     "at": {
+      "en": "And the"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "whoosh",
+       "vol": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s38",
+   "text": {
+    "en": "Milo ran to me and hugged me so hard we both fell over. He was shaking. And smiling, of course. That big, goofy smile. I almost chose wrong. I almost picked the echo. Because it held my hand, and it looked scared, and it acted exactly the way I expected Milo to act."
+   },
+   "shots": [
+    {
+     "name": "hugRun",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "hugShake",
+     "at": {
+      "en": "He was"
+     }
+    },
+    {
+     "name": "hugSmile",
+     "at": {
+      "en": "And smiling"
+     }
+    },
+    {
+     "name": "hugWrong",
+     "at": {
+      "en": "I almost chose"
+     }
+    },
+    {
+     "name": "hugHand",
+     "at": {
+      "en": "Because it"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s39",
+   "text": {
+    "en": "The light tells the truth. Echoes can copy your face, your voice, and your memories. But they can't copy your shadow. So go back to the very beginning. Look at their feet. The Milo on the right never had a shadow. Not once. Did you spot it?"
+   },
+   "shots": [
+    {
+     "name": "pyTruth",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "pyCopy",
+     "at": {
+      "en": "Echoes can"
+     }
+    },
+    {
+     "name": "pyShadow",
+     "at": {
+      "en": "But they"
+     }
+    },
+    {
+     "name": "pyBack",
+     "at": {
+      "en": "So go"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "rewind",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "pyFeet",
+     "at": {
+      "en": "Look at"
+     }
+    },
+    {
+     "name": "pyRight",
+     "at": {
+      "en": "The Milo"
+     }
+    },
+    {
+     "name": "pyNotOnce",
+     "at": {
+      "en": "Not once"
+     }
+    },
+    {
+     "name": "pySpot",
+     "at": {
+      "en": "Did you"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s40",
+   "text": {
+    "en": "Mom came home at sunrise. We told her everything. And Mister Gray came over with hot cocoa. For the first time in forty years, he told us what he saw that night. It was the same thing. No shadow."
+   },
+   "shots": [
+    {
+     "name": "dwMom",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "dwTold",
+     "at": {
+      "en": "We told"
+     }
+    },
+    {
+     "name": "dwGray",
+     "at": {
+      "en": "And Mister"
+     }
+    },
+    {
+     "name": "dwStory",
+     "at": {
+      "en": "For the"
+     }
+    },
+    {
+     "name": "dwSame",
+     "at": {
+      "en": "It was"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s41",
+   "text": {
+    "en": "The next morning, the sun was bright and the sky was blue, and I walked Milo to school. Halfway there, he stopped. He was staring at the sidewalk. At my feet."
+   },
+   "shots": [
+    {
+     "name": "enWalk",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "enStop",
+     "at": {
+      "en": "Halfway there"
+     }
+    },
+    {
+     "name": "enStare",
+     "at": {
+      "en": "He was"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "drone",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "enFeet",
+     "at": {
+      "en": "At my"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s42",
+   "text": {
+    "en": "Then he slowly let go of my hand. And took one step back. I didn't want to look down. But I did."
+   },
+   "shots": [
+    {
+     "name": "enLetgo",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "enStep",
+     "at": {
+      "en": "And took"
+     }
+    },
+    {
+     "name": "enLook",
+     "at": {
+      "en": "I didn't"
+     }
+    },
+    {
+     "name": "enDid",
+     "at": {
+      "en": "But I"
+     },
+     "sfx": [
+      {
+       "at": 0.7,
+       "sound": "boom",
+       "vol": 1.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s43",
+   "text": {
+    "en": "Part two is coming soon. Subscribe, so you don't miss what I saw."
+   },
+   "shots": [
+    {
+     "name": "enEnd",
+     "at": {
+      "en": ""
+     }
+    }
+   ]
+  }
+ ]
+}

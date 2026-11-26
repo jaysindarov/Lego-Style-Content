@@ -117,7 +117,8 @@ def video(slug: str, lang: str) -> None:
     final = out / f"{slug}-{lang}.mp4"
     run("ffmpeg", "-y", "-loglevel", "error", "-i", str(build / "picture.mp4"), "-i", str(build / "mix.wav"), "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(final))
     small = out / f"{slug}-{lang}-720p.mp4"
-    run("ffmpeg", "-y", "-loglevel", "error", "-i", str(final), "-vf", "scale=720:1280", "-c:v", "libx264", "-crf", "30", "-preset", "fast", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(small))
+    land = json.loads((ROOT / "stories" / slug / "story.json").read_text()).get("format") == "landscape"
+    run("ffmpeg", "-y", "-loglevel", "error", "-i", str(final), "-vf", "scale=1280:720" if land else "scale=720:1280", "-c:v", "libx264", "-crf", "30", "-preset", "fast", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(small))
     # fail loudly on black frames
     bd = subprocess.run(["ffmpeg", "-i", str(final), "-vf", "blackdetect=d=0.3:pix_th=0.08", "-an", "-f", "null", "-"], capture_output=True, text=True).stderr
     blacks = bd.count("black_start")

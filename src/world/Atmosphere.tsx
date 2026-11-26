@@ -159,7 +159,8 @@ export const GroundFog: React.FC<{ density: number; t: number; palette?: Palette
 };
 
 /** Sun, sky light and fog colour, all following `evil`. */
-export const Lights: React.FC<{ evil: number; focus: [number, number, number]; dusk?: number; palette?: Palette }> = ({ evil, focus, dusk = 0, palette = "green" }) => {
+export const Lights: React.FC<{ evil: number; focus: [number, number, number]; dusk?: number; palette?: Palette; dark?: number }> = ({ evil, focus, dusk = 0, palette = "green", dark = 0 }) => {
+  const dim = 1 - 0.6 * dark; // a darker night, so lamps pool light and shadows read
   const { scene } = useThree();
   const P = PALETTES[palette];
   const day = new THREE.Color("#cfe8ff").lerp(new THREE.Color("#f2b48a"), dusk);
@@ -175,12 +176,12 @@ export const Lights: React.FC<{ evil: number; focus: [number, number, number]; d
   const sun = new THREE.Color("#fff4e0").lerp(new THREE.Color("#ffb070"), dusk).lerp(new THREE.Color(P.sun), evil);
   return (
     <>
-      <hemisphereLight args={[new THREE.Color("#bfe3ff").lerp(new THREE.Color(P.hemiSky), evil), new THREE.Color("#8fbf6a").lerp(new THREE.Color(P.hemiGround), evil), THREE.MathUtils.lerp(1.6, 1.25, evil)]} />
-      <ambientLight intensity={THREE.MathUtils.lerp(0.35, 0.6, evil)} color={evil > 0.5 ? P.amb : "#ffffff"} />
+      <hemisphereLight args={[new THREE.Color("#bfe3ff").lerp(new THREE.Color(P.hemiSky), evil), new THREE.Color("#8fbf6a").lerp(new THREE.Color(P.hemiGround), evil), THREE.MathUtils.lerp(1.6, 1.25, evil) * dim]} />
+      <ambientLight intensity={THREE.MathUtils.lerp(0.35, 0.6, evil) * dim} color={evil > 0.5 ? P.amb : "#ffffff"} />
       <primitive object={target} />
       <directionalLight
         color={sun}
-        intensity={THREE.MathUtils.lerp(3.0, 1.8, evil)}
+        intensity={THREE.MathUtils.lerp(3.0, 1.8, evil) * (1 - 0.45 * dark)}
         position={[focus[0] + 80, focus[1] + 140, focus[2] + 60]}
         target={target}
         castShadow
@@ -200,7 +201,7 @@ export const Lights: React.FC<{ evil: number; focus: [number, number, number]; d
 };
 
 /** Billowing dust: a ring of soft sprites that rise and spread. */
-export const Dust: React.FC<{ x: number; z: number; amount: number; t: number; color?: string; spread?: number }> = ({ x, z, amount, t, color = "#b9a27f", spread = 12 }) => {
+export const Dust: React.FC<{ x: number; z: number; amount: number; t: number; color?: string; spread?: number; y?: number }> = ({ x, z, amount, t, color = "#b9a27f", spread = 12, y = 0 }) => {
   const mats = useMemo(() => Array.from({ length: 26 }, () => new THREE.SpriteMaterial({ map: puffTex(), color, transparent: true, depthWrite: false, opacity: 0.6 })), [color]);
   if (amount <= 0) return null;
   const sprites = [];
@@ -211,7 +212,7 @@ export const Dust: React.FC<{ x: number; z: number; amount: number; t: number; c
     const s = (4 + life * 10) * (0.7 + (k % 3) * 0.2) * Math.min(1, amount) * (spread / 12);
     const m = mats[k];
     m.opacity = 0.55 * (1 - life) * Math.min(1, amount);
-    sprites.push(<sprite key={k} material={m} position={[x + Math.cos(a) * r, 1 + life * 9 * (spread / 12), z + Math.sin(a) * r]} scale={[s, s, s]} />);
+    sprites.push(<sprite key={k} material={m} position={[x + Math.cos(a) * r, y + 1 + life * 9 * (spread / 12), z + Math.sin(a) * r]} scale={[s, s, s]} />);
   }
   return <group>{sprites}</group>;
 };

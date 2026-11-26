@@ -263,10 +263,38 @@ export const plazaTex = () =>
   });
 
 /** Classic blocky avatar face on skin. */
-export const faceTex = (skin: string, mood: "smile" | "scared" | "shout" | "worried" | "happy") =>
+export const faceTex = (skin: string, mood: "smile" | "scared" | "shout" | "worried" | "happy" | "grin") =>
   canvasTex(`face-${skin}-${mood}`, 128, 128, (g, w, h) => {
     g.fillStyle = skin;
     g.fillRect(0, 0, w, h);
+    if (mood === "grin") {
+      // an echo's face: hollow black eyes and a smile far too wide
+      g.fillStyle = "#050505";
+      g.beginPath();
+      g.ellipse(40, 52, 9, 11, 0, 0, Math.PI * 2);
+      g.ellipse(88, 52, 9, 11, 0, 0, Math.PI * 2);
+      g.fill();
+      g.fillStyle = "#e9e9e9";
+      g.fillRect(39, 51, 2, 2);
+      g.fillRect(87, 51, 2, 2);
+      g.fillStyle = "#120606";
+      g.beginPath();
+      g.moveTo(8, 70);
+      g.quadraticCurveTo(64, 82, 120, 70);
+      g.quadraticCurveTo(64, 128, 8, 70);
+      g.fill();
+      g.fillStyle = "#f4f1e6";
+      for (let i = 0; i < 11; i++) {
+        const x = 16 + i * 9;
+        const y = 72 + Math.sin((i / 10) * Math.PI) * 6;
+        g.beginPath();
+        g.moveTo(x, y);
+        g.lineTo(x + 8, y);
+        g.lineTo(x + 4, y + 8);
+        g.fill();
+      }
+      return;
+    }
     g.fillStyle = "#1b1b1b";
     const eyeH = mood === "scared" || mood === "shout" ? 22 : 16;
     g.beginPath();

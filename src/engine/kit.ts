@@ -24,6 +24,7 @@ export type ActorSpec = {
   roll?: number;
   holding?: "bucket" | "letter" | "gear" | null;
   hidden?: boolean;
+  noShadow?: boolean; // an echo: no shadow
 };
 
 export type Frame = {
@@ -34,7 +35,7 @@ export type Frame = {
   worm?: WormState | null;
   cracks?: { x: number; z: number; size: number; amount: number }[];
   mounds?: { x: number; z: number; yaw: number; amount: number; scale?: number }[];
-  dust?: { x: number; z: number; amount: number; spread?: number; color?: string }[];
+  dust?: { x: number; z: number; amount: number; spread?: number; color?: string; y?: number }[];
   actors?: ActorSpec[];
   cars?: { color: string; at: V3; yaw: number; crush?: number; wheelT?: number; lights?: number }[];
   bikes?: { at: V3; yaw: number; tilt?: number; t?: number }[];
@@ -49,6 +50,11 @@ export type Frame = {
   focus?: V3;
   horn?: number;
   palette?: Palette; // storm colours (default green)
+  /** drawn ground shadows for every actor that casts one: pointing away from `from`, or along yaw `dir` */
+  cast?: { from?: V3; dir?: number; len?: number; opacity?: number };
+  dark?: number; // 0..1 dims sky/ambient light for a darker night
+  balls?: V3[]; // soccer balls (centre points)
+  spots?: { pos: V3; aim: V3; intensity?: number; color?: string; angle?: number }[]; // shadow-casting spot lights (porch lamp, lighthouse beam)
   giants?: GiantState[];
   lamp?: LampState; // the lighthouse lamp
   houses?: MysteryHouseState[]; // the extra house(s) that appear at night

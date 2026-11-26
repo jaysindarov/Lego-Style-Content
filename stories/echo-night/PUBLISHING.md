@@ -1,0 +1,91 @@
+# Echo Night: publishing kit
+
+Two uploads from one story. The Short works as the trailer: it asks a question and
+holds back the answer. The long episode answers it and ends on a hook for Part 2.
+
+| | Long episode | Short |
+|---|---|---|
+| File | `stories/echo-night/out/echo-night-en.mp4` (1920×1080) | `stories/echo-night-short/out/echo-night-short-en.mp4` (1080×1920) |
+| Length | ~9 min (final number after the voice is built) | 1:48 (rendered) |
+| Thumbnail | `echo-night-en-cover.jpg`, 1280×720, text "ONE IS FAKE" | `echo-night-short-en-cover.jpg` |
+| Title | **Never Open the Door After the 13th Bell** | **Which One Is My Real Brother? 10 Seconds** |
+
+Titles went through the yt-package linter. The long title scored 100/100: 39
+characters, a concrete number, and nothing duplicated from the thumbnail. The Short
+title scored 94; the only flag is a mobile cut after "Brother? 10…", where the
+subject still shows.
+
+The hook was scored with yt-script `hookscore.py` and came out at 67 (WORKABLE),
+the best of 14 candidates. It uses "The Comparison" formula with direct address:
+"You have ten seconds to spot which one is my real brother. I didn't, and I almost
+lost him forever."
+
+## Voice
+
+ElevenLabs, voice "Clancy - Viral Long-Form Storyteller" (eleven_v4), one take per video,
+word timings from ElevenLabs Scribe, cut into scenes with `tools/split_voice.py`.
+The little brother's lines are the same take pitched up (kidPitch 1.3).
+
+## How the Short pulls viewers into the long video
+
+1. Publish the long episode first, as Public or Scheduled.
+2. Upload the Short. In the Short's upload screen, set **Related video** to the long
+   episode. A tappable link to it then shows on the Short.
+3. The Short's last line tells viewers to "watch the full story and see if you were
+   right". The ending card on screen reads "FULL STORY".
+4. Pin the comment below under the Short. The question drives comments, and
+   comments push the Short in the feed.
+
+**Short: pinned comment**
+> Left or right? 👀 Answer below BEFORE you watch the full story. The answer was on screen the whole time.
+
+**Long: pinned comment**
+> Did you spot it before he did? Go back to 0:00 and look at their feet. 🔦 Part 2: what did he see when he looked down?
+
+## Descriptions
+
+The first two lines are the only ones most viewers read, so they carry the search words.
+
+**Long**
+```
+Two of my little brother came home after the thirteenth bell, and only one of them is real. A blocky town horror story with a mystery you can solve before the ending.
+
+Can you spot the fake in the first 10 seconds? Watch closely — the clue is on screen the whole time.
+
+CHAPTERS
+(written once the voice timings are final)
+
+Part 2 is coming. Subscribe so you don't miss it.
+
+#horrorstory #scarystory #animation #mystery #roblox story
+```
+
+**Short**
+```
+One of them is not my brother. You have 10 seconds. Left or right? Full story linked above.
+#shorts #horrorstory #scarystory #mystery
+```
+
+**Tags** (kept short on purpose, for disambiguation only): echo night, 13th bell,
+scary story animation, horror story animated, mimic horror, doppelganger story, blocky
+horror story, which one is real, spot the fake, town rules horror
+
+**The three searches this should win** (the title and first lines carry their words):
+"scary story animation", "which one is real horror", "town rules horror story".
+
+## Retention beats built into the long episode
+
+- **0:00–0:12** Ten-second challenge with a countdown on screen. The clue (only one
+  brother has a shadow) is visible right away.
+- **0:12–0:25** Promise of the payoff: "by the end, you'll know exactly where to look".
+- **About every 60–90 s** a new turn: the rule, the baker's flashback, Nina's dad, the
+  bell count, the knocks, the two Milos, the tests, the misdirect (the smile), the run,
+  the climbers, the lever, the reveal.
+- **Misdirection that pays off fairly.** Early on, Milo "smiles when he's scared", so
+  the smiling brother looks like the fake but is the real one.
+- **Payoff:** "Go back to the very beginning. Look at their feet." This sends viewers
+  back to the start and adds watch time.
+- **Cliffhanger:** the narrator has no shadow. A CTA for Part 2 follows.
+
+The echo townsfolk and the echo Milo never cast a shadow in any shot. Sharp viewers
+will catch it and say so in the comments, which is the point.
