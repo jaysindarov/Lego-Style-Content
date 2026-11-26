@@ -105,3 +105,12 @@ horror story, which one is real, spot the fake, town rules horror
 
 The echo townsfolk and the echo Milo never cast a shadow in any shot. Sharp viewers
 will catch it and say so in the comments, which is the point.
+
+## Published (26 Nov 2026)
+
+- Long: https://youtu.be/yNT7DpKfFtU (Public, not made for kids, AI label on)
+- Short: https://youtube.com/shorts/eAH48Hdfzwg (Public, not made for kids, AI label on)
+- YouTube does not yet let this channel set a Short's Related video or pin
+  comments ("build your channel history"). The full-story link is in the Short's
+  description and in its first comment instead. Set Related video and pin the
+  comments once Studio allows it.
