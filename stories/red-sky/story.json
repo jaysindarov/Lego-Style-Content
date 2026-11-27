@@ -1,0 +1,136 @@
+{
+  "slug": "red-sky",
+  "title": { "en": "When the Sky Turns Red, Don't Move!" },
+  "voices": {
+    "en": { "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7", "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7", "speed": 1.05, "kidSpeed": 1.1, "kidPitch": 1.35 }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "text": { "en": "In our town, whenever the sky turns red, everyone has to freeze. No running. No talking. Not even a whisper. Because something very tall walks between our houses." },
+      "shots": [
+        { "name": "cityFly", "at": { "en": "" } },
+        { "name": "redSky", "at": { "en": "whenever" }, "sfx": [{ "at": 0.1, "sound": "boom", "vol": 0.8 }, { "at": 0.2, "sound": "siren", "vol": 0.3, "until": "end" }] },
+        { "name": "freezeStreet", "at": { "en": "everyone has" }, "sfx": [{ "at": 0.15, "sound": "whoosh", "vol": 0.4 }] },
+        { "name": "giantPeek", "at": { "en": "Because" }, "sfx": [{ "at": 0.1, "sound": "stomp", "vol": 0.9 }, { "at": 0.5, "sound": "stomp", "vol": 1.0 }] }
+      ]
+    },
+    {
+      "id": "s02",
+      "text": { "en": "It started seven years ago. One summer evening, the sky turned red as blood. People stopped and stared. Then, over the rooftops, a giant figure rose up with a huge white grin. Everyone screamed and ran. That was their mistake. It grabbed every single one who moved." },
+      "shots": [
+        { "name": "plazaDay", "at": { "en": "" } },
+        { "name": "plazaRed", "at": { "en": "One summer" }, "sfx": [{ "at": 0.1, "sound": "boom", "vol": 0.8 }, { "at": 0.15, "sound": "whoosh", "vol": 0.5 }] },
+        { "name": "plazaStare", "at": { "en": "People stopped" } },
+        { "name": "giantRise", "at": { "en": "Then, over" }, "sfx": [{ "at": 0.05, "sound": "rumble", "vol": 0.8 }, { "at": 0.4, "sound": "roar", "vol": 0.9 }] },
+        { "name": "crowdRun", "at": { "en": "Everyone screamed" }, "sfx": [{ "at": 0.05, "sound": "scream", "vol": 0.6 }, { "at": 0.3, "sound": "stomp", "vol": 0.9 }, { "at": 0.7, "sound": "stomp", "vol": 0.9 }] },
+        { "name": "giantGrin", "at": { "en": "That was" }, "sfx": [{ "at": 0.1, "sound": "shriek", "vol": 0.6 }] },
+        { "name": "giantGrab", "at": { "en": "It grabbed" }, "sfx": [{ "at": 0.1, "sound": "whoosh", "vol": 0.7 }, { "at": 0.45, "sound": "chomp", "vol": 0.8 }] }
+      ]
+    },
+    {
+      "id": "s03",
+      "text": { "en": "Now the red sky comes almost every week. And anyone who moves... disappears." },
+      "shots": [
+        { "name": "frozenTown", "at": { "en": "" }, "sfx": [{ "at": 0, "sound": "siren", "vol": 0.22, "until": "end" }] },
+        { "name": "handSnatch", "at": { "en": "And anyone" }, "sfx": [{ "at": 0.35, "sound": "whoosh", "vol": 0.8 }, { "at": 0.55, "sound": "chomp", "vol": 0.9 }] }
+      ]
+    },
+    {
+      "id": "s04",
+      "text": { "en": "Last spring, a mailman was on his route when the sky turned red. He froze, just like the rule says. But then, his phone started ringing. He flinched. Just once. And a giant hand came down from the clouds." },
+      "shots": [
+        { "name": "mailWalk", "at": { "en": "" } },
+        { "name": "mailFreeze", "at": { "en": "He froze" }, "sfx": [{ "at": 0, "sound": "siren", "vol": 0.25, "until": "end" }] },
+        { "name": "phoneRing", "at": { "en": "But then" }, "sfx": [{ "at": 0.35, "sound": "ring", "vol": 0.8, "until": "mailFlinch:0.6" }] },
+        { "name": "mailFlinch", "at": { "en": "He flinched" } },
+        { "name": "mailGrab", "at": { "en": "And a" }, "sfx": [{ "at": 0.05, "sound": "whoosh", "vol": 0.8 }, { "at": 0.4, "sound": "roar", "vol": 0.8 }, { "at": 0.55, "sound": "chomp", "vol": 1.0 }] }
+      ]
+    },
+    {
+      "id": "s05",
+      "text": { "en": "Only one man ever got away. The giant bent down so close, he could count the teeth in its grin. But he didn't move a muscle for sixty seconds. Then it lost interest and walked away. Since then, everyone knows the rule: freeze, and count to sixty." },
+      "shots": [
+        { "name": "survivorStand", "at": { "en": "" } },
+        { "name": "giantBend", "at": { "en": "The giant" }, "sfx": [{ "at": 0.1, "sound": "rumble", "vol": 0.7 }] },
+        { "name": "survivorCount", "at": { "en": "But he" }, "sfx": [{ "at": 0, "sound": "tick", "vol": 0.5, "repeat": 8, "step": 0.125 }] },
+        { "name": "giantLeave", "at": { "en": "Then it" }, "sfx": [{ "at": 0.15, "sound": "stomp", "vol": 0.9 }, { "at": 0.55, "sound": "stomp", "vol": 0.7 }] },
+        { "name": "crowdFreeze", "at": { "en": "Since then" }, "sfx": [{ "at": 0, "sound": "siren", "vol": 0.3, "until": "end" }, { "at": 0, "sound": "tick", "vol": 0.5, "repeat": 10, "step": 0.1 }] }
+      ]
+    },
+    {
+      "id": "s06",
+      "text": { "en": "Usually, it leaves after one minute. But yesterday was different. My little brother and I were crossing the square when the sky turned red. We froze right next to the fountain. One minute passed, then ten... and it just kept standing there, watching." },
+      "shots": [
+        { "name": "timelapse", "at": { "en": "" }, "sfx": [{ "at": 0, "sound": "whoosh", "vol": 0.3, "repeat": 6, "step": 0.0917 }] },
+        { "name": "brothersWalk", "at": { "en": "My little" } },
+        { "name": "redB", "at": { "en": "when the" }, "sfx": [{ "at": 0, "sound": "boom", "vol": 0.6 }, { "at": 0, "sound": "siren", "vol": 0.35, "until": "brothersFreeze:0.5" }] },
+        { "name": "brothersFreeze", "at": { "en": "We froze" }, "sfx": [{ "at": 0.3, "sound": "stomp", "vol": 0.8 }] },
+        { "name": "giantWatch", "at": { "en": "One minute" }, "sfx": [{ "at": 0, "sound": "tick", "vol": 0.45, "repeat": 8, "step": 0.125 }] }
+      ]
+    },
+    {
+      "id": "s07",
+      "text": { "en": "Then a car came around the corner with its headlights on. The giant shrieked and covered its eyes! It's afraid of light! That's when I saw the old lighthouse on the square. Grandpa said its lamp could light up the whole town." },
+      "shots": [
+        { "name": "carLights", "at": { "en": "" }, "sfx": [{ "at": 0.1, "sound": "whoosh", "vol": 0.4 }] },
+        { "name": "giantRecoil", "at": { "en": "The giant" }, "sfx": [{ "at": 0.05, "sound": "shriek", "vol": 1.0 }, { "at": 0.4, "sound": "stomp", "vol": 0.8 }] },
+        { "name": "heroIdea", "at": { "en": "It's afraid" } },
+        { "name": "lighthouse", "at": { "en": "That's when" } },
+        { "name": "lampVision", "at": { "en": "Grandpa said" }, "sfx": [{ "at": 0.05, "sound": "buzz", "vol": 0.4 }] }
+      ]
+    },
+    {
+      "id": "s08",
+      "text": { "en": "We only moved when it looked away. Step by step, we made it to the top. But the lamp was dead. The cable was torn in half! While I was fixing it, the giant turned toward us. My brother ran out onto the balcony and waved his arms." },
+      "shots": [
+        { "name": "sneak", "at": { "en": "" }, "sfx": [{ "at": 0.5, "sound": "stomp", "vol": 0.7 }] },
+        { "name": "lhClimb", "at": { "en": "Step by" } },
+        { "name": "lampDead", "at": { "en": "But the" }, "sfx": [{ "at": 0.55, "sound": "spark", "vol": 0.7 }] },
+        { "name": "repair", "at": { "en": "While I" }, "sfx": [{ "at": 0.2, "sound": "spark", "vol": 0.5 }] },
+        { "name": "giantTurn", "at": { "en": "the giant turned" }, "sfx": [{ "at": 0, "sound": "rumble", "vol": 0.9 }, { "at": 0.3, "sound": "stomp", "vol": 1.0 }] },
+        { "name": "kidWave", "at": { "en": "My brother" } }
+      ]
+    },
+    {
+      "id": "s08k",
+      "kid": true,
+      "text": { "en": "Hey, tall guy! Over here!" },
+      "shots": [{ "name": "kidShout", "at": { "en": "" } }]
+    },
+    {
+      "id": "s08b",
+      "text": { "en": "It reached for him!" },
+      "shots": [{ "name": "giantReach", "at": { "en": "" }, "sfx": [{ "at": 0.1, "sound": "roar", "vol": 0.9 }, { "at": 0.2, "sound": "whoosh", "vol": 0.7 }] }]
+    },
+    {
+      "id": "s09",
+      "text": { "en": "I twisted the last wires together and slammed the switch! The lamp blazed to life! The beam hit the giant right in the face! It shrieked... and burst into a thousand black blocks. And at last, the sky turned blue again." },
+      "shots": [
+        { "name": "wires", "at": { "en": "" }, "sfx": [{ "at": 0.6, "sound": "spark", "vol": 0.8 }] },
+        { "name": "switchSlam", "at": { "en": "and slammed" }, "sfx": [{ "at": 0.5, "sound": "clunk", "vol": 1.0 }] },
+        { "name": "lampOn", "at": { "en": "The lamp" }, "sfx": [{ "at": 0, "sound": "buzz", "vol": 0.9 }, { "at": 0, "sound": "boom", "vol": 0.6 }] },
+        { "name": "beamHit", "at": { "en": "The beam" }, "sfx": [{ "at": 0.1, "sound": "shriek", "vol": 1.0 }] },
+        { "name": "giantShatter", "at": { "en": "It shrieked" }, "sfx": [{ "at": 0, "sound": "shriek", "vol": 0.8 }, { "at": 0.35, "sound": "shatter", "vol": 1.0 }, { "at": 0.4, "sound": "boom", "vol": 0.7 }] },
+        { "name": "skyClear", "at": { "en": "And at" }, "sfx": [{ "at": 0, "sound": "whoosh", "vol": 0.5 }] }
+      ]
+    },
+    {
+      "id": "s10",
+      "text": { "en": "We were hugging and laughing, when my brother pulled my sleeve. Far behind the hills, three more white grins were rising over the horizon... and they were all looking at us." },
+      "shots": [
+        { "name": "celebrate", "at": { "en": "" } },
+        { "name": "horizon", "at": { "en": "Far behind" }, "sfx": [{ "at": 0.15, "sound": "rumble_long", "vol": 0.9 }, { "at": 0.25, "sound": "stomp", "vol": 0.7 }] },
+        { "name": "grinsClose", "at": { "en": "and they" }, "sfx": [{ "at": 0.1, "sound": "boom", "vol": 0.9 }, { "at": 0.15, "sound": "shriek", "vol": 0.5 }] }
+      ]
+    }
+  ],
+  "pulses": [
+    { "shot": "plazaStare", "at": 0, "dur": 7 },
+    { "shot": "phoneRing", "at": 0, "dur": 6 },
+    { "shot": "giantBend", "at": 0, "dur": 9 },
+    { "shot": "giantWatch", "at": 0, "dur": 5 },
+    { "shot": "giantTurn", "at": 0, "dur": 9 },
+    { "shot": "horizon", "at": 0.3, "dur": 5 }
+  ]
+}

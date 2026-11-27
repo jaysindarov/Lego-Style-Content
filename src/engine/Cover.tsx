@@ -7,7 +7,7 @@ import { AbsoluteFill } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
 import * as THREE from "three";
 
-import { H, W, World } from "./Story";
+import { H, LAND, W, World } from "./Story";
 import { COVER } from "../generated/current";
 
 const outline = (size: number): React.CSSProperties => ({
@@ -38,14 +38,14 @@ export const Cover: React.FC<{ lang: string }> = ({ lang }) => {
         <World f={frame} t={2.4} lt={1.3} />
       </ThreeCanvas>
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%)" }} />
-      <div style={{ position: "absolute", top: 300, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-        <div style={{ ...outline(118), color: "#fff35c" }}>{t.top}</div>
+      <div style={{ position: "absolute", top: LAND ? 50 : 300, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+        <div style={{ ...outline(LAND ? 128 : 118), color: "#fff35c" }}>{t.top}</div>
       </div>
-      <div style={{ position: "absolute", top: 1478, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
+      <div style={{ position: "absolute", top: LAND ? 860 : 1478, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
         <div
           style={{
-            ...outline(104),
-            color: "#9dff4a",
+            ...outline(LAND ? 120 : 104),
+            color: (COVER as { accent?: string }).accent ?? "#9dff4a",
             transform: "rotate(-3deg)",
           }}
         >

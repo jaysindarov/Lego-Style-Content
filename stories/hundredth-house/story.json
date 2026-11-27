@@ -1,0 +1,134 @@
+{
+  "slug": "hundredth-house",
+  "title": { "en": "Never Count the Houses After Dark" },
+  "voices": {
+    "en": { "narrator": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7", "kid": "voice_ba626fc6-18c5-408f-8376-d49b95047bd7", "speed": 1.05, "kidSpeed": 1.1, "kidPitch": 1.35 }
+  },
+  "music": { "track": "mystery", "vol": 0.32 },
+  "scenes": [
+    {
+      "id": "s01",
+      "text": { "en": "In our town, there are exactly ninety-nine houses. Everybody knows that. And there's only one rule: never count them after dark." },
+      "shots": [
+        { "name": "townDay", "at": { "en": "" } },
+        { "name": "houseRow", "at": { "en": "exactly ninety-nine" }, "sfx": [{ "at": 0.1, "sound": "whoosh", "vol": 0.4 }] },
+        { "name": "nightFall", "at": { "en": "And there's" }, "sfx": [{ "at": 0.2, "sound": "chime", "vol": 0.7 }] }
+      ]
+    },
+    {
+      "id": "s02",
+      "text": { "en": "Twenty years ago, a mailman was finishing his route at midnight. Just for fun, he counted the houses. He counted one hundred. The next morning, they found his bike in front of an empty lot. And he was never seen again." },
+      "shots": [
+        { "name": "mailNight", "at": { "en": "" } },
+        { "name": "mailCount", "at": { "en": "Just for" } },
+        { "name": "houseAppear", "at": { "en": "He counted" }, "sfx": [{ "at": 0.15, "sound": "chime", "vol": 0.9 }, { "at": 0.2, "sound": "rumble", "vol": 0.5 }] },
+        { "name": "bikeLot", "at": { "en": "The next" } },
+        { "name": "bikeClose", "at": { "en": "And he" }, "sfx": [{ "at": 0.1, "sound": "boom", "vol": 0.5 }] }
+      ]
+    },
+    {
+      "id": "s03",
+      "text": { "en": "Since then, every few months, somebody sees it. A house that isn't there in the morning." },
+      "shots": [
+        { "name": "streetNight", "at": { "en": "" } },
+        { "name": "houseGlow", "at": { "en": "A house" }, "sfx": [{ "at": 0.1, "sound": "chime", "vol": 0.6 }] }
+      ]
+    },
+    {
+      "id": "s04",
+      "text": { "en": "Last winter, our neighbor saw light in its window. She walked up and knocked. The door opened by itself. She stepped inside... and the door shut behind her. In the morning, the house was gone. And so was she." },
+      "shots": [
+        { "name": "neighborLook", "at": { "en": "" } },
+        { "name": "neighborKnock", "at": { "en": "She walked" }, "sfx": [{ "at": 0.55, "sound": "knock", "vol": 0.9 }] },
+        { "name": "doorOpen", "at": { "en": "The door" }, "sfx": [{ "at": 0.1, "sound": "creak", "vol": 0.9 }] },
+        { "name": "neighborIn", "at": { "en": "She stepped" }, "sfx": [{ "at": 0.7, "sound": "slam", "vol": 1.0 }] },
+        { "name": "emptyMorning", "at": { "en": "In the" }, "sfx": [{ "at": 0.6, "sound": "boom", "vol": 0.4 }] }
+      ]
+    },
+    {
+      "id": "s05",
+      "text": { "en": "Only one person ever came back out. Old Mister Gray. He says once the door opens, you have thirteen seconds to leave. He still won't say what he saw in there." },
+      "shots": [
+        { "name": "grayPorch", "at": { "en": "" } },
+        { "name": "grayFace", "at": { "en": "He says" } },
+        { "name": "grayClock", "at": { "en": "thirteen seconds" }, "sfx": [{ "at": 0, "sound": "tick", "vol": 0.5, "repeat": 8, "step": 0.12 }] },
+        { "name": "grayWindow", "at": { "en": "He still" } }
+      ]
+    },
+    {
+      "id": "s06",
+      "text": { "en": "Last night, my little brother couldn't sleep, so we sat out on the porch. And before I could stop him, he started counting. Ninety-seven. Ninety-eight. Ninety-nine..." },
+      "shots": [
+        { "name": "porchSit", "at": { "en": "" } },
+        { "name": "kidCount", "at": { "en": "And before" } },
+        { "name": "countPan", "at": { "en": "Ninety-seven." }, "sfx": [{ "at": 0, "sound": "tick", "vol": 0.6, "repeat": 3, "step": 0.33 }] }
+      ]
+    },
+    {
+      "id": "s06k",
+      "kid": true,
+      "text": { "en": "One hundred." },
+      "shots": [{ "name": "kidHundred", "at": { "en": "" }, "sfx": [{ "at": 0.3, "sound": "chime", "vol": 1.0 }, { "at": 0.35, "sound": "boom", "vol": 0.7 }] }]
+    },
+    {
+      "id": "s07",
+      "text": { "en": "There it was. Right between our house and the neighbors'. Its windows were glowing, and there was a letter in the mailbox. The letter had my name on it. In my own handwriting." },
+      "shots": [
+        { "name": "revealHouse", "at": { "en": "" }, "sfx": [{ "at": 0.05, "sound": "rumble", "vol": 0.6 }] },
+        { "name": "betweenHouses", "at": { "en": "Right between" } },
+        { "name": "mailboxGlow", "at": { "en": "Its windows" } },
+        { "name": "letterOpen", "at": { "en": "The letter" }, "sfx": [{ "at": 0.1, "sound": "paper", "vol": 0.9 }] },
+        { "name": "letterClose", "at": { "en": "In my" }, "sfx": [{ "at": 0.15, "sound": "chime", "vol": 0.7 }] }
+      ]
+    },
+    {
+      "id": "s08",
+      "text": { "en": "It said: don't let him go inside. I turned around. The front door was wide open... and my brother was already walking in!" },
+      "shots": [
+        { "name": "letterWords", "at": { "en": "" } },
+        { "name": "heroTurn", "at": { "en": "I turned" }, "sfx": [{ "at": 0.1, "sound": "whoosh", "vol": 0.5 }] },
+        { "name": "doorWide", "at": { "en": "The front" }, "sfx": [{ "at": 0.05, "sound": "creak", "vol": 0.8 }] },
+        { "name": "kidWalkIn", "at": { "en": "and my" } }
+      ]
+    },
+    {
+      "id": "s08k",
+      "kid": true,
+      "text": { "en": "It looks just like our house!" },
+      "shots": [{ "name": "kidDoorway", "at": { "en": "" } }]
+    },
+    {
+      "id": "s09",
+      "text": { "en": "I ran. Thirteen seconds. I grabbed his hand and pulled him out, just as the door slammed shut. Then the whole house folded into the dark, like a piece of paper. And it was gone." },
+      "shots": [
+        { "name": "heroRun", "at": { "en": "" }, "sfx": [{ "at": 0.1, "sound": "whoosh", "vol": 0.6 }] },
+        { "name": "runClock", "at": { "en": "Thirteen seconds." }, "sfx": [{ "at": 0, "sound": "tick", "vol": 0.55, "repeat": 6, "step": 0.16 }] },
+        { "name": "grabHand", "at": { "en": "I grabbed" } },
+        { "name": "doorSlam", "at": { "en": "just as" }, "sfx": [{ "at": 0.35, "sound": "slam", "vol": 1.0 }] },
+        { "name": "houseFold", "at": { "en": "Then the" }, "sfx": [{ "at": 0.1, "sound": "paper", "vol": 0.8 }, { "at": 0.3, "sound": "whoosh", "vol": 0.8 }, { "at": 0.6, "sound": "boom", "vol": 0.6 }] },
+        { "name": "emptyLot", "at": { "en": "And it" } }
+      ]
+    },
+    {
+      "id": "s10",
+      "text": { "en": "We were safe. We sat there until the sun came up. Then my brother pointed down the street, and whispered..." },
+      "shots": [
+        { "name": "sunrise", "at": { "en": "" } },
+        { "name": "kidPoint", "at": { "en": "Then my" } }
+      ]
+    },
+    {
+      "id": "s10k",
+      "kid": true,
+      "text": { "en": "One hundred and one." },
+      "shots": [{ "name": "twoHouses", "at": { "en": "" }, "sfx": [{ "at": 0.2, "sound": "chime", "vol": 1.0 }, { "at": 0.3, "sound": "rumble_long", "vol": 0.8 }] }]
+    }
+  ],
+  "pulses": [
+    { "shot": "houseAppear", "at": 0, "dur": 6 },
+    { "shot": "neighborKnock", "at": 0, "dur": 7 },
+    { "shot": "kidCount", "at": 0, "dur": 7 },
+    { "shot": "heroTurn", "at": 0, "dur": 9 },
+    { "shot": "twoHouses", "at": 0.3, "dur": 4 }
+  ]
+}

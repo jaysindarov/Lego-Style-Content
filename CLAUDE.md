@@ -7,7 +7,8 @@ the picture, VoiceLab for the voice, ffmpeg for every sound effect. There are no
 stock clips and no AI video. One story can be built in any language VoiceLab has
 (en, uz, ru).
 
-The first story, `stories/green-fog`, is the reference for every new one.
+The first story, `stories/green-fog`, is the reference for every new one. `stories/red-sky`
+(a giant that hunts movement, a lighthouse, a red sky) is the second.
 
 ## Quick start
 
@@ -101,6 +102,9 @@ A shot returns a `Frame` (`src/engine/kit.ts`). The fields:
 | `dusk` 0..1 | Sunset tint, used for endings. |
 | `actors[]` | `{look, anim, at, yaw, mood, t?, scale?, holding?, hidden?}`. Feet are at `at`. `yaw` 0 faces +z. Use `yawTo(from, to)`. |
 | `worm` | The monster: `{hole, yaw, rise, height, bend, strike, mouth, t, turn?}`. Use `wormTip(state)` to find where its head is. |
+| `giants[]` | The tall grinning giant (`src/world/Giant.tsx`, ~38 tall at `scale` 1): `{at, yaw, t, walk?, lean?, crouch?, head?, armR?, elbowR?, grip?, cover?, mouth?, shatter?, y?, scale?}`. `giantHand`, `giantHead`, `giantFace` give exact world points (see `placeFor`/`grabAt` in `stories/red-sky/src/shots.ts`). |
+| `lamp` | The plaza lighthouse (`src/world/Lighthouse.tsx`): `{on, aim?, cable?, lever?, spark?}`. `gallery(yaw, r, dy)` gives balcony points. |
+| `palette` | Storm colours: `"green"` (default) or `"red"`. Also sets the clock box colour. |
 | `cracks[]`, `mounds[]`, `dust[]` | Ground breaking open, something moving under the asphalt, dust clouds. |
 | `cars[]`, `bikes[]` | `Car {color, at, yaw, crush, wheelT}`, `Bike {at, yaw, tilt}`. |
 | `siren` | Sirens spin and flash. |
@@ -126,6 +130,7 @@ for townsfolk.
   its facades at x ±9.
 - `SHOP`: facade at x −9, z 75, with its roof at `SHOP_ROOF_Y`.
 - `BUSSTOP`: at (7, 0, 176), with its roof at y≈4.2.
+- `LIGHTHOUSE`: at (30, 0, −30), balcony floor at `GALLERY_Y` (≈32).
 - `TOWER`: at (−30, 0, −30), 46 tall. The belfry floor is at `TOWER_H − 13.3`, and
   the pillars stand at its corners ±4.4.
 - Suburb road: along x at z = −150, with houses on both sides.

@@ -22,3 +22,8 @@ export const SIRENS: V3[] = [
 ];
 // suburban street for the bike scene: road along x at z = -150
 export const SUBURB_Z = -150;
+
+// the old lighthouse in the plaza's +x/-z corner; GALLERY_Y is the balcony floor
+export const LIGHTHOUSE: V3 = [30, 0, -30];
+export const LH_H = 32;
+export const GALLERY_Y = LH_H + 0.3;

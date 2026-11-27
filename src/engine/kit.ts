@@ -6,6 +6,10 @@ import type { Anim, Look, Mood } from "../world/Avatar";
 import { townLook } from "../world/Avatar";
 import type { V3 } from "../world/layout";
 import type { WormState } from "../world/Worm";
+import type { GiantState } from "../world/Giant";
+import type { LampState } from "../world/Lighthouse";
+import type { Palette } from "../world/Atmosphere";
+import type { MysteryHouseState } from "../world/MysteryHouse";
 
 export type { V3 };
 
@@ -18,8 +22,15 @@ export type ActorSpec = {
   t?: number;
   scale?: number;
   roll?: number;
-  holding?: "bucket" | null;
+  holding?: "bucket" | "letter" | "gear" | null;
   hidden?: boolean;
+  noShadow?: boolean; // an echo: no shadow
+  /** a living shadow: near-black body, glowing eyes, casts nothing */
+  shadow?: boolean;
+  /** tip backwards around the feet: -PI/2 lies flat on the ground behind, 0 stands */
+  tip?: number;
+  /** 0..1 squash into a puddle */
+  melt?: number;
 };
 
 export type Frame = {
@@ -30,7 +41,7 @@ export type Frame = {
   worm?: WormState | null;
   cracks?: { x: number; z: number; size: number; amount: number }[];
   mounds?: { x: number; z: number; yaw: number; amount: number; scale?: number }[];
-  dust?: { x: number; z: number; amount: number; spread?: number; color?: string }[];
+  dust?: { x: number; z: number; amount: number; spread?: number; color?: string; y?: number }[];
   actors?: ActorSpec[];
   cars?: { color: string; at: V3; yaw: number; crush?: number; wheelT?: number; lights?: number }[];
   bikes?: { at: V3; yaw: number; tilt?: number; t?: number }[];
@@ -44,6 +55,20 @@ export type Frame = {
   tint?: string;
   focus?: V3;
   horn?: number;
+  palette?: Palette; // storm colours (default green)
+  /** drawn ground shadows for every actor that casts one: pointing away from `from`, or along yaw `dir` */
+  cast?: { from?: V3; dir?: number; len?: number; opacity?: number };
+  dark?: number; // 0..1 dims sky/ambient light for a darker night
+  balls?: V3[]; // soccer balls (centre points)
+  spots?: { pos: V3; aim: V3; intensity?: number; color?: string; angle?: number }[]; // shadow-casting spot lights (porch lamp, lighthouse beam)
+  giants?: GiantState[];
+  lamp?: LampState; // the lighthouse lamp
+  towerLamp?: number; // 0..1 the giant lamp on the clock tower spire
+  houses?: MysteryHouseState[]; // the extra house(s) that appear at night
+  note?: { text: string; k: number };
+  rewind?: number; // 0..1 tape-rewind look (scanlines, tint, ◀◀)
+  sepia?: number; // 0..1 old-photo grade for flashbacks
+  wall?: { k: number; tallies: number; drawing?: number; word?: number }; // scratched belfry wall: k fades it in, drawing/word 0..1 // a handwritten note card in the upper third (k 0..1 = how far it has slid in)
 };
 
 /** t: seconds since the cut, d: shot length, k: t/d in 0..1 */

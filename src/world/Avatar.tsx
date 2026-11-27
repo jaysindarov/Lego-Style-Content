@@ -7,8 +7,9 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 
 import { faceTex, rng, torsoTex } from "./textures";
+import { shadowFaceTex } from "./textures";
 
-export type Mood = "smile" | "scared" | "shout" | "worried" | "happy";
+export type Mood = "smile" | "scared" | "shout" | "worried" | "happy" | "grin";
 export type Anim =
   | "idle"
   | "walk"
@@ -241,9 +242,19 @@ export const Avatar: React.FC<{
   yaw?: number;
   scale?: number;
   roll?: number;
-  holding?: "bucket" | "phone" | null;
-}> = ({ look, anim, t, mood = "smile", position = [0, 0, 0], yaw = 0, scale = 0.62, roll = 0, holding = null }) => {
+  holding?: "bucket" | "phone" | "letter" | "gear" | null;
+  /** an echo: casts no shadow */
+  noShadow?: boolean;
+  shadow?: boolean;
+  tip?: number;
+  melt?: number;
+}> = ({ look, anim, t, mood = "smile", position = [0, 0, 0], yaw = 0, scale = 0.62, roll = 0, holding = null, noShadow = false, shadow = false, tip = 0, melt = 0 }) => {
+  const cs = !noShadow && !shadow;
   const m = useMemo(() => {
+    if (shadow) {
+      const ink = new THREE.MeshStandardMaterial({ color: "#0b0912", roughness: 1, emissive: "#2a1446", emissiveIntensity: 0.4 });
+      return { skin: ink, face: new THREE.MeshBasicMaterial({ map: shadowFaceTex() }), top: ink, torsoFront: ink, pants: ink, shoes: ink, hair: ink, metal: ink, brass: ink, paper: ink } as Record<string, THREE.Material>;
+    }
     const skin = mat(look.skin);
     const sideTop = mat(look.top);
     return {
@@ -255,19 +266,21 @@ export const Avatar: React.FC<{
       shoes: mat(look.shoes),
       hair: mat(look.hair),
       metal: new THREE.MeshStandardMaterial({ color: "#a9b0b8", metalness: 0.8, roughness: 0.35 }),
-    };
-  }, [look, mood]);
+      brass: new THREE.MeshStandardMaterial({ color: "#e0b04a", metalness: 0.6, roughness: 0.3, emissive: "#ffcc55", emissiveIntensity: 0.25 }),
+      paper: new THREE.MeshStandardMaterial({ color: "#f6f1e4", emissive: "#fff6d8", emissiveIntensity: 0.2 }),
+    } as Record<string, THREE.Material>;
+  }, [look, mood, shadow]);
   const head = useMemo(() => [m.skin, m.skin, m.skin, m.skin, m.face, m.skin], [m]);
   const torso = useMemo(() => [m.top, m.top, m.top, m.top, m.torsoFront, m.top], [m]);
   const p = pose(anim, t);
 
   const arm = (side: 1 | -1, pitch: number, lift: number) => (
     <group position={[side * 1.5, 4, 0]} rotation={[-pitch, 0, side * lift]}>
-      <mesh geometry={limbGeo} material={m.top} position={[0, -1, 0]} castShadow />
-      <mesh geometry={handGeo} material={m.skin} position={[0, -1.75, 0]} castShadow />
+      <mesh geometry={limbGeo} material={m.top} position={[0, -1, 0]} castShadow={cs} />
+      <mesh geometry={handGeo} material={m.skin} position={[0, -1.75, 0]} castShadow={cs} />
       {holding === "bucket" && side === 1 ? (
         <group position={[0, -2.4, 0.2]}>
-          <mesh material={m.metal} castShadow>
+          <mesh material={m.metal} castShadow={cs}>
             <cylinderGeometry args={[0.75, 0.55, 1.1, 14, 1, true]} />
           </mesh>
           <mesh material={m.metal} position={[0, -0.55, 0]} rotation={[-Math.PI / 2, 0, 0]}>
@@ -275,12 +288,29 @@ export const Avatar: React.FC<{
           </mesh>
         </group>
       ) : null}
+      {holding === "gear" && side === 1 ? (
+        <group position={[0, -2.3, 0.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <mesh material={m.brass} castShadow={cs}>
+            <cylinderGeometry args={[0.5, 0.5, 0.2, 14]} />
+          </mesh>
+          {Array.from({ length: 8 }, (_, k) => (
+            <mesh key={k} material={m.brass} rotation={[0, (k / 8) * Math.PI * 2, 0]} position={[0, 0, 0]}>
+              <boxGeometry args={[1.3, 0.2, 0.18]} />
+            </mesh>
+          ))}
+        </group>
+      ) : null}
+      {holding === "letter" && side === 1 ? (
+        <mesh material={m.paper} position={[-0.2, -2.15, 0.75]} rotation={[0.35, 0, 0.1]} castShadow={cs}>
+          <boxGeometry args={[1.3, 0.9, 0.05]} />
+        </mesh>
+      ) : null}
     </group>
   );
   const leg = (side: 1 | -1, pitch: number) => (
     <group position={[side * 0.5, 2, 0]} rotation={[-pitch, 0, 0]}>
-      <mesh geometry={limbGeo} material={m.pants} position={[0, -1, 0]} castShadow />
-      <mesh geometry={shoeGeo} material={m.shoes} position={[0, -1.8, 0.05]} castShadow />
+      <mesh geometry={limbGeo} material={m.pants} position={[0, -1, 0]} castShadow={cs} />
+      <mesh geometry={shoeGeo} material={m.shoes} position={[0, -1.8, 0.05]} castShadow={cs} />
     </group>
   );
 
@@ -289,38 +319,38 @@ export const Avatar: React.FC<{
       case "spiky":
         return (
           <group>
-            <mesh geometry={cube} material={m.hair} position={[0, 0.72, -0.05]} scale={[1.36, 0.36, 1.36]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[0, 0.1, -0.62]} scale={[1.36, 1.1, 0.2]} castShadow />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.72, -0.05]} scale={[1.36, 0.36, 1.36]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.1, -0.62]} scale={[1.36, 1.1, 0.2]} castShadow={cs} />
             {[-0.42, 0, 0.42].map((x, i) => (
-              <mesh key={i} geometry={cube} material={m.hair} position={[x, 0.55, 0.6]} rotation={[0.5, 0, (i - 1) * 0.25]} scale={[0.42, 0.42, 0.3]} castShadow />
+              <mesh key={i} geometry={cube} material={m.hair} position={[x, 0.55, 0.6]} rotation={[0.5, 0, (i - 1) * 0.25]} scale={[0.42, 0.42, 0.3]} castShadow={cs} />
             ))}
             {[-0.45, 0.1, 0.5].map((x, i) => (
-              <mesh key={`s${i}`} geometry={cube} material={m.hair} position={[x, 0.98, -0.1 + i * 0.12]} rotation={[0.3, i, 0.4]} scale={[0.38, 0.38, 0.38]} castShadow />
+              <mesh key={`s${i}`} geometry={cube} material={m.hair} position={[x, 0.98, -0.1 + i * 0.12]} rotation={[0.3, i, 0.4]} scale={[0.38, 0.38, 0.38]} castShadow={cs} />
             ))}
           </group>
         );
       case "short":
         return (
           <group>
-            <mesh geometry={cube} material={m.hair} position={[0, 0.7, -0.03]} scale={[1.34, 0.3, 1.34]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[0, 0.2, -0.6]} scale={[1.34, 0.9, 0.18]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[0, 0.5, 0.6]} scale={[1.3, 0.22, 0.16]} castShadow />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.7, -0.03]} scale={[1.34, 0.3, 1.34]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.2, -0.6]} scale={[1.34, 0.9, 0.18]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.5, 0.6]} scale={[1.3, 0.22, 0.16]} castShadow={cs} />
           </group>
         );
       case "long":
         return (
           <group>
-            <mesh geometry={cube} material={m.hair} position={[0, 0.7, -0.03]} scale={[1.38, 0.32, 1.38]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[0, -0.35, -0.62]} scale={[1.4, 2.2, 0.22]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[0.66, -0.1, 0]} scale={[0.16, 1.6, 1.2]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[-0.66, -0.1, 0]} scale={[0.16, 1.6, 1.2]} castShadow />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.7, -0.03]} scale={[1.38, 0.32, 1.38]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[0, -0.35, -0.62]} scale={[1.4, 2.2, 0.22]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[0.66, -0.1, 0]} scale={[0.16, 1.6, 1.2]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[-0.66, -0.1, 0]} scale={[0.16, 1.6, 1.2]} castShadow={cs} />
           </group>
         );
       case "beanie":
         return (
           <group>
-            <mesh geometry={cube} material={m.hair} position={[0, 0.55, 0]} scale={[1.38, 0.55, 1.38]} castShadow />
-            <mesh geometry={cube} material={m.hair} position={[0, 0.95, 0]} scale={[0.4, 0.3, 0.4]} castShadow />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.55, 0]} scale={[1.38, 0.55, 1.38]} castShadow={cs} />
+            <mesh geometry={cube} material={m.hair} position={[0, 0.95, 0]} scale={[0.4, 0.3, 0.4]} castShadow={cs} />
           </group>
         );
       default:
@@ -329,22 +359,24 @@ export const Avatar: React.FC<{
   };
 
   return (
-    <group position={position} rotation={[0, yaw, roll]} scale={scale}>
+    <group position={position} rotation={[0, yaw, 0]}>
+    <group rotation={[tip, 0, roll]} scale={[scale * (1 + melt * 0.7), scale * Math.max(0.03, 1 - melt), scale * (1 + melt * 0.7)]}>
       <group position={[0, p.bob + p.hipY, 0]} rotation={[p.lean, 0, 0]}>
         {leg(-1, p.ll)}
         {leg(1, p.rl)}
-        <mesh material={torso} position={[0, 3, 0]} castShadow>
+        <mesh material={torso} position={[0, 3, 0]} castShadow={cs}>
           <boxGeometry args={[2, 2, 1]} />
         </mesh>
         {arm(-1, p.la, p.laz)}
         {arm(1, p.ra, p.raz)}
         <group position={[0, 4.62, 0]} rotation={[-p.head, p.headYaw, 0]}>
-          <mesh material={head} castShadow>
+          <mesh material={head} castShadow={cs}>
             <boxGeometry args={[1.25, 1.25, 1.25]} />
           </mesh>
           {hair()}
         </group>
       </group>
+    </group>
     </group>
   );
 };

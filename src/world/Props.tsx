@@ -11,12 +11,13 @@ const EN = LANG === "en";
 const std = (color: string, extra: THREE.MeshStandardMaterialParameters = {}) =>
   new THREE.MeshStandardMaterial({ color, roughness: 0.6, ...extra });
 
-export const Car: React.FC<{ color: string; position: [number, number, number]; yaw: number; crush?: number; wheelT?: number }> = ({
+export const Car: React.FC<{ color: string; position: [number, number, number]; yaw: number; crush?: number; wheelT?: number; lights?: number }> = ({
   color,
   position,
   yaw,
   crush = 0,
   wheelT = 0,
+  lights = 0,
 }) => {
   const m = useMemo(
     () => ({
@@ -25,6 +26,7 @@ export const Car: React.FC<{ color: string; position: [number, number, number]; 
       tire: std("#1b1b1b"),
       rim: std("#d0d0d0", { metalness: 0.7 }),
       light: new THREE.MeshStandardMaterial({ color: "#fffbe0", emissive: "#fff3b0", emissiveIntensity: 1 }),
+      beam: new THREE.MeshBasicMaterial({ color: "#fff4c8", transparent: true, opacity: 0.2, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, fog: false }),
       tail: new THREE.MeshStandardMaterial({ color: "#ff3030", emissive: "#ff2020", emissiveIntensity: 0.8 }),
     }),
     [color],
@@ -32,6 +34,15 @@ export const Car: React.FC<{ color: string; position: [number, number, number]; 
   const bodyGeo = useMemo(() => new RoundedBoxGeometry(2.6, 1.1, 5.4, 3, 0.3), []);
   const cabGeo = useMemo(() => new RoundedBoxGeometry(2.3, 1.0, 2.8, 3, 0.25), []);
   const sq = 1 - crush * 0.7;
+  // lights >= 2: full beams (two cones and a spot light) for night-drive shots
+  const beams = lights >= 2 ? Math.min(1, lights - 1) : 0;
+  m.light.emissiveIntensity = 1 + beams * 4;
+  m.beam.opacity = 0.16 * beams;
+  const target = useMemo(() => {
+    const o = new THREE.Object3D();
+    o.position.set(0, 1, 40);
+    return o;
+  }, []);
   return (
     <group position={position} rotation={[crush * 0.25, yaw, crush * 0.15]} scale={[1 + crush * 0.25, sq, 1]}>
       <mesh geometry={bodyGeo} material={m.body} position={[0, 1.05, 0]} castShadow receiveShadow />
@@ -62,8 +73,19 @@ export const Car: React.FC<{ color: string; position: [number, number, number]; 
           <mesh material={m.tail} position={[x, 1.25, -2.71]}>
             <boxGeometry args={[0.5, 0.25, 0.05]} />
           </mesh>
+          {beams > 0 ? (
+            <mesh material={m.beam} position={[x, 1.25, 2.75 + 30]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={20}>
+              <coneGeometry args={[7, 60, 20, 1, true]} />
+            </mesh>
+          ) : null}
         </React.Fragment>
       ))}
+      {beams > 0 ? (
+        <>
+          <primitive object={target} />
+          <spotLight position={[0, 1.3, 2.8]} target={target} color="#fff2c8" intensity={2500 * beams} distance={120} angle={0.4} penumbra={0.4} decay={1} />
+        </>
+      ) : null}
     </group>
   );
 };
@@ -275,6 +297,13 @@ export const ClockTower: React.FC<{ bellSwing: number; gearIn: number; lever: nu
       <mesh material={m.brick} position={[0, baseH / 2, 0]} castShadow receiveShadow>
         <boxGeometry args={[9, baseH, 9]} />
       </mesh>
+      {/* little wooden door at the foot of the tower, on the plaza side (+z) */}
+      <mesh material={m.wood} position={[0, 1.9, 4.52]} castShadow>
+        <boxGeometry args={[2.2, 3.8, 0.12]} />
+      </mesh>
+      <mesh material={m.stone} position={[0, 3.95, 4.55]}>
+        <boxGeometry args={[2.8, 0.4, 0.15]} />
+      </mesh>
       <mesh material={m.stone} position={[0, baseH + 0.3, 0]} castShadow>
         <boxGeometry args={[10.4, 0.8, 10.4]} />
       </mesh>
@@ -352,6 +381,45 @@ export const ClockTower: React.FC<{ bellSwing: number; gearIn: number; lever: nu
         </group>
       </group>
       {glow > 0 ? <pointLight color="#ffd27a" intensity={glow * 150} distance={120} position={[0, baseH + 6, 0]} /> : null}
+    </group>
+  );
+};
+
+/** The giant lamp on the clock tower's spire: a glass globe on an iron cage; `on` 0..1. */
+export const TowerLamp: React.FC<{ on: number; t: number }> = ({ on, t }) => {
+  const m = useMemo(
+    () => ({
+      iron: new THREE.MeshStandardMaterial({ color: "#2b2b33", metalness: 0.6, roughness: 0.4 }),
+      glass: new THREE.MeshStandardMaterial({ color: "#fff6d0", emissive: "#ffd46a", emissiveIntensity: 0, roughness: 0.2 }),
+      halo: new THREE.MeshBasicMaterial({ color: "#ffe9a0", transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending }),
+    }),
+    [],
+  );
+  m.glass.emissiveIntensity = 0.1 + on * 4;
+  m.glass.color.set(on > 0.05 ? "#fff6d0" : "#77715f");
+  m.halo.opacity = on * 0.22;
+  const [x, , z] = TOWER;
+  const y = TOWER_H + 3.8;
+  return (
+    <group position={[x, y, z]}>
+      <mesh material={m.iron} position={[0, -1.8, 0]}>
+        <cylinderGeometry args={[0.4, 0.8, 2.4, 8]} />
+      </mesh>
+      <mesh material={m.glass}>
+        <sphereGeometry args={[2.2, 24, 16]} />
+      </mesh>
+      {[0, 1, 2, 3].map((k) => (
+        <mesh key={k} material={m.iron} rotation={[0, (k * Math.PI) / 4, 0]}>
+          <torusGeometry args={[2.25, 0.12, 6, 24]} />
+        </mesh>
+      ))}
+      <mesh material={m.iron} position={[0, 2.4, 0]}>
+        <coneGeometry args={[1.2, 1.2, 8]} />
+      </mesh>
+      <mesh material={m.halo} scale={2.6 + on * 2.4}>
+        <sphereGeometry args={[1, 20, 14]} />
+      </mesh>
+      {on > 0 ? <pointLight color="#ffdc8a" intensity={on * 4000} distance={300} decay={1.5} /> : null}
     </group>
   );
 };

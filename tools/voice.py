@@ -55,11 +55,13 @@ def display(w: str) -> str:
     return re.sub(r"^[^\w'ʻʼ]+|[^\w'ʻʼ!?]+$", "", w.lower())
 
 
-def trim(src: Path, dst: Path, rate: int, pitch: float | None) -> None:
+def trim(src: Path, dst: Path, rate: int, pitch: float | None, tempo: float = 1.0) -> None:
     chain = (
         "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.03,"
         "areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse"
     )
+    if tempo != 1.0:
+        chain += f",atempo={tempo:.4f}"
     if pitch:
         chain += f",asetrate={rate}*{pitch},aresample={rate},atempo={1 / pitch:.4f}"
     ff("-i", str(src), "-af", chain, "-ar", "48000", "-ac", "1", str(dst))
@@ -70,10 +72,33 @@ def sample_rate(p: Path) -> int:
     return int(out.stdout.strip())
 
 
-def align(clip: Path, text: str, lang: str) -> list[tuple[str, float, float]]:
+def lead_silence(p: Path) -> float:
+    """Seconds of silence trim() will cut from the start (to shift external word times)."""
+    out = subprocess.run(["ffmpeg", "-i", str(p), "-af", "silencedetect=n=-45dB:d=0.03", "-f", "null", "-"], capture_output=True, text=True).stderr
+    m = re.search(r"silence_start: (-?[\d.]+)\s.*?silence_end: ([\d.]+)", out, re.S)
+    if m and float(m.group(1)) <= 0.01:
+        return max(0.0, float(m.group(2)) - 0.03)
+    return 0.0
+
+
+def estimate(text: str, total: float) -> list[dict]:
+    """No transcript available: spread the words over the clip by length, with pauses at punctuation."""
+    words = text.split()
+    w = [0.12 + 0.045 * len(re.sub(r"\W", "", x)) for x in words]
+    pause = [0.28 if re.search(r"[.!?…]$", x) else 0.12 if x.endswith(",") else 0.0 for x in words]
+    scale = total / (sum(w) + sum(pause[:-1]) or 1)
+    out, t = [], 0.0
+    for x, a, b in zip(words, w, pause):
+        out.append({"word": x, "start": t, "end": t + a * scale * 0.92})
+        t += (a + b) * scale
+    return out
+
+
+def align(clip: Path, text: str, lang: str, heard: list[dict] | None = None) -> list[tuple[str, float, float]]:
     words = text.split()
     total = duration(clip)
-    heard = voicelab.transcribe(clip, lang)
+    if heard is None:
+        heard = voicelab.transcribe(clip, lang)
     times: list[list[float] | None] = [None] * len(words)
     m = difflib.SequenceMatcher(a=[key(w) for w in words], b=[key(h["word"]) for h in heard], autojunk=False)
     for blk in m.get_matching_blocks():
@@ -123,6 +148,8 @@ def main() -> None:
     slug, lang = sys.argv[1], sys.argv[2]
     story = json.loads((ROOT / "stories" / slug / "story.json").read_text(encoding="utf-8"))
     voice = story["voices"][lang]
+    gap = story.get("gap", GAP)  # silence between scenes (longer for long-form pacing)
+    tail = story.get("tail", TAIL)
     out = ROOT / "stories" / slug / "build" / lang
     (out / "scenes").mkdir(parents=True, exist_ok=True)
 
@@ -136,16 +163,34 @@ def main() -> None:
         if lang == "uz":
             text = uz_apostrophes(text)
         kid = bool(scene.get("kid"))
-        wav = voicelab.synthesize(
-            text,
-            voice["kid"] if kid else voice["narrator"],
-            lang,
-            voice.get("kidSpeed", 1.1) if kid else voice.get("speed", 1.0),
-        )
+        heard = None
+        if voice.get("engine", "voicelab") == "files":
+            # clips made elsewhere (e.g. ElevenLabs): stories/<slug>/voice/<lang>/<id>.(mp3|wav),
+            # with optional word timings in <id>.words.json ([{word, start, end}] on the raw clip)
+            vdir = ROOT / "stories" / slug / "voice" / lang
+            src = next((p for p in (vdir / f"{scene['id']}.mp3", vdir / f"{scene['id']}.wav") if p.exists()), None)
+            if src is None:
+                raise SystemExit(f"{scene['id']}: no clip in {vdir}")
+            wav = src
+            wj = vdir / f"{scene['id']}.words.json"
+            if wj.exists():
+                cut = lead_silence(src)
+                tp = voice.get("tempo", 1.0)  # trim() speeds the clip up after the cut, so word times shrink with it
+                heard = [{**h, "start": max(0.0, h["start"] - cut) / tp, "end": max(0.0, h["end"] - cut) / tp} for h in json.loads(wj.read_text())]
+        else:
+            wav = voicelab.synthesize(
+                text,
+                voice["kid"] if kid else voice["narrator"],
+                lang,
+                voice.get("kidSpeed", 1.1) if kid else voice.get("speed", 1.0),
+            )
         clip = out / "scenes" / f"{scene['id']}.wav"
-        trim(wav, clip, sample_rate(wav), voice.get("kidPitch", 1.35) if kid else None)
+        trim(wav, clip, sample_rate(wav), voice.get("kidPitch", 1.35) if kid else None, voice.get("tempo", 1.0))
         dur = duration(clip)
-        for w, s, e in align(clip, text, lang):
+        if heard is None and voice.get("engine") == "files":
+            print(f"  {scene['id']}: no word timings, estimating them")
+            heard = estimate(text, dur)
+        for w, s, e in align(clip, text, lang, heard):
             timeline["words"].append({"w": display(w), "start": round(cursor + s, 3), "end": round(cursor + e, 3), "scene": scene["id"], "kid": kid})
         words, sched, prev = text.split(), [], 0
         for shot in scene["shots"]:
@@ -156,15 +201,15 @@ def main() -> None:
         timeline["scenes"].append({"id": scene["id"], "start": round(cursor, 3), "end": round(cursor + dur, 3), "kid": kid})
         print(f"  {scene['id']}: {dur:.2f}s")
         clips.append(clip)
-        cursor += dur + GAP
-    timeline["duration"] = round(cursor - GAP + TAIL, 3)
+        cursor += dur + gap
+    timeline["duration"] = round(cursor - gap + tail, 3)
 
-    gap, lead = out / "gap.wav", out / "lead.wav"
-    ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(GAP), str(gap))
+    gap_wav, lead = out / "gap.wav", out / "lead.wav"
+    ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(gap), str(gap_wav))
     ff("-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(LEAD), str(lead))
     seq = [lead]
     for i, c in enumerate(clips):
-        seq += [c] + ([gap] if i < len(clips) - 1 else [])
+        seq += [c] + ([gap_wav] if i < len(clips) - 1 else [])
     listing = out / "concat.txt"
     listing.write_text("".join(f"file '{p}'\n" for p in seq))
     ff("-f", "concat", "-safe", "0", "-i", str(listing), "-ar", "48000", "-ac", "1", str(out / "narration.wav"))
