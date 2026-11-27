@@ -9,11 +9,12 @@ import { useThree } from "@react-three/fiber";
 import { puffTex } from "./textures";
 
 /** Storm colours per story: green fog (default) or the red sky. */
-export type Palette = "green" | "red" | "night";
+export type Palette = "green" | "red" | "night" | "violet";
 export const PALETTES = {
   green: { lo: [0.02, 0.06, 0.02], hi: [0.14, 0.42, 0.1], glow: [0.55, 1.0, 0.25], hor: [0.45, 0.85, 0.25], fog: "#7dff4a", far: "#3d7a2e", hemiSky: "#5aa04a", hemiGround: "#35552a", sun: "#b8ff9a", amb: "#b5ffa0", accent: "#9dff4a" },
   night: { lo: [0.01, 0.015, 0.05], hi: [0.07, 0.1, 0.27], glow: [0.6, 0.5, 1.0], hor: [0.1, 0.13, 0.32], fog: "#8f9cff", far: "#151a36", hemiSky: "#4a5ab0", hemiGround: "#1e2448", sun: "#9aa6ff", amb: "#a8b4ff", accent: "#9d8cff" },
   red: { lo: [0.08, 0.01, 0.02], hi: [0.52, 0.06, 0.07], glow: [1.0, 0.45, 0.25], hor: [0.9, 0.25, 0.16], fog: "#ff5a48", far: "#7a2420", hemiSky: "#c05050", hemiGround: "#552525", sun: "#ffb09a", amb: "#ffb3a8", accent: "#ff4a3a" },
+  violet: { lo: [0.04, 0.02, 0.07], hi: [0.34, 0.12, 0.46], glow: [1.0, 0.45, 0.95], hor: [0.95, 0.38, 0.42], fog: "#b45cff", far: "#3a1f52", hemiSky: "#7a4aa8", hemiGround: "#3a2a55", sun: "#ffb08a", amb: "#d9b5ff", accent: "#c78cff" },
 } as const;
 
 const NOISE = /* glsl */ `

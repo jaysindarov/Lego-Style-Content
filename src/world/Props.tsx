@@ -384,3 +384,42 @@ export const ClockTower: React.FC<{ bellSwing: number; gearIn: number; lever: nu
     </group>
   );
 };
+
+/** The giant lamp on the clock tower's spire: a glass globe on an iron cage; `on` 0..1. */
+export const TowerLamp: React.FC<{ on: number; t: number }> = ({ on, t }) => {
+  const m = useMemo(
+    () => ({
+      iron: new THREE.MeshStandardMaterial({ color: "#2b2b33", metalness: 0.6, roughness: 0.4 }),
+      glass: new THREE.MeshStandardMaterial({ color: "#fff6d0", emissive: "#ffd46a", emissiveIntensity: 0, roughness: 0.2 }),
+      halo: new THREE.MeshBasicMaterial({ color: "#ffe9a0", transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending }),
+    }),
+    [],
+  );
+  m.glass.emissiveIntensity = 0.1 + on * 4;
+  m.glass.color.set(on > 0.05 ? "#fff6d0" : "#77715f");
+  m.halo.opacity = on * 0.22;
+  const [x, , z] = TOWER;
+  const y = TOWER_H + 3.8;
+  return (
+    <group position={[x, y, z]}>
+      <mesh material={m.iron} position={[0, -1.8, 0]}>
+        <cylinderGeometry args={[0.4, 0.8, 2.4, 8]} />
+      </mesh>
+      <mesh material={m.glass}>
+        <sphereGeometry args={[2.2, 24, 16]} />
+      </mesh>
+      {[0, 1, 2, 3].map((k) => (
+        <mesh key={k} material={m.iron} rotation={[0, (k * Math.PI) / 4, 0]}>
+          <torusGeometry args={[2.25, 0.12, 6, 24]} />
+        </mesh>
+      ))}
+      <mesh material={m.iron} position={[0, 2.4, 0]}>
+        <coneGeometry args={[1.2, 1.2, 8]} />
+      </mesh>
+      <mesh material={m.halo} scale={2.6 + on * 2.4}>
+        <sphereGeometry args={[1, 20, 14]} />
+      </mesh>
+      {on > 0 ? <pointLight color="#ffdc8a" intensity={on * 4000} distance={300} decay={1.5} /> : null}
+    </group>
+  );
+};

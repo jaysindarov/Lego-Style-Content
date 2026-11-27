@@ -7,6 +7,7 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 
 import { faceTex, rng, torsoTex } from "./textures";
+import { shadowFaceTex } from "./textures";
 
 export type Mood = "smile" | "scared" | "shout" | "worried" | "happy" | "grin";
 export type Anim =
@@ -244,9 +245,16 @@ export const Avatar: React.FC<{
   holding?: "bucket" | "phone" | "letter" | "gear" | null;
   /** an echo: casts no shadow */
   noShadow?: boolean;
-}> = ({ look, anim, t, mood = "smile", position = [0, 0, 0], yaw = 0, scale = 0.62, roll = 0, holding = null, noShadow = false }) => {
-  const cs = !noShadow;
+  shadow?: boolean;
+  tip?: number;
+  melt?: number;
+}> = ({ look, anim, t, mood = "smile", position = [0, 0, 0], yaw = 0, scale = 0.62, roll = 0, holding = null, noShadow = false, shadow = false, tip = 0, melt = 0 }) => {
+  const cs = !noShadow && !shadow;
   const m = useMemo(() => {
+    if (shadow) {
+      const ink = new THREE.MeshStandardMaterial({ color: "#0b0912", roughness: 1, emissive: "#2a1446", emissiveIntensity: 0.4 });
+      return { skin: ink, face: new THREE.MeshBasicMaterial({ map: shadowFaceTex() }), top: ink, torsoFront: ink, pants: ink, shoes: ink, hair: ink, metal: ink, brass: ink, paper: ink } as Record<string, THREE.Material>;
+    }
     const skin = mat(look.skin);
     const sideTop = mat(look.top);
     return {
@@ -260,8 +268,8 @@ export const Avatar: React.FC<{
       metal: new THREE.MeshStandardMaterial({ color: "#a9b0b8", metalness: 0.8, roughness: 0.35 }),
       brass: new THREE.MeshStandardMaterial({ color: "#e0b04a", metalness: 0.6, roughness: 0.3, emissive: "#ffcc55", emissiveIntensity: 0.25 }),
       paper: new THREE.MeshStandardMaterial({ color: "#f6f1e4", emissive: "#fff6d8", emissiveIntensity: 0.2 }),
-    };
-  }, [look, mood]);
+    } as Record<string, THREE.Material>;
+  }, [look, mood, shadow]);
   const head = useMemo(() => [m.skin, m.skin, m.skin, m.skin, m.face, m.skin], [m]);
   const torso = useMemo(() => [m.top, m.top, m.top, m.top, m.torsoFront, m.top], [m]);
   const p = pose(anim, t);
@@ -351,7 +359,8 @@ export const Avatar: React.FC<{
   };
 
   return (
-    <group position={position} rotation={[0, yaw, roll]} scale={scale}>
+    <group position={position} rotation={[0, yaw, 0]}>
+    <group rotation={[tip, 0, roll]} scale={[scale * (1 + melt * 0.7), scale * Math.max(0.03, 1 - melt), scale * (1 + melt * 0.7)]}>
       <group position={[0, p.bob + p.hipY, 0]} rotation={[p.lean, 0, 0]}>
         {leg(-1, p.ll)}
         {leg(1, p.rl)}
@@ -367,6 +376,7 @@ export const Avatar: React.FC<{
           {hair()}
         </group>
       </group>
+    </group>
     </group>
   );
 };

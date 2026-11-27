@@ -1,0 +1,724 @@
+{
+ "slug": "never-answer-your-shadow",
+ "title": {
+  "en": "In Our Town, Never Answer Your Shadow"
+ },
+ "voices": {
+  "en": {
+   "engine": "files",
+   "narrator": "elevenlabs:FLpz0UhC9a7CIfUSBo6S",
+   "kid": "elevenlabs:FLpz0UhC9a7CIfUSBo6S",
+   "kidPitch": 1.3
+  }
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "text": {
+    "en": "In our town, when the sun goes down, the shadows get long. And if your shadow ever whispers your name, never answer it. Because if you do, it drags you into the ground."
+   },
+   "shots": [
+    {
+     "name": "sunsetTown",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "whoosh",
+       "vol": 0.35
+      }
+     ]
+    },
+    {
+     "name": "longShadows",
+     "at": {
+      "en": "the shadows"
+     }
+    },
+    {
+     "name": "shadowWhisper",
+     "at": {
+      "en": "And if"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "whisper",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "shadowFace",
+     "at": {
+      "en": "never answer"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "boom",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "dragDown",
+     "at": {
+      "en": "Because if"
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "rumble",
+       "vol": 0.6
+      },
+      {
+       "at": 0.5,
+       "sound": "scream",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "text": {
+    "en": "It started ten years ago, the night they switched on a giant lamp on top of the clock tower, so our town would never be dark again. That evening, every shadow in the plaza peeled off the ground and stood up. Three people answered. They were never seen again."
+   },
+   "shots": [
+    {
+     "name": "lampOn",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.35,
+       "sound": "clunk",
+       "vol": 0.8
+      },
+      {
+       "at": 0.4,
+       "sound": "buzz",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "plazaRise",
+     "at": {
+      "en": "That evening"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "rumble",
+       "vol": 0.6
+      },
+      {
+       "at": 0.3,
+       "sound": "whisper",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "threeAnswer",
+     "at": {
+      "en": "Three people"
+     },
+     "sfx": [
+      {
+       "at": 0.35,
+       "sound": "scream",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "gone",
+     "at": {
+      "en": "They were"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "text": {
+    "en": "Now it happens every single evening. The lamp turns on at sunset, and for sixty seconds, the whole town stares at the ground and doesn't say a word. Then the lamp clicks off, and the shadows are gone."
+   },
+   "shots": [
+    {
+     "name": "lampSunset",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.3,
+       "sound": "clunk",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "townSilent",
+     "at": {
+      "en": "and for"
+     }
+    },
+    {
+     "name": "countdown",
+     "at": {
+      "en": "doesn't say"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45,
+       "repeat": 6,
+       "step": 0.16
+      }
+     ]
+    },
+    {
+     "name": "lampClick",
+     "at": {
+      "en": "Then the"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "clunk",
+       "vol": 0.8
+      },
+      {
+       "at": 0.35,
+       "sound": "hiss",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "text": {
+    "en": "Last spring, a girl was crossing the plaza when she heard her mom's voice behind her. She turned around and said, Mom? Just one word. Her own shadow grabbed her ankle and pulled her into the ground."
+   },
+   "shots": [
+    {
+     "name": "girlWalk",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "girlHears",
+     "at": {
+      "en": "when she"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "whisper",
+       "vol": 0.8
+      }
+     ]
+    },
+    {
+     "name": "girlTurns",
+     "at": {
+      "en": "She turned"
+     }
+    },
+    {
+     "name": "girlGrabbed",
+     "at": {
+      "en": "Her own"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "boom",
+       "vol": 0.7
+      },
+      {
+       "at": 0.15,
+       "sound": "scream",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "girlGone",
+     "at": {
+      "en": "and pulled"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "rumble",
+       "vol": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "text": {
+    "en": "Only one man ever survived. His shadow whispered in his ear for the whole sixty seconds, but he kept his mouth shut. When the lamp clicked off, it melted back into the ground."
+   },
+   "shots": [
+    {
+     "name": "manStreet",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "manWhisper",
+     "at": {
+      "en": "His shadow"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "whisper",
+       "vol": 0.8
+      },
+      {
+       "at": 0.5,
+       "sound": "whisper",
+       "vol": 0.7
+      }
+     ]
+    },
+    {
+     "name": "manShut",
+     "at": {
+      "en": "but he"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.4,
+       "repeat": 4,
+       "step": 0.25
+      }
+     ]
+    },
+    {
+     "name": "manSafe",
+     "at": {
+      "en": "When the"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "clunk",
+       "vol": 0.7
+      },
+      {
+       "at": 0.2,
+       "sound": "hiss",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "text": {
+    "en": "But yesterday was different. My little brother and I were walking home when the lamp came on. We stared at our shoes. Sixty seconds went by. Then five minutes. And the lamp didn't turn off."
+   },
+   "shots": [
+    {
+     "name": "brothersWalk",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "lampOnB",
+     "at": {
+      "en": "when the"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "clunk",
+       "vol": 0.8
+      },
+      {
+       "at": 0.2,
+       "sound": "buzz",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "stareShoes",
+     "at": {
+      "en": "We stared"
+     }
+    },
+    {
+     "name": "clockWait",
+     "at": {
+      "en": "Sixty seconds"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "tick",
+       "vol": 0.45,
+       "repeat": 8,
+       "step": 0.125
+      }
+     ]
+    },
+    {
+     "name": "lampStuck",
+     "at": {
+      "en": "And the"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "rumble_long",
+       "vol": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "text": {
+    "en": "Then the lamp flickered, and for one blink, every shadow in the street disappeared. Of course! No light, no shadows! If I could switch that lamp off, they would all be gone."
+   },
+   "shots": [
+    {
+     "name": "flicker",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "spark",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "shadowsBlink",
+     "at": {
+      "en": "and for"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "hiss",
+       "vol": 0.6
+      }
+     ]
+    },
+    {
+     "name": "realize",
+     "at": {
+      "en": "Of course"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "boom",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "towerLook",
+     "at": {
+      "en": "If I"
+     },
+     "sfx": [
+      {
+       "at": 0.1,
+       "sound": "whoosh",
+       "vol": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "text": {
+    "en": "We ran all the way to the clock tower and climbed to the top. But the switch was jammed! While I was yanking on it, the shadows started crawling up the walls. My brother leaned out the window and yelled at them."
+   },
+   "shots": [
+    {
+     "name": "runTower",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "whoosh",
+       "vol": 0.4
+      }
+     ]
+    },
+    {
+     "name": "climbTop",
+     "at": {
+      "en": "and climbed"
+     }
+    },
+    {
+     "name": "jammed",
+     "at": {
+      "en": "But the"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "clank",
+       "vol": 0.6,
+       "repeat": 3,
+       "step": 0.25
+      }
+     ]
+    },
+    {
+     "name": "shadowsClimb",
+     "at": {
+      "en": "the shadows"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "whisper",
+       "vol": 0.8
+      },
+      {
+       "at": 0.2,
+       "sound": "rumble",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "brotherWindow",
+     "at": {
+      "en": "My brother"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "text": {
+    "en": "Hey, you! Over here! Bet you can't catch me!"
+   },
+   "shots": [
+    {
+     "name": "kidShout",
+     "at": {
+      "en": ""
+     }
+    }
+   ],
+   "kid": true
+  },
+  {
+   "id": "s10",
+   "text": {
+    "en": "Every shadow turned toward him!"
+   },
+   "shots": [
+    {
+     "name": "shadowsTurn",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "boom",
+       "vol": 0.7
+      },
+      {
+       "at": 0.1,
+       "sound": "whisper",
+       "vol": 0.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "text": {
+    "en": "I kicked the switch with all my strength, and it snapped down! The lamp went dark! And in the darkness, every shadow in town just... vanished. For the first time in ten years, our town was dark."
+   },
+   "shots": [
+    {
+     "name": "kickSwitch",
+     "at": {
+      "en": ""
+     },
+     "sfx": [
+      {
+       "at": 0.6,
+       "sound": "clunk",
+       "vol": 1.0
+      }
+     ]
+    },
+    {
+     "name": "lampDark",
+     "at": {
+      "en": "The lamp"
+     },
+     "sfx": [
+      {
+       "at": 0,
+       "sound": "boom",
+       "vol": 0.8
+      },
+      {
+       "at": 0,
+       "sound": "spark",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "vanish",
+     "at": {
+      "en": "And in"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "hiss",
+       "vol": 0.6,
+       "repeat": 3,
+       "step": 0.25
+      }
+     ]
+    },
+    {
+     "name": "darkTown",
+     "at": {
+      "en": "For the"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "text": {
+    "en": "We walked home under the stars. Then Dad switched on the porch light. My brother waved at me. I waved back. But my shadow didn't."
+   },
+   "shots": [
+    {
+     "name": "walkHome",
+     "at": {
+      "en": ""
+     }
+    },
+    {
+     "name": "porchLight",
+     "at": {
+      "en": "Then Dad"
+     },
+     "sfx": [
+      {
+       "at": 0.2,
+       "sound": "clunk",
+       "vol": 0.5
+      }
+     ]
+    },
+    {
+     "name": "brotherWave",
+     "at": {
+      "en": "My brother"
+     }
+    },
+    {
+     "name": "myShadow",
+     "at": {
+      "en": "But my"
+     },
+     "sfx": [
+      {
+       "at": 0.35,
+       "sound": "boom",
+       "vol": 0.7
+      },
+      {
+       "at": 0.4,
+       "sound": "whisper",
+       "vol": 0.8
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "music": [
+  {
+   "track": "mystery",
+   "from": "s01",
+   "vol": 0.28
+  },
+  {
+   "track": "tension",
+   "from": "s06",
+   "vol": 0.3
+  }
+ ],
+ "pulses": [
+  {
+   "shot": "girlHears",
+   "at": 0,
+   "dur": 6
+  },
+  {
+   "shot": "clockWait",
+   "at": 0,
+   "dur": 5
+  },
+  {
+   "shot": "shadowsClimb",
+   "at": 0,
+   "dur": 7
+  },
+  {
+   "shot": "myShadow",
+   "at": 0,
+   "dur": 3
+  }
+ ]
+}

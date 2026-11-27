@@ -13,6 +13,7 @@ Outputs land in stories/<slug>/out/ and stories/<slug>/build/<lang>/.
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -21,6 +22,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 GEN = ROOT / "src" / "generated"
+GL = os.environ.get("REMOTION_GL", "angle")  # "swangle" on a server without a GPU
+CONCURRENCY = os.environ.get("REMOTION_CONCURRENCY", "6")
+TIMEOUT = os.environ.get("REMOTION_TIMEOUT", "60000")  # ms per frame; software GL needs minutes for the first one
 
 
 def run(*cmd: str, cwd: Path = ROOT, quiet: bool = False) -> None:
@@ -70,7 +74,7 @@ def cuts(tl: dict) -> list[tuple[str, float, float]]:
 
 
 def remotion(*args: str) -> None:
-    run("npx", "remotion", *args, "--gl=angle", "--bundle-cache=false", "--log=error")
+    run("npx", "remotion", *args, f"--gl={GL}", f"--timeout={TIMEOUT}", "--bundle-cache=false", "--log=error")
 
 
 def voice(slug: str, lang: str) -> None:
@@ -113,7 +117,7 @@ def video(slug: str, lang: str) -> None:
     print(f"sound {slug}/{lang}")
     run(sys.executable, str(TOOLS / "sfx.py"), slug, lang)
     print(f"render {slug}/{lang} ({tl['duration']:.0f}s, takes a few minutes)")
-    remotion("render", "Story", str(build / "picture.mp4"), "--concurrency=6")
+    remotion("render", "Story", str(build / "picture.mp4"), f"--concurrency={CONCURRENCY}")
     final = out / f"{slug}-{lang}.mp4"
     run("ffmpeg", "-y", "-loglevel", "error", "-i", str(build / "picture.mp4"), "-i", str(build / "mix.wav"), "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(final))
     small = out / f"{slug}-{lang}-720p.mp4"

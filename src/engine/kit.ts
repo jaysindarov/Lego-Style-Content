@@ -25,6 +25,12 @@ export type ActorSpec = {
   holding?: "bucket" | "letter" | "gear" | null;
   hidden?: boolean;
   noShadow?: boolean; // an echo: no shadow
+  /** a living shadow: near-black body, glowing eyes, casts nothing */
+  shadow?: boolean;
+  /** tip backwards around the feet: -PI/2 lies flat on the ground behind, 0 stands */
+  tip?: number;
+  /** 0..1 squash into a puddle */
+  melt?: number;
 };
 
 export type Frame = {
@@ -57,6 +63,7 @@ export type Frame = {
   spots?: { pos: V3; aim: V3; intensity?: number; color?: string; angle?: number }[]; // shadow-casting spot lights (porch lamp, lighthouse beam)
   giants?: GiantState[];
   lamp?: LampState; // the lighthouse lamp
+  towerLamp?: number; // 0..1 the giant lamp on the clock tower spire
   houses?: MysteryHouseState[]; // the extra house(s) that appear at night
   note?: { text: string; k: number };
   rewind?: number; // 0..1 tape-rewind look (scanlines, tint, ◀◀)

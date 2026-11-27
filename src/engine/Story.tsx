@@ -10,7 +10,7 @@ import { clamp01, type Frame } from "./kit";
 import { Avatar } from "../world/Avatar";
 import { City } from "../world/City";
 import { Crack, Worm } from "../world/Worm";
-import { BusStop, Bike, Benches, Car, ClockTower, Fountain, ShopRoof, ShopSign, SirenPole } from "../world/Props";
+import { BusStop, Bike, Benches, Car, ClockTower, Fountain, ShopRoof, ShopSign, SirenPole, TowerLamp } from "../world/Props";
 import { Dust, GroundFog, Lights, Mound, PALETTES, Sky, Wave } from "../world/Atmosphere";
 import { Giant } from "../world/Giant";
 import { Lighthouse } from "../world/Lighthouse";
@@ -212,12 +212,12 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
       ))}
       {(f.actors ?? []).map((a, i) =>
         a.hidden ? null : (
-          <Avatar key={i} look={a.look} anim={a.anim} t={a.t ?? lt} mood={a.mood} position={a.at} yaw={a.yaw} scale={a.scale} roll={a.roll} holding={a.holding} noShadow={a.noShadow} />
+          <Avatar key={i} look={a.look} anim={a.anim} t={a.t ?? lt} mood={a.mood} position={a.at} yaw={a.yaw} scale={a.scale} roll={a.roll} holding={a.holding} noShadow={a.noShadow} shadow={a.shadow} tip={a.tip} melt={a.melt} />
         ),
       )}
       {f.cast
         ? (f.actors ?? []).map((a, i) => {
-            if (a.hidden || a.noShadow || a.anim === "climb") return null;
+            if (a.hidden || a.noShadow || a.shadow || a.anim === "climb") return null;
             const c = f.cast!;
             const dir = c.from ? Math.atan2(a.at[0] - c.from[0], a.at[2] - c.from[2]) : (c.dir ?? 0);
             return <FakeShadow key={`fs${i}`} at={a.at} dir={dir} scale={a.scale ?? 0.62} len={c.len ?? 1} opacity={c.opacity ?? 0.6} />;
@@ -242,6 +242,7 @@ export const World: React.FC<{ f: Frame; t: number; lt: number }> = ({ f, t, lt 
         <Giant key={`g${i}`} s={g} />
       ))}
       {f.roofSet ? <RoofSet /> : null}
+      {f.towerLamp !== undefined ? <TowerLamp on={f.towerLamp} t={t} /> : null}
       <Wave center={[TOWER[0], TOWER_H - 6, TOWER[2]]} k={f.wave ?? 0} />
       <GroundFog density={f.fog} t={t} palette={f.palette} />
     </>

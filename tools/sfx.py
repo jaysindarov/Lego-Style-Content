@@ -173,6 +173,20 @@ def build_library(DUR):
         "[a][b]amix=inputs=2:normalize=0",
         2.5,
     )
+    gen_complex(
+        "whisper",
+        "anoisesrc=color=pink:amplitude=1:d=2.2,bandpass=f=2600:w=2400,tremolo=f=6:d=0.9,tremolo=f=1.7:d=0.6,volume=1.8[a];"
+        "anoisesrc=color=white:amplitude=0.5:d=2.2,highpass=f=5000,tremolo=f=9:d=0.8[b];"
+        "[a][b]amix=inputs=2:normalize=0,afade=t=in:d=0.3,afade=t=out:st=1.6:d=0.6,aecho=0.8:0.7:160|330:0.4|0.25",
+        2.2,
+    )
+    gen_complex(
+        "hiss",
+        "anoisesrc=color=white:amplitude=1:d=2,highpass=f=1800,volume='min(1,t*6)*exp(-1.4*t)':eval=frame[a];"
+        "aevalsrc='0.35*sin(2*PI*(900-700*t)*t)*exp(-1.2*t)':d=2[b];"
+        "[a][b]amix=inputs=2:normalize=0,aecho=0.8:0.6:90:0.3",
+        2,
+    )
     gen("pulse", "aevalsrc='0.5*exp(-7*mod(t,0.85))*sin(2*PI*48*t)+0.3*exp(-9*mod(t+0.22,0.85))*sin(2*PI*44*t)',lowpass=f=160", 12)
 
 

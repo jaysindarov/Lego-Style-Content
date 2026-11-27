@@ -340,6 +340,26 @@ export const faceTex = (skin: string, mood: "smile" | "scared" | "shout" | "worr
     }
   });
 
+/** A living shadow's face: black, two glowing eyes and a thin wide grin. */
+export const shadowFaceTex = () =>
+  canvasTex("face-shadow", 128, 128, (g, w, h) => {
+    g.fillStyle = "#07060b";
+    g.fillRect(0, 0, w, h);
+    g.shadowColor = "#fff6c8";
+    g.shadowBlur = 14;
+    g.fillStyle = "#fffbe6";
+    g.beginPath();
+    g.ellipse(40, 54, 10, 15, -0.25, 0, Math.PI * 2);
+    g.ellipse(88, 54, 10, 15, 0.25, 0, Math.PI * 2);
+    g.fill();
+    g.strokeStyle = "#fffbe6";
+    g.lineWidth = 4;
+    g.beginPath();
+    g.moveTo(26, 84);
+    g.quadraticCurveTo(64, 112, 102, 84);
+    g.stroke();
+  });
+
 /** Torso front: open jacket over a shirt, or a hoodie with a pocket. */
 export const torsoTex = (jacket: string, shirt: string, kind: "jacket" | "hoodie" | "tee" | "dress") =>
   canvasTex(`torso-${jacket}-${shirt}-${kind}`, 128, 128, (g, w, h) => {

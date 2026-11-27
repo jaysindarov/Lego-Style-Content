@@ -10,3 +10,5 @@ public/Rounded.ttf
 
 # narration takes from external TTS (paid; kept locally)
 stories/*/voice/
+logs/
+deploy/host

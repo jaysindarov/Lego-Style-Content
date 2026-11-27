@@ -1,0 +1,21 @@
+[Unit]
+Description=Daily Short: write, voice, render, send to Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=shorts
+Group=shorts
+WorkingDirectory=/home/shorts/app
+Environment=HOME=/home/shorts
+Environment=REMOTION_GL=swangle
+Environment=REMOTION_CONCURRENCY=2
+Environment=REMOTION_TIMEOUT=240000
+ExecStart=/usr/bin/python3 tools/daily.py
+# the same box runs other services: never let a render starve them
+MemoryMax=4500M
+CPUQuota=300%
+Nice=10
+IOSchedulingClass=idle
+TimeoutStartSec=5h
