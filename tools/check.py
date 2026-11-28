@@ -29,8 +29,8 @@ def main() -> None:
     vid = next(x for x in probe["streams"] if x["codec_type"] == "video")
     if (vid["width"], vid["height"]) != (1080, 1920):
         bad.append(f"size {vid['width']}x{vid['height']}, want 1080x1920")
-    if not 60 <= dur <= 130:
-        bad.append(f"duration {dur:.0f}s outside 60-130s")
+    if not 60 <= dur <= 175:  # Shorts allow up to three minutes; keep a margin
+        bad.append(f"duration {dur:.0f}s outside 60-175s")
     if not any(x["codec_type"] == "audio" for x in probe["streams"]):
         bad.append("no audio track")
     bd = subprocess.run(["ffmpeg", "-i", str(video), "-vf", "blackdetect=d=0.3:pix_th=0.08", "-an", "-f", "null", "-"], capture_output=True, text=True).stderr

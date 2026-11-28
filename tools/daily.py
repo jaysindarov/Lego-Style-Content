@@ -20,6 +20,7 @@ import subprocess
 import sys
 import traceback
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
@@ -96,11 +97,13 @@ def notify(msg: str) -> None:
 def main() -> None:
     load_env()
     LOGS.mkdir(exist_ok=True)
-    day = datetime.date.today().isoformat()
+    # the schedule is in the owner's time zone, not the server's
+    day = datetime.datetime.now(ZoneInfo(os.environ.get("SHORTS_TZ", "Asia/Tashkent"))).date().isoformat()
     lock = open(LOGS / ".lock", "w")
     try:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except OSError:
+        notify(f"Daily Short for {day} skipped: another run was still active on the server.")
         raise SystemExit("another run is active")
     resume = sys.argv[sys.argv.index("--resume") + 1] if "--resume" in sys.argv else None
     start = sys.argv[sys.argv.index("--from") + 1] if "--from" in sys.argv else "voice"
@@ -109,6 +112,7 @@ def main() -> None:
     step = "start"
     slug = resume or f"daily-{day}"
     if not resume and (ROOT / "stories" / slug).exists():
+        notify(f"Daily Short for {day} skipped: stories/{slug} already exists.")
         raise SystemExit(f"stories/{slug} already exists: today's Short was made (use --resume to continue it)")
     with open(LOGS / f"{day}.log", "a") as log:
         try:
